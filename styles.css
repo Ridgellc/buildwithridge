@@ -245,12 +245,25 @@ p { text-wrap: pretty; }
   .kit-desc { display: none; }
 }
 
+/* ---------- about page ---------- */
+.page { padding-top: 60px; }
+.page-head { padding: clamp(5rem, 10vw, 9rem) var(--margin) 0; }
+.page-title { font-size: clamp(64px, 11vw, 180px); font-weight: 600; line-height: 0.9; letter-spacing: -0.06em; }
+.page .about { padding-top: clamp(3rem, 6vw, 5rem); }
+.page .vista { padding-top: 0; padding-bottom: var(--section); }
+.bar a[aria-current="page"] { text-decoration-color: currentColor; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .page-head, .js .page .about { animation: page-up 700ms var(--ease-out) both; }
+  .js .page .about { animation-delay: 120ms; }
+}
+@keyframes page-up { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+
 /* ---------- the ridge: a photograph and a moving picture ---------- */
 .vista { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 0.6rem; padding: var(--section) var(--margin) 0; align-items: end; }
 .vista-img { grid-column: 1 / span 8; overflow: hidden; }
 .vista-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 70%; }
 .vista-clip { grid-column: 9 / -1; overflow: hidden; }
-.vista-clip video { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 50%; background: var(--surface); }
+.vista-clip video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 50%; background: var(--surface); }
 .vista figcaption { grid-column: 1 / -1; color: var(--muted); }
 @media (prefers-reduced-motion: no-preference) {
   .vista-img img { animation: drift 24s var(--ease-in-out) infinite alternate; }
