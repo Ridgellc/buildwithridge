@@ -2,7 +2,8 @@
 
 Each one reuses the design of a real lead demo (palette, fonts, photos, layout) through the
 demo builder, but with a made-up business: invented name, 555 phone, generic address, no
-Google rating or reviews, and a banner that says the business is made up.
+real reviews (the reviews shown are written examples, each tagged "Example"), and a banner
+that says the business is made up.
 
     python3 -I tools/make_examples.py      # run from the buildwithridge folder
 writes examples/<slug>/index.html and copies the stock photos next to it.
@@ -79,10 +80,100 @@ EXAMPLES = {
 }
 
 
-def strip_real_proof(page: str, name: str) -> str:
-    page = re.sub(r'<span class="rating-pill"><span class="st">[^<]*</span>[^<]*</span>', "", page)
-    page = re.sub(r'\s*<section id="reviews".*?</section>', "", page, flags=re.S)
-    page = page.replace('<a href="#reviews">Reviews</a>', "")
+# Example reviews for the made-up businesses. They look like Google reviews but every one is
+# tagged "Example", and so is the rating badge, so nobody can take them for real reviews.
+REVIEWS = {
+ "el-girasol-panaderia": [
+  4.7,
+  318,
+  [
+   [
+    5,
+    "3 weeks ago",
+    "The conchas are still warm at 6 in the morning. I grab a dozen for the office every Friday and they are gone by nine."
+   ],
+   [
+    5,
+    "2 months ago",
+    "Best tamales in town, hands down. The jalapeño and cheese ones are my favorite, and ordering ahead online made pickup so easy."
+   ],
+   [
+    4,
+    "a month ago",
+    "Friendly staff and a huge selection of pan dulce. Gets busy on weekends, so order online and skip the line."
+   ]
+  ]
+ ],
+ "juniper-table-cafe": [
+  4.6,
+  214,
+  [
+   [
+    5,
+    "a week ago",
+    "We ordered a whole key lime pie for my mom's birthday and it was perfect. The breakfast is just as good as the pie."
+   ],
+   [
+    5,
+    "2 months ago",
+    "Fluffy omelets, great hash browns and the coffee keeps coming. Our new Sunday spot."
+   ],
+   [
+    4,
+    "3 weeks ago",
+    "Cozy little café with homemade everything. The club sandwich was huge and the soup of the day was excellent."
+   ]
+  ]
+ ],
+ "wren-nail-studio": [
+  4.9,
+  167,
+  [
+   [
+    5,
+    "2 weeks ago",
+    "So clean and relaxing. The heated massage chairs are amazing and my gel manicure lasted almost three weeks."
+   ],
+   [
+    5,
+    "a month ago",
+    "They got my nail art exactly how I pictured it. Booking online took less than a minute."
+   ],
+   [
+    5,
+    "3 months ago",
+    "Calm, friendly and never rushed. Best pedicure I have had on the Central Coast."
+   ]
+  ]
+ ],
+ "copper-comb-barbershop": [
+  4.8,
+  241,
+  [
+   [
+    5,
+    "5 days ago",
+    "Cleanest fade I have had in years. Booked online the night before and was in the chair right on time."
+   ],
+   [
+    5,
+    "a month ago",
+    "The hot towel shave is worth every penny. Great conversation and a sharp finish."
+   ],
+   [
+    5,
+    "2 months ago",
+    "Brought my son in for his first real haircut and they were so patient with him. We will be back."
+   ]
+  ]
+ ]
+}
+
+
+def label_example_proof(page: str, name: str) -> str:
+    page = re.sub(r'(<span class="rating-pill">.*?reviews)</span>', r'\1 <span class="tag">Example</span></span>', page, count=1, flags=re.S)
+    page = page.replace("<figcaption>Google review · ", "<figcaption>Example review · ")
+    page = re.sub(r'(<p class="section-intro">[^<]*reviews on Google\.)</p>', r'\1 These reviews are examples.</p>', page)
     page = re.sub(r'<div class="demo-note">.*?</div>',
                   f'<div class="demo-note">Example site by Ridge. {bd.E(name)} is a made-up business; '
                   f'items tagged “Example” are placeholders.</div>', page, flags=re.S)
@@ -96,7 +187,8 @@ def main():
         site.update({k: v for k, v in ex["site"].items() if k != "menu_patch"})
         site["display_name"] = ex["name"]
         site["town"] = ex["town"]
-        site["reviews"] = []
+        rating, total, reviews = REVIEWS[slug]
+        site["reviews"] = [{"i": i} for i in range(len(reviews))]
         site["menu_intro"] = "Example items and prices, to show how a full menu looks on the site."
         for group in site.get("menu", []):
             for item in group["items"]:
@@ -104,12 +196,13 @@ def main():
                 if item["name"] == "Ham & Cheese Omelet":
                     item["desc"] = "Black Forest ham and cheddar"
         lead = {"name": ex["name"], "address": ex["address"], "phone": ex["phone"], "hours": ex["hours"],
-                "rating": 5, "reviews_total": 0, "reviews": []}
+                "rating": rating, "reviews_total": total,
+                "reviews": [{"rating": r, "when": w, "text": t} for r, w, t in reviews]}
         bd.SITES[slug] = site
         bd.LEADS[str(site["lead_id"]) + "-" + slug] = lead
         site["lead_id"] = str(site["lead_id"]) + "-" + slug
         bd.PHOTOS[slug] = bd.PHOTOS.get(src, [])
-        page = strip_real_proof(bd.build(slug), ex["name"])
+        page = label_example_proof(bd.build(slug), ex["name"])
         out = ROOT / "examples" / slug
         (out / "images").mkdir(parents=True, exist_ok=True)
         for f in (BUILDER.parent / src / "images").glob("photo-*.jpg"):
