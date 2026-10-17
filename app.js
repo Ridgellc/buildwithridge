@@ -67,12 +67,34 @@ const fitAll = () => {
   set(0);
 })();
 
-// What's in it: pointing at a capability shows its one-line meaning in the empty columns.
+// How it goes: one panel, flip through the steps with the arrows, the step bars, the keyboard or a swipe.
 (() => {
-  const desc = document.getElementById('kit-desc');
-  const btns = document.querySelectorAll('.kit-list button');
-  const show = (b) => { btns.forEach((x) => x.classList.toggle('is-on', x === b)); desc.textContent = b.dataset.d; };
-  btns.forEach((b) => { b.addEventListener('mouseenter', () => show(b)); b.addEventListener('focus', () => show(b)); b.addEventListener('click', () => show(b)); });
+  const root = document.getElementById('steps');
+  if (!root) return;
+  const tabs = [...root.querySelectorAll('[role="tab"]')];
+  const panels = [...root.querySelectorAll('.step')];
+  const [prev, next] = root.querySelectorAll('.steps-arrow');
+  const count = document.getElementById('steps-count');
+  let at = 0;
+  const go = (n, focus) => {
+    at = Math.max(0, Math.min(panels.length - 1, n));
+    panels.forEach((p, i) => { p.classList.toggle('is-on', i === at); p.classList.toggle('is-before', i < at); p.toggleAttribute('inert', i !== at); });
+    tabs.forEach((t, i) => { t.setAttribute('aria-selected', i === at); t.tabIndex = i === at ? 0 : -1; t.parentElement.classList.toggle('is-done', i < at); });
+    prev.disabled = at === 0; next.disabled = at === panels.length - 1;
+    count.textContent = (at + 1) + ' / ' + panels.length;
+    if (focus) tabs[at].focus();
+  };
+  tabs.forEach((t, i) => t.addEventListener('click', () => go(i)));
+  root.querySelector('[role="tablist"]').addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(at + 1, true); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(at - 1, true); }
+  });
+  [prev, next].forEach((b) => b.addEventListener('click', () => go(at + +b.dataset.dir)));
+  let x0 = null;
+  const stage = root.querySelector('.steps-stage');
+  stage.addEventListener('pointerdown', (e) => { x0 = e.clientX; });
+  stage.addEventListener('pointerup', (e) => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 50) go(at + (dx < 0 ? 1 : -1)); });
+  go(0);
 })();
 
 // See yours: the visitor's name, set as the monument of a sketch site in their trade.

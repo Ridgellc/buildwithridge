@@ -98,108 +98,131 @@
 </section>
 
 <section class="how" id="how" aria-labelledby="how-title">
-  <div class="how-col">
-    <h2 class="head" id="how-title" data-reveal>How it goes</h2>
-
-    <div class="how-step">
-      <p data-reveal><strong>To begin, I build it.</strong> I find a business with no website, or one nobody has touched in years, and build the whole thing: your hours, your menu or services, your photos, the reviews you already have. You haven't paid and you don't owe anything.</p>
-      <figure class="how-ev how-ev--wide" data-reveal style="--i:1"><img src="img/how/menu.jpg" width="1280" height="800" alt="A searchable donut menu with filters and a photo for every donut" loading="lazy" decoding="async"></figure>
-    </div>
-
-    <div class="how-step">
-      <p data-reveal><strong>Then you get a link.</strong> I send it by text, email or in person. Open it on your phone, tell me what's wrong, and I change it until it's right.</p>
-      <div class="how-ev how-phones" data-reveal style="--i:1">
-        <img src="img/how/phone-cafe.jpg" width="390" height="844" alt="A café site on a phone" loading="lazy" decoding="async">
-        <img src="img/how/phone-barber.jpg" width="390" height="844" alt="A barbershop site on a phone" loading="lazy" decoding="async">
-        <img src="img/how/phone-donut.jpg" width="390" height="844" alt="A donut shop site on a phone" loading="lazy" decoding="async">
+  <div class="how-top" data-reveal>
+    <h2 class="head" id="how-title">How it goes</h2>
+    <p class="how-intro">From a sketch you never asked for to a live site on your own address.</p>
+  </div>
+  <div class="steps" id="steps" data-reveal style="--i:1">
+    <ol class="steps-tabs" role="tablist" aria-label="Steps">
+      <li><button type="button" role="tab" id="tab-1" aria-controls="step-1" aria-selected="true"><span class="steps-bar"></span><span class="steps-label">Step 1 · Built</span></button></li>
+      <li><button type="button" role="tab" id="tab-2" aria-controls="step-2" aria-selected="false" tabindex="-1"><span class="steps-bar"></span><span class="steps-label">Step 2 · Sent</span></button></li>
+      <li><button type="button" role="tab" id="tab-3" aria-controls="step-3" aria-selected="false" tabindex="-1"><span class="steps-bar"></span><span class="steps-label">Step 3 · Live</span></button></li>
+      <li><button type="button" role="tab" id="tab-4" aria-controls="step-4" aria-selected="false" tabindex="-1"><span class="steps-bar"></span><span class="steps-label">Step 4 · Looked after</span></button></li>
+    </ol>
+    <div class="steps-stage">
+    <article class="step is-on" id="step-1" role="tabpanel" aria-labelledby="tab-1">
+      <div class="step-text">
+        <h3 class="step-title">I build it first.</h3>
+        <p class="step-body">I find a business with no website, or one nobody has touched in years, and build the whole thing: your hours, your menu or services, your photos, the reviews you already have. You haven't paid and you don't owe anything.</p>
       </div>
+      <div class="step-pic"><img src="img/how/menu.jpg" width="1280" height="800" alt="A searchable donut menu with filters and a photo for every donut" loading="lazy" decoding="async"></div>
+    </article>
+    <article class="step" id="step-2" role="tabpanel" aria-labelledby="tab-2">
+      <div class="step-text">
+        <h3 class="step-title">You get a link.</h3>
+        <p class="step-body">I send it by text, email or in person. Open it on your phone, tell me what's wrong, and I change it until it's right.</p>
+      </div>
+      <div class="step-pic step-pic--phones"><img src="img/how/phone-cafe.jpg" width="390" height="844" alt="A café site on a phone" loading="lazy" decoding="async"><img src="img/how/phone-barber.jpg" width="390" height="844" alt="A barbershop site on a phone" loading="lazy" decoding="async"><img src="img/how/phone-donut.jpg" width="390" height="844" alt="A donut shop site on a phone" loading="lazy" decoding="async"></div>
+    </article>
+    <article class="step" id="step-3" role="tabpanel" aria-labelledby="tab-3">
+      <div class="step-text">
+        <h3 class="step-title">It goes live.</h3>
+        <p class="step-body">If you like it, I put it on your own web address, or help you get one in your name. The first month is free.</p>
+      </div>
+      <div class="step-pic"><img src="assets/higuera-street-slo-16.jpg" width="1920" height="1440" alt="Shops under big shade trees on Higuera Street in downtown San Luis Obispo" loading="lazy" decoding="async"></div>
+    </article>
+    <article class="step" id="step-4" role="tabpanel" aria-labelledby="tab-4">
+      <div class="step-text">
+        <h3 class="step-title">I look after it.</h3>
+        <p class="step-body">One monthly fee covers hosting, updates and changes. New hours, a new price list, a holiday closure: text me and it's done.</p>
+      </div>
+      <div class="step-pic"><img src="img/how/hours.jpg" width="1280" height="800" alt="A live board showing which of four shops is open right now and until when" loading="lazy" decoding="async"></div>
+    </article>
     </div>
-
-    <div class="how-step">
-      <p data-reveal><strong>If you like it, it goes live.</strong> I put it on your own web address, or help you get one in your name. The first month is free.</p>
-      <figure class="how-ev how-ev--wide" data-reveal style="--i:1"><img src="assets/higuera-street-slo-16.jpg" width="1920" height="1440" alt="Shops under big shade trees on Higuera Street in downtown San Luis Obispo" loading="lazy" decoding="async"><figcaption class="small">Higuera Street, San Luis Obispo.</figcaption></figure>
-    </div>
-
-    <div class="how-step">
-      <p data-reveal><strong>From then on, I look after it.</strong> One monthly fee covers hosting, updates and changes. New hours, a new price list, a holiday closure: text me and it's done.</p>
-      <figure class="how-ev how-ev--wide" data-reveal style="--i:1"><img src="img/how/hours.jpg" width="1280" height="800" alt="A live board showing which of four shops is open right now and until when" loading="lazy" decoding="async"></figure>
+    <div class="steps-nav">
+      <span class="steps-count" id="steps-count" aria-live="polite">1 / 4</span>
+      <button type="button" class="steps-arrow" data-dir="-1" aria-label="Previous step"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></button>
+      <button type="button" class="steps-arrow steps-arrow--next" data-dir="1" aria-label="Next step"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg></button>
     </div>
   </div>
 </section>
 
 <section class="kit" aria-labelledby="kit-title">
-  <h2 class="kit-title" id="kit-title" data-reveal>What's in it</h2>
-  <div class="kit-cols">
-    <div class="kit-col" data-reveal>
-      <h3 class="kit-group">On the site</h3>
-      <ul class="kit-list">
-        <li><button type="button" data-d="Today's hours at the top, and whether you're open right now.">Your hours, live</button></li>
-        <li><button type="button" data-d="The full menu or price list, kept current, not a blurry photo of the board.">Menus and prices</button></li>
-        <li><button type="button" data-d="Your own photos of the shop and the work, big and sharp on a phone.">Photo galleries</button></li>
-        <li><button type="button" data-d="A link to the booking or ordering app you already use.">Booking and ordering</button></li>
-        <li><button type="button" data-d="One tap from the page to your phone line.">Tap to call</button></li>
-        <li><button type="button" data-d="Your address with a one-tap route in the visitor's map app.">Directions</button></li>
-        <li><button type="button" data-d="A short form that lands in your email inbox.">Contact form</button></li>
-        <li><button type="button" data-d="Your real Google reviews, quoted word for word.">Your reviews</button></li>
+  <div class="kit-top" data-reveal>
+    <h2 class="head" id="kit-title">What's in it</h2>
+    <p class="kit-intro">Everything a small business site needs, and nothing you have to manage.</p>
+  </div>
+  <div class="kit-grid">
+    <div class="kit-card" data-reveal style="--i:0">
+      <h3 class="kit-card-title">On the site</h3>
+      <p class="kit-card-sum">What a customer looks up before they come in.</p>
+      <ul class="kit-checks">
+        <li>Your hours, and whether you're open now</li>
+        <li>Menus and price lists, kept current</li>
+        <li>Your own photos, big and sharp</li>
+        <li>Links to the booking or ordering app you use</li>
+        <li>Tap to call and one-tap directions</li>
+        <li>A contact form that lands in your inbox</li>
+        <li>Your real Google reviews</li>
       </ul>
-      <p class="kit-sum">Everything a customer looks up before they come in.</p>
     </div>
-    <div class="kit-col" data-reveal style="--i:1">
-      <h3 class="kit-group">Looked after</h3>
-      <ul class="kit-list">
-        <li><button type="button" data-d="The site lives on fast, reliable hosting that I set up and pay for.">Hosting</button></li>
-        <li><button type="button" data-d="The padlock in the address bar, set up and renewed for you.">Secure address</button></li>
-        <li><button type="button" data-d="Your site on your own .com, connected and checked.">Your own domain</button></li>
-        <li><button type="button" data-d="Text or email what should change. I make the change.">Changes on request</button></li>
-        <li><button type="button" data-d="Holidays, closures and new hours go up before customers show up to a locked door.">Holiday hours</button></li>
-        <li><button type="button" data-d="Every version of the site is saved, so any mistake can be undone.">Every version saved</button></li>
+    <div class="kit-card" data-reveal style="--i:1">
+      <h3 class="kit-card-title">Looked after</h3>
+      <p class="kit-card-sum">You text me a change; I make it.</p>
+      <ul class="kit-checks">
+        <li>Hosting, set up and paid for</li>
+        <li>The padlock in the address bar</li>
+        <li>Your own .com, connected</li>
+        <li>Changes whenever you ask</li>
+        <li>Holiday hours and closures</li>
+        <li>Every version saved, so nothing is lost</li>
       </ul>
-      <p class="kit-sum">You text me a change; I make it.</p>
     </div>
-    <div class="kit-col" data-reveal style="--i:2">
-      <h3 class="kit-group">Built right</h3>
-      <ul class="kit-list">
-        <li><button type="button" data-d="Laid out for a phone first, because that's where your customers are.">Made for phones</button></li>
-        <li><button type="button" data-d="Hand-built pages with no heavy page builder, so they open quickly.">Loads fast</button></li>
-        <li><button type="button" data-d="Big, clear type that works for every customer's eyes.">Easy to read</button></li>
-        <li><button type="button" data-d="Proper labels and contrast so screen readers and keyboards work.">Accessible</button></li>
-        <li><button type="button" data-d="Page titles and descriptions written so search engines know what you are.">Search basics</button></li>
-        <li><button type="button" data-d="No app to install, no login for you to remember.">Nothing to manage</button></li>
+    <div class="kit-card" data-reveal style="--i:2">
+      <h3 class="kit-card-title">Built right</h3>
+      <p class="kit-card-sum">Plain, fast pages that work on every phone.</p>
+      <ul class="kit-checks">
+        <li>Laid out for phones first</li>
+        <li>Loads fast, no heavy page builder</li>
+        <li>Big, clear type</li>
+        <li>Works with screen readers and keyboards</li>
+        <li>Titles and descriptions for search</li>
+        <li>No app or login for you to manage</li>
       </ul>
-      <p class="kit-sum">Plain, fast pages that work on every phone.</p>
     </div>
-    <p class="kit-desc" id="kit-desc" aria-live="polite">Point at anything in the list to see what it means.</p>
   </div>
 </section>
 
 <section class="faq" id="questions" aria-labelledby="faq-title">
-  <div class="faq-row">
-    <h2 class="faq-q faq-title" id="faq-title" data-reveal>Questions</h2>
-    <span></span>
+  <div class="faq-side" data-reveal>
+    <h2 class="head" id="faq-title">Questions</h2>
+    <p class="faq-more">Something else? <a class="link-plain" href="#contact">Write to me</a>.</p>
   </div>
-  <div class="faq-row">
-    <h3 class="faq-q" data-reveal>What does it cost?</h3>
-    <p class="faq-a" data-reveal style="--i:1">It depends on the site, so there's no price list here. The site is built before you pay anything. After that it's one monthly fee for hosting, updates and changes, with no setup fee, and the first month is free.</p>
-  </div>
-  <div class="faq-row">
-    <h3 class="faq-q" data-reveal>What if I don't like it?</h3>
-    <p class="faq-a" data-reveal style="--i:1">Then you say no, and that's the end of it. You owe nothing and the sample comes down.</p>
-  </div>
-  <div class="faq-row">
-    <h3 class="faq-q" data-reveal>I already have a website.</h3>
-    <p class="faq-a" data-reveal style="--i:1">Most of the shops I build for do. If yours is slow, dated or hard to use on a phone, I rebuild it and keep what works, including your web address.</p>
-  </div>
-  <div class="faq-row">
-    <h3 class="faq-q" data-reveal>Do I need a web address?</h3>
-    <p class="faq-a" data-reveal style="--i:1">If you have one, the site goes on it. If you don't, I'll help you get one, registered in your name.</p>
-  </div>
-  <div class="faq-row">
-    <h3 class="faq-q" data-reveal>How do changes work?</h3>
-    <p class="faq-a" data-reveal style="--i:1">Text or email me what should change. New hours, prices, photos or a holiday closure usually go up within a day.</p>
-  </div>
-  <div class="faq-row">
-    <h3 class="faq-q" data-reveal>What do you need from me?</h3>
-    <p class="faq-a" data-reveal style="--i:1">Nothing to start. If you like the sample: a few photos, a look over your hours and prices, and a yes.</p>
+  <div class="faq-list" data-reveal style="--i:1">
+    <details class="faq-item" open>
+      <summary><span>What does it cost?</span><i class="faq-icon" aria-hidden="true"></i></summary>
+      <p class="faq-a">It depends on the site, so there's no price list here. The site is built before you pay anything. After that it's one monthly fee for hosting, updates and changes, with no setup fee, and the first month is free.</p>
+    </details>
+    <details class="faq-item">
+      <summary><span>What if I don't like it?</span><i class="faq-icon" aria-hidden="true"></i></summary>
+      <p class="faq-a">Then you say no, and that's the end of it. You owe nothing and the sample comes down.</p>
+    </details>
+    <details class="faq-item">
+      <summary><span>I already have a website.</span><i class="faq-icon" aria-hidden="true"></i></summary>
+      <p class="faq-a">Most of the shops I build for do. If yours is slow, dated or hard to use on a phone, I rebuild it and keep what works, including your web address.</p>
+    </details>
+    <details class="faq-item">
+      <summary><span>Do I need a web address?</span><i class="faq-icon" aria-hidden="true"></i></summary>
+      <p class="faq-a">If you have one, the site goes on it. If you don't, I'll help you get one, registered in your name.</p>
+    </details>
+    <details class="faq-item">
+      <summary><span>How do changes work?</span><i class="faq-icon" aria-hidden="true"></i></summary>
+      <p class="faq-a">Text or email me what should change. New hours, prices, photos or a holiday closure usually go up within a day.</p>
+    </details>
+    <details class="faq-item">
+      <summary><span>What do you need from me?</span><i class="faq-icon" aria-hidden="true"></i></summary>
+      <p class="faq-a">Nothing to start. If you like the sample: a few photos, a look over your hours and prices, and a yes.</p>
+    </details>
   </div>
 </section>
 
