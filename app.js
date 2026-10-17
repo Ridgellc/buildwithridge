@@ -39,7 +39,6 @@ const fitAll = () => {
     if (el.closest('.contact-mail') && !wide) { el.style.fontSize = ''; return; }
     fit(el);
   });
-  fitMini();
 };
 
 // The work index: the active name lights up and its picture shows in the fixed frame.
@@ -97,25 +96,16 @@ const fitAll = () => {
   go(0);
 })();
 
-// See yours: the visitor's name, set as the monument of a sketch site in their trade.
+// See yours: the visitor's name on a little homepage in the style of the demo sites, one per trade.
 const TRADES = {
-  bakery:  { tag: 'Bread out of the oven by six, every morning.', btn: 'Order ahead', links: 'Menu · Hours · Visit', hours: 'Open today, 6 AM to 2 PM' },
-  cafe:    { tag: 'Breakfast all day and coffee all morning.', btn: 'See the menu', links: 'Menu · Hours · Visit', hours: 'Open today, 7 AM to 3 PM' },
-  barber:  { tag: 'Walk-ins welcome. Fades, tapers and beard trims.', btn: 'Book a chair', links: 'Services · Book · Visit', hours: 'Open today, 9 AM to 6 PM' },
-  nails:   { tag: 'Manicures, pedicures, gel and dip, done with care.', btn: 'Book now', links: 'Services · Prices · Book', hours: 'Open today, 10 AM to 7 PM' },
-  auto:    { tag: 'Brakes, oil changes and diagnostics. Honest quotes.', btn: 'Call for a quote', links: 'Services · Reviews · Visit', hours: 'Open today, 8 AM to 5 PM' },
-  builder: { tag: 'Remodels, additions and repairs, finished on schedule.', btn: 'Get a quote', links: 'Work · Services · Contact', hours: 'Licensed and insured' },
+  bakery:  { kind: 'Bakery', head: 'Pan dulce, fresh every morning', desc: (n) => `${n} bakes conchas, cuernos and bolillos every day from 6 AM. Order ahead and skip the line.`, btn: 'Order ahead', links: 'Menu · Hours · Visit', hours: 'Open today, 6 AM to 2 PM', alt: 'a concha on bakery paper' },
+  cafe:    { kind: 'Breakfast & lunch', head: 'Homemade biscuits and big breakfasts', desc: (n) => `${n} serves biscuits and gravy, fluffy omelets and good coffee, every day from 7 to 2.`, btn: 'See the menu', links: 'Menu · Hours · Visit', hours: 'Open today, 7 AM to 2 PM', alt: 'biscuits and gravy in a skillet' },
+  barber:  { kind: 'Barbershop', head: 'Walk in, walk out sharp', desc: (n) => `${n} does fades, tapers and beard line-ups for men and kids. Walk-ins welcome, or book your chair online.`, btn: 'Book a chair', links: 'Services · Book · Visit', hours: 'Open today, 9 AM to 6 PM', alt: 'an old-fashioned barbershop interior' },
+  nails:   { kind: 'Nail salon', head: 'Simple, elegant nails', desc: (n) => `${n} offers manicures, pedicures, gel and dip in a clean, calm salon with heated massage chairs.`, btn: 'Book now', links: 'Services · Prices · Book', hours: 'Open today, 10 AM to 7 PM', alt: 'a manicure in progress' },
+  auto:    { kind: 'Auto repair', head: 'Honest repairs, done right', desc: (n) => `${n} handles brakes, oil changes and diagnostics, with a clear quote before any work starts.`, btn: 'Get a quote', links: 'Services · Reviews · Visit', hours: 'Open today, 8 AM to 5 PM', alt: 'a mechanic working under the hood of a car' },
+  builder: { kind: 'Contractor', head: 'Remodels built to last', desc: (n) => `${n} builds kitchens, baths and additions, with clear communication from the first visit to the final walk-through.`, btn: 'Request a quote', links: 'Work · Services · Contact', hours: 'Licensed and insured', alt: 'a finished kitchen remodel' },
 };
 const mini = document.getElementById('mini');
-const nameEl = document.getElementById('mini-name');
-function fitMini() {
-  if (!nameEl) return;
-  const page = nameEl.closest('.mini-page');
-  const pcs = getComputedStyle(page);
-  const avail = page.clientWidth - parseFloat(pcs.paddingLeft) - parseFloat(pcs.paddingRight);
-  const capH = page.clientHeight * 0.42; // never taller than the middle of the page
-  scaleTo(nameEl, avail * 0.98, capH);
-}
 (() => {
   const form = document.getElementById('yours-form');
   const input = document.getElementById('biz');
@@ -128,11 +118,13 @@ function fitMini() {
     const trade = form.querySelector('input[name="trade"]:checked').value;
     const d = TRADES[trade];
     mini.dataset.trade = trade;
-    nameEl.textContent = name;
     $('mini-logo').textContent = name;
+    $('mini-kind').textContent = $('mini-eyebrow').textContent = d.kind + ' · Central Coast';
+    $('mini-head').textContent = d.head; $('mini-desc').textContent = d.desc(name);
+    $('mini-pill').textContent = d.btn;
+    const img = $('mini-img'); if (!img.src.endsWith('/' + trade + '.jpg')) { img.src = 'img/sketch/' + trade + '.jpg'; } img.alt = 'Example photo: ' + d.alt;
     $('mini-url').textContent = (name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '') || 'yourbusiness') + '.com';
-    $('mini-tag').textContent = d.tag; $('mini-btn').textContent = d.btn; $('mini-links').textContent = d.links; $('mini-hours').textContent = d.hours;
-    fitMini();
+    $('mini-btn').textContent = d.btn; $('mini-links').textContent = d.links; $('mini-hours').textContent = d.hours;
     const label = form.querySelector('input[name="trade"]:checked + span').textContent;
     const body = `Hi Michael,\n\nI'd like to see a real site for ${input.value.trim() || 'my business'} (${label.toLowerCase()}).\n\nWhere we are:\nBest way to reach me:\n`;
     ask.href = 'mailto:hello@buildwithridge.com?subject=' + encodeURIComponent('Build mine: ' + (input.value.trim() || label)) + '&body=' + encodeURIComponent(body);
