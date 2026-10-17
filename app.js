@@ -1,4 +1,4 @@
-// Ridge: reveals, fitted type, the work index and the "see yours" sketch.
+// Ridge: reveals, fitted type, the "see yours" sketch and the how-it-goes steps.
 
 // Reveal once when an element enters the viewport. Never leaves content hidden.
 (() => {
@@ -40,31 +40,6 @@ const fitAll = () => {
     fit(el);
   });
 };
-
-// The work index: the active name lights up and its picture shows in the fixed frame.
-(() => {
-  const list = document.getElementById('work-list');
-  const frame = document.getElementById('work-frame');
-  if (!list || !frame) return;
-  const rows = [...list.querySelectorAll('.work-row')];
-  const imgs = rows.map((row) => {
-    const src = row.parentElement.querySelector('img');
-    const img = new Image();
-    img.src = src.getAttribute('src'); img.alt = ''; img.decoding = 'async';
-    frame.appendChild(img);
-    return img;
-  });
-  const set = (n) => {
-    rows.forEach((r, i) => r.classList.toggle('is-on', i === n));
-    imgs.forEach((im, i) => im.classList.toggle('is-on', i === n));
-  };
-  rows.forEach((row, i) => {
-    row.addEventListener('mouseenter', () => set(i));
-    row.addEventListener('focus', () => set(i));
-    row.addEventListener('click', () => set(i));
-  });
-  set(0);
-})();
 
 // How it goes: one panel, flip through the steps with the arrows, the step bars, the keyboard or a swipe.
 (() => {
