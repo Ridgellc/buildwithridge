@@ -10,7 +10,7 @@
   --accent-ink: #f7f9f8;
   --field: #06525c;
   --field-ink: #f7f9f8;
-  --field-ink2: #9ad6d0;   /* the field's own hue, lightened: the hero's second ink */
+  --field-ink2: #9ad6d0;   /* the field's own hue, lightened: soft ink on teal */
   --deep: #043a41;
   --deep-soft: #a9cfcf;
 
@@ -67,41 +67,15 @@ p { text-wrap: pretty; }
 .skip { position: absolute; left: var(--margin); top: -4rem; z-index: 10; background: var(--bg); color: var(--ink); padding: 0.6rem 1rem; }
 .skip:focus { top: 1rem; }
 
-/* ---------- hero: stacked name, two inks ---------- */
-.hero {
-  position: relative; min-height: 100svh; background: var(--field); color: var(--field-ink);
-  display: grid; grid-template-rows: auto 1fr auto;
-}
-.hero-mark, .hero-nav { position: absolute; top: 24px; font-size: 14px; text-decoration: none; }
-.hero-mark { left: var(--margin); font-family: var(--font-display); font-size: 18px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; }
-.hero-nav { right: var(--margin); display: flex; gap: 1.6rem; }
-.hero-action { text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 1px; }
-.hero-name {
-  grid-row: 2; align-self: start; margin-top: 14svh; padding-inline: 40px var(--margin);
-  font-size: clamp(96px, 19vw, 300px); font-weight: 600; line-height: 0.88; letter-spacing: -0.06em; font-kerning: normal;
-  white-space: nowrap;
-}
-.hero-ink2 { color: var(--field-ink2); }
-.hero-foot { grid-row: 3; justify-self: end; width: min(30ch, 34vw); margin: 0 var(--margin) 40px 0; font-size: var(--step-body); line-height: 1.5; text-align: right; }
-.hero-sub { margin-bottom: 0.9rem; }
-.hero-cta { display: inline-block; font-weight: 500; text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 1px; transition: color var(--t-hover) ease; }
-@media (hover: hover) and (pointer: fine) {
-  .hero-cta:hover, .hero-action:hover { color: var(--field-ink2); }
-}
-@media (max-width: 47.99em) {
-  .hero-name { margin-top: 18svh; padding-inline: 16px; font-size: 20vw; }
-  .hero-foot { justify-self: start; width: auto; margin: 0 16px 24px; text-align: left; }
-  .hero-mark { left: 16px; } .hero-nav { right: 16px; }
-}
-
 /* ---------- see yours (the live thing) ---------- */
 .yours {
   display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
-  padding: var(--section) var(--margin) calc(var(--section) * 0.8); align-items: start;
+  padding: calc(60px + clamp(3rem, 6vw, 5.5rem)) var(--margin) calc(var(--section) * 0.8); align-items: start;
 }
-.yours-copy { grid-column: 1 / span 4; position: sticky; top: 8vh; }
-.yours-copy > p { margin-top: 1.4rem; max-width: 34ch; }
-.yours-form { margin-top: 2.4rem; }
+.yours-title { grid-column: 1 / -1; font-size: clamp(2.6rem, 1rem + 4.4vw, 5.25rem); font-weight: 600; line-height: 0.98; letter-spacing: -0.05em; max-width: 16ch; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.yours-copy { grid-column: 1 / span 4; }
+.yours-copy > p { max-width: 34ch; }
+.yours-form { margin-top: 2rem; }
 .yours-label { display: block; font-size: var(--step-small); font-weight: 500; margin-bottom: 0.5rem; padding: 0; }
 .field {
   width: 100%; min-height: 3.4rem; padding: 0.6rem 1rem; background: var(--surface); border: 0; border-radius: 0;
@@ -340,7 +314,7 @@ p { text-wrap: pretty; }
   .credits[open] { grid-row: auto; }
 }
 
-/* ---------- the bar: name and one action, after the hero ---------- */
+/* ---------- the bar: name, sections and one action ---------- */
 .bar {
   position: fixed; inset: 0 0 auto 0; z-index: 20; height: 60px; padding: 0 var(--margin);
   display: flex; align-items: center; justify-content: space-between; background: var(--bg); color: var(--ink);
