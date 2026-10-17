@@ -264,7 +264,7 @@ p { text-wrap: pretty; }
 .vista-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 70%; }
 .vista-clip { grid-column: 9 / -1; overflow: hidden; }
 .vista-clip video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 50%; background: var(--surface); }
-.vista figcaption { grid-column: 1 / -1; color: var(--muted); }
+.vista figcaption { grid-column: 1 / -1; color: var(--muted); max-width: 70ch; }
 @media (prefers-reduced-motion: no-preference) {
   .vista-img img { animation: drift 24s var(--ease-in-out) infinite alternate; }
 }
