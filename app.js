@@ -42,6 +42,13 @@ const fitAll = () => {
   fitMini();
 };
 
+// The bar slides in once the hero has scrolled away.
+(() => {
+  const bar = document.getElementById('bar'), hero = document.querySelector('.hero');
+  if (!bar || !hero || !('IntersectionObserver' in window)) { bar && bar.classList.add('is-on'); return; }
+  new IntersectionObserver(([e]) => bar.classList.toggle('is-on', !e.isIntersecting), { threshold: 0, rootMargin: '-60px 0px 0px 0px' }).observe(hero);
+})();
+
 // The work index: the active name lights up and its picture shows in the fixed frame.
 (() => {
   const list = document.getElementById('work-list');

@@ -10,12 +10,22 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the page</a>
+
+<div class="bar" id="bar">
+  <a class="bar-mark" href="#top">Ridge</a>
+  <nav class="bar-nav" aria-label="Sections">
+    <a class="link only-wide" href="#work">Work</a>
+    <a class="link only-wide" href="#how">How it goes</a>
+    <a class="link only-wide" href="#questions">Questions</a>
+    <a class="bar-btn" href="#yours">See yours</a>
+  </nav>
+</div>
 
 <header class="hero" id="top">
   <a class="hero-mark" href="#top" aria-label="Ridge, back to top">Ridge</a>
@@ -229,26 +239,28 @@
 <section class="contact" id="contact" aria-label="Contact">
   <p class="contact-lead" data-reveal>Want your business built first? Write to me.</p>
   <a class="contact-mail" href="mailto:hello@buildwithridge.com?subject=Build%20mine%20first" data-reveal style="--i:1"><span data-fit>hello@<br class="only-narrow">buildwithridge.com</span></a>
-  <p class="contact-l small">San Luis Obispo, California</p>
-  <p class="contact-r small"><a class="link" href="#top">Back to the top</a></p>
 </section>
 
 </main>
 
-<footer class="foot">
-  <div class="foot-cols small">
-    <div><p class="foot-h">Ridge</p><p>Websites for small businesses</p><p>San Luis Obispo, California</p></div>
-    <div><p class="foot-h">On this page</p><p><a class="link" href="#yours">See yours</a></p><p><a class="link" href="#work">Work</a></p><p><a class="link" href="#how">How it goes</a></p><p><a class="link" href="#questions">Questions</a></p></div>
-    <div><p class="foot-h">Write</p><p><a class="link" href="mailto:hello@buildwithridge.com">hello@buildwithridge.com</a></p></div>
-    <div class="foot-credits"><p class="foot-h">Photographs</p>
-      <p><a class="link" href="https://commons.wikimedia.org/w/index.php?curid=1820267">Bishop Peak from Cerro San Luis</a>, Leif Arne Storset, <a class="link" href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a></p>
-      <p><a class="link" href="https://commons.wikimedia.org/wiki/File:The_Morros_and_San_Luis_Obispo_-_panoramio.jpg">The Morros and San Luis Obispo</a>, hakkun, <a class="link" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></p>
-      <p><a class="link" href="https://commons.wikimedia.org/w/index.php?curid=68518139">Higuera Street SLO 16</a>, Stilfehler, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p>
-      <p><a class="link" href="https://commons.wikimedia.org/wiki/File:Morro_Rock_video_Don_Ramey_Logan.webm">Morro Rock</a> (video), Don Ramey Logan, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p>
-      <p>All via Wikimedia Commons, cropped.</p></div>
-  </div>
-  <div class="foot-mark" aria-hidden="true"><span data-fit>Ridge</span></div>
-  <p class="foot-legal">© 2026 Ridge. Built by hand in San Luis Obispo.</p>
+<footer class="end small">
+  <p>© 2026 Ridge · San Luis Obispo, California</p>
+  <nav class="end-nav" aria-label="Footer">
+    <a class="link" href="#work">Work</a>
+    <a class="link" href="#how">How it goes</a>
+    <a class="link" href="#questions">Questions</a>
+    <a class="link" href="#top">Back to the top</a>
+  </nav>
+  <details class="credits">
+    <summary>Photo credits</summary>
+    <ul>
+      <li><a class="link" href="https://commons.wikimedia.org/w/index.php?curid=1820267">Bishop Peak from Cerro San Luis</a>, Leif Arne Storset, <a class="link" href="https://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a></li>
+      <li><a class="link" href="https://commons.wikimedia.org/wiki/File:The_Morros_and_San_Luis_Obispo_-_panoramio.jpg">The Morros and San Luis Obispo</a>, hakkun, <a class="link" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></li>
+      <li><a class="link" href="https://commons.wikimedia.org/w/index.php?curid=68518139">Higuera Street SLO 16</a>, Stilfehler, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+      <li><a class="link" href="https://commons.wikimedia.org/wiki/File:Morro_Rock_video_Don_Ramey_Logan.webm">Morro Rock</a> (video), Don Ramey Logan, <a class="link" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></li>
+      <li>All via Wikimedia Commons, cropped.</li>
+    </ul>
+  </details>
 </footer>
 
 <script src="app.js" defer></script>
