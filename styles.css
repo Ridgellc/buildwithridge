@@ -321,21 +321,6 @@ p { text-wrap: pretty; }
   .faq-a { padding-right: 0; }
 }
 
-/* ---------- contact: the email as display type ---------- */
-.contact { background: var(--field); color: var(--field-ink); padding: var(--section) var(--margin) calc(var(--section) * 0.7); overflow: clip; }
-.contact-lead { font-size: var(--step-mid); line-height: 1.2; max-width: 22ch; margin-bottom: clamp(3rem, 8vw, 7rem); }
-.contact-mail {
-  display: block; text-decoration: none; font-family: var(--font-display); font-weight: 500; font-size: 7vw; line-height: 1;
-  letter-spacing: -0.05em; white-space: nowrap; transition: color var(--t-hover) ease;
-}
-.contact-mail span { display: inline-block; }
-@media (hover: hover) and (pointer: fine) { .contact-mail:hover { color: var(--field-ink2); } }
-@media (max-width: 47.99em) {
-  .contact { padding: 96px 20px 72px; }
-  .contact-mail { font-size: 10vw; white-space: normal; }
-}
-
-
 /* ---------- the bar: name, sections and one action ---------- */
 .bar {
   position: fixed; inset: 0 0 auto 0; z-index: 20; height: 60px; padding: 0 var(--margin);

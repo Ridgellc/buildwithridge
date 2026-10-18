@@ -34,9 +34,7 @@ function scaleTo(el, target, max = Infinity) {
   el.style.fontSize = size + 'px';
 }
 const fitAll = () => {
-  const wide = matchMedia('(min-width: 48em)').matches;
   document.querySelectorAll('[data-fit]').forEach((el) => {
-    if (el.closest('.contact-mail') && !wide) { el.style.fontSize = ''; return; }
     fit(el);
   });
 };
