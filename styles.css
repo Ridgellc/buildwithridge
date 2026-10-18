@@ -420,7 +420,7 @@ p { text-wrap: pretty; }
 .me-ridge-text { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); padding: 0 var(--margin); position: relative; z-index: 1; }
 .me-ridge-title { grid-column: 1 / span 5; font-size: clamp(2.6rem, 1rem + 4.4vw, 5.5rem); line-height: 0.95; letter-spacing: -0.05em; font-weight: 600; }
 .me-ridge-copy { grid-column: 7 / -1; display: grid; gap: 1.1em; max-width: 46ch; font-size: 1.15rem; }
-.me-mtn { display: block; width: 100%; height: clamp(240px, 34vw, 500px); margin-top: clamp(1.5rem, 4vw, 4rem); }
+.me-mtn { display: block; width: 100%; height: max(240px, calc(100vw * 460 / 1440)); margin-top: clamp(1.5rem, 4vw, 4rem); } /* full mountain at any width; phones crop the sides */
 .me-mtn-far { fill: #cddcd8; }
 .me-mtn-near { fill: var(--field); }
 .me-trail-guide { fill: none; stroke: var(--field-ink2); stroke-width: 2; stroke-dasharray: 2 9; stroke-linecap: round; opacity: 0.45; vector-effect: non-scaling-stroke; }
