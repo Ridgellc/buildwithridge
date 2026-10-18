@@ -102,16 +102,20 @@ const mini = document.getElementById('mini');
   const build = (animate) => {
     const name = (input.value.trim() || 'Your Business').replace(/\s+/g, ' ');
     const trade = form.querySelector('input[name="trade"]:checked').value;
-    const d = TRADES[trade];
     const typed = trade === 'other' ? kindIn.value.trim().replace(/\s+/g, ' ') : '';
+    // Something else: use the closest look for what they typed; words we don't know keep the general one
+    const key = (typed && matchKind(typed)) || trade;
+    const d = TRADES[key] || LOOKS[key];
     const kind = typed ? typed.charAt(0).toUpperCase() + typed.slice(1) : d.kind;
     otherBox.hidden = trade !== 'other';
-    mini.dataset.trade = trade;
+    mini.dataset.trade = TRADES[key] ? key : 'other';
+    ['--m-bg', '--m-ink', '--m-accent'].forEach((v, i) => (d.colors ? mini.style.setProperty(v, d.colors[i]) : mini.style.removeProperty(v)));
+    const photo = d.photo || key;
     $('mini-logo').textContent = name;
     $('mini-kind').textContent = $('mini-eyebrow').textContent = kind;
     $('mini-head').textContent = d.head; $('mini-desc').textContent = d.desc(name, typed);
     $('mini-pill').textContent = d.btn;
-    const img = $('mini-img'); if (!img.src.endsWith('/' + trade + '.jpg')) { img.src = 'img/sketch/' + trade + '.jpg'; } img.alt = 'Example photo: ' + d.alt;
+    const img = $('mini-img'); if (!img.src.endsWith('/' + photo + '.jpg')) { img.src = 'img/sketch/' + photo + '.jpg'; } img.alt = 'Example photo: ' + d.alt;
     $('mini-url').textContent = (name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '') || 'yourbusiness') + '.com';
     $('mini-btn').textContent = d.btn; $('mini-links').textContent = d.links; $('mini-hours').textContent = d.hours;
     const label = typed || (trade === 'other' ? 'other' : form.querySelector('input[name="trade"]:checked + span').textContent);
