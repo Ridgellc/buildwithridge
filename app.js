@@ -116,9 +116,9 @@ const mini = document.getElementById('mini');
     const img = $('mini-img'); if (!img.src.endsWith('/' + photo + '.jpg')) { img.src = 'img/sketch/' + photo + '.jpg'; } img.alt = 'Example photo: ' + d.alt;
     $('mini-url').textContent = (name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '') || 'yourbusiness') + '.com';
     $('mini-btn').textContent = d.btn; $('mini-links').textContent = d.links; $('mini-hours').textContent = d.hours;
-    const label = typed || (trade === 'other' ? 'other' : form.querySelector('input[name="trade"]:checked + span').textContent);
-    const body = `Hi Michael,\n\nI'd like to see a real site for ${input.value.trim() || 'my business'} (${label.toLowerCase()}).\n\nWhere we are:\nBest way to reach me:\n`;
-    ask.href = 'mailto:hello@buildwithridge.com?subject=' + encodeURIComponent('Build mine: ' + (input.value.trim() || label)) + '&body=' + encodeURIComponent(body);
+    // the request form opens with what they typed here
+    ask.dataset.business = input.value.trim();
+    ask.dataset.kind = typed || (trade === 'other' ? '' : form.querySelector('input[name="trade"]:checked + span').textContent);
     if (animate) { mini.classList.remove('is-building'); void mini.offsetWidth; mini.classList.add('is-building'); }
   };
   [input, kindIn].forEach((el) => el.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => build(true), 260); }));
@@ -144,4 +144,53 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
   if (!v || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) { v.play().catch(() => {}); return; }
   new IntersectionObserver((es) => { for (const e of es) e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }, { threshold: 0.2 }).observe(v);
+})();
+
+// Request my website: any [data-request] opens the form. With a Web3Forms key (data-form-key on the form)
+// it is emailed to Michael; without one, Send opens a pre-written email so nothing is silently lost.
+(() => {
+  const dlg = document.getElementById('request');
+  const f = document.getElementById('request-form');
+  if (!dlg || !f) return;
+  const done = document.getElementById('request-done');
+  const error = f.querySelector('.rq-error');
+  const el = (k) => f.elements.namedItem(k);
+  document.querySelectorAll('[data-request]').forEach((b) => b.addEventListener('click', (e) => {
+    e.preventDefault();
+    f.hidden = false; done.hidden = true; error.hidden = true;
+    if (b.dataset.business !== undefined) el('business').value = b.dataset.business;
+    if (b.dataset.kind !== undefined) el('kind').value = b.dataset.kind;
+    dlg.showModal();
+    setTimeout(() => el('name').focus(), 50);
+  }));
+  dlg.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', () => dlg.close()));
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!f.reportValidity() || el('botcheck').checked) return;
+    const v = (k) => el(k).value.trim();
+    const subject = `Website request: ${v('business') || v('name')}${v('kind') ? ` (${v('kind')})` : ''}`;
+    if (!f.dataset.formKey) {
+      const body = `Name: ${v('name')}\nBusiness: ${v('business')}\nType of business: ${v('kind')}\nBest way to reach me: ${v('contact')}\n\n${v('message')}`;
+      location.href = 'mailto:hello@buildwithridge.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      return;
+    }
+    const btn = f.querySelector('button[type=submit]'), label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending…'; error.hidden = true;
+    try {
+      // plain form data (no JSON content type) so the browser skips the CORS preflight
+      const body = new FormData();
+      Object.entries({ access_key: f.dataset.formKey, from_name: 'Ridge website', subject, name: v('name'), business: v('business'), kind: v('kind'), contact: v('contact'), message: v('message') })
+        .forEach(([k, val]) => body.append(k, val));
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { Accept: 'application/json' }, body });
+      if (!(await res.json()).success) throw new Error('not sent');
+    } catch {
+      error.hidden = false; return;
+    } finally {
+      btn.disabled = false; btn.textContent = label;
+    }
+    const first = v('name').split(/\s+/)[0];
+    done.querySelector('.rq-first').textContent = first ? `, ${first}` : '';
+    f.hidden = true; done.hidden = false; f.reset();
+  });
 })();

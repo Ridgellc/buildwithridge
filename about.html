@@ -25,7 +25,7 @@
     <a class="link only-wide" href="index.html#examples">Examples</a>
     <a class="link only-wide" href="index.html#questions">Questions</a>
     <a class="link" href="about.html" aria-current="page">About</a>
-    <a class="bar-btn" href="mailto:hello@buildwithridge.com?subject=Build%20mine%20first">Write to me</a>
+    <a class="bar-btn" href="#request" data-request><span class="only-wide">Request my website</span><span class="only-narrow">Request my site</span></a>
   </nav>
 </div>
 
@@ -57,6 +57,34 @@
 
 </main>
 
+
+<dialog class="rq" id="request" aria-labelledby="rq-title">
+  <button type="button" class="rq-close" data-close aria-label="Close"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+  <form class="rq-form" id="request-form" data-form-key="" novalidate>
+    <h2 class="rq-title" id="rq-title">Request my website</h2>
+    <p class="rq-intro">Tell me who you are and I'll build your site first. You don't pay anything unless you love it.</p>
+    <label class="rq-label" for="rq-name">Your name</label>
+    <input class="field field--small" id="rq-name" name="name" type="text" autocomplete="name" required>
+    <div class="rq-pair">
+      <div><label class="rq-label" for="rq-business">Business name</label>
+      <input class="field field--small" id="rq-business" name="business" type="text" autocomplete="organization"></div>
+      <div><label class="rq-label" for="rq-kind">Type of business</label>
+      <input class="field field--small" id="rq-kind" name="kind" type="text" placeholder="Bakery, plumber, salon…"></div>
+    </div>
+    <label class="rq-label" for="rq-contact">Phone or email</label>
+    <input class="field field--small" id="rq-contact" name="contact" type="text" autocomplete="email" required>
+    <label class="rq-label" for="rq-message">Anything I should know? <span class="rq-opt">(optional)</span></label>
+    <textarea class="field field--small rq-message" id="rq-message" name="message" rows="3" placeholder="Your current website, what you'd like on it, questions…"></textarea>
+    <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
+    <p class="rq-error" role="alert" hidden>That didn't send. Please try again, or email hello@buildwithridge.com.</p>
+    <button class="rq-send" type="submit">Send request</button>
+  </form>
+  <div class="rq-done" id="request-done" role="status" hidden>
+    <h2 class="rq-title">Got it<span class="rq-first"></span>.</h2>
+    <p class="rq-intro">I'll get back to you within a day, usually sooner.</p>
+    <button class="rq-send" type="button" data-close>Close</button>
+  </div>
+</dialog>
 
 <script src="app.js" defer></script>
 </body>
