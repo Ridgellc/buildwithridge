@@ -291,7 +291,7 @@ p { text-wrap: pretty; }
   transform: translateY(-100%); transition: transform 360ms var(--ease-out);
 }
 .bar.is-on { transform: none; }
-.bar-mark { font-weight: 600; font-size: 18px; letter-spacing: -0.03em; text-decoration: none; }
+.bar-mark { display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 600; font-size: 18px; letter-spacing: -0.03em; text-decoration: none; white-space: nowrap; }
 .bar-nav { display: flex; align-items: center; gap: 1.6rem; font-size: 15px; }
 .bar-btn {
   display: inline-flex; align-items: center; min-height: 40px; padding: 0 1.1rem; background: var(--ink); color: var(--bg);
@@ -299,7 +299,8 @@ p { text-wrap: pretty; }
 }
 .bar-btn:active { transform: scale(0.97); }
 .bar-btn { white-space: nowrap; }
-@media (max-width: 47.99em) { .bar-nav { gap: 1rem; } .bar-btn { padding: 0 0.9rem; } }
+@media (max-width: 47.99em) { .bar { padding: 0 16px; } .bar-nav { gap: 0.85rem; } .bar-btn { padding: 0 0.8rem; } }
+@media (max-width: 379px) { .bar-nav a[href="#top"].link, .bar-nav a[href="index.html"].link { display: none; } }
 @media (hover: hover) and (pointer: fine) { .bar-btn:hover { background: var(--muted); } }
 @media (prefers-reduced-motion: reduce) { .bar { transition: none; } }
 
@@ -461,7 +462,6 @@ p { text-wrap: pretty; }
 .mini-wrap { position: relative; margin: 0 18px 18px 0; }
 .mini-wrap::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; background: var(--field); }
 .mini-wrap .mini { position: relative; }
-.mini-badge { left: -138px; top: 34%; bottom: auto; z-index: 2; }
 
 @media (hover: hover) and (pointer: fine) {
   .ex-card .ex-pic { position: relative; transition: transform 420ms var(--ease-out); }
@@ -481,5 +481,36 @@ p { text-wrap: pretty; }
 @media (max-width: 47.99em) {
   .mini-wrap { margin-right: 12px; }
   .mini-wrap::before { inset: 12px -12px -12px 12px; }
-  .mini-badge { width: 84px; height: 84px; left: auto; right: -14px; top: -44px; }
+}
+
+/* ---------- the bar, livelier: mark, sliding underlines, a button that sweeps ---------- */
+.bar-peak { width: 26px; height: 17px; fill: var(--ink); transition: transform 420ms var(--ease-out); }
+.bar-mark-pre { font-weight: 400; color: var(--muted); }
+.bar-nav .link { position: relative; text-decoration: none; padding: 4px 0; }
+.bar-nav .link::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: right; transition: transform 320ms var(--ease-out); }
+.bar-nav .link[aria-current="page"]::after { transform: scaleX(1); background: var(--field-ink2); }
+.bar-btn { position: relative; overflow: hidden; isolation: isolate; gap: 0.5rem; }
+.bar-btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--muted); transform: translateX(-101%); transition: transform 420ms var(--ease-out); }
+.bar-arrow { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-right: -4px; transition: transform 320ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .bar-mark:hover .bar-peak { transform: translateY(-3px); }
+  .bar-nav .link:hover::after { transform: scaleX(1); transform-origin: left; }
+  .bar-btn:hover { background: var(--ink); }
+  .bar-btn:hover::before { transform: none; }
+  .bar-btn:hover .bar-arrow { transform: translateX(4px); }
+}
+
+/* the hand-drawn nudge from the form to the sketch */
+.watch { position: absolute; left: -132px; top: 24%; width: 124px; color: var(--muted); pointer-events: none; }
+.watch-text { display: block; font: 600 1.45rem/1 "Caveat", cursive; transform: rotate(-6deg); margin-left: -4px; }
+.watch-arrow { display: block; width: 120px; height: 96px; margin-top: -4px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; clip-path: inset(0 100% 0 0); animation: watch-draw 900ms var(--ease-out) 1300ms forwards; }
+@keyframes watch-draw { to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { .watch-arrow { animation: none; clip-path: none; } }
+@media (max-width: 63.99em) { .watch { display: none; } }
+@media (max-width: 47.99em) {
+  .bar-mark { font-size: 17px; gap: 0.4rem; }
+  .bar-mark-words { display: grid; line-height: 1; }
+  .bar-mark-pre { font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2px; }
+  .bar-peak { width: 20px; height: 13px; }
+  .bar-arrow { display: none; }
 }

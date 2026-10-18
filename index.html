@@ -10,7 +10,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -18,14 +18,14 @@
 <a class="skip" href="#main">Skip to the page</a>
 
 <div class="bar is-on" id="bar">
-  <a class="bar-mark" href="#top">Ridge</a>
+  <a class="bar-mark" href="#top"><svg class="bar-peak" viewBox="0 0 28 18" aria-hidden="true"><path d="M1 17 L10 4 L15 11 L19 6 L27 17 Z"/></svg><span class="bar-mark-words"><span class="bar-mark-pre">Build with</span> <span>Ridge</span></span></a>
   <nav class="bar-nav" aria-label="Sections">
     <a class="link" href="#top" aria-current="page">Home</a>
     <a class="link only-wide" href="#how">How it works</a>
     <a class="link only-wide" href="#examples">Examples</a>
     <a class="link only-wide" href="#questions">Questions</a>
     <a class="link" href="about.html">About</a>
-    <a class="bar-btn" href="#request" data-request><span class="only-wide">Request my website</span><span class="only-narrow">Request my site</span></a>
+    <a class="bar-btn" href="#request" data-request><span class="only-wide">Request my website</span><span class="only-narrow">Request my site</span><svg class="bar-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></a>
   </nav>
 </div>
 
@@ -89,12 +89,7 @@
         </div>
       </div>
     </div>
-    <svg class="me-badge mini-badge" viewBox="0 0 120 120" aria-hidden="true">
-      <defs><path id="badge-ring-home" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs>
-      <circle cx="60" cy="60" r="59"/>
-      <g class="me-badge-spin"><text><textPath href="#badge-ring-home" textLength="280">BUILT FIRST · PAY IF YOU LOVE IT · </textPath></text></g>
-      <path class="me-badge-peak" d="M38 74 L54 48 L63 61 L70 53 L84 74 Z"/>
-    </svg>
+    <div class="watch" aria-hidden="true"><span class="watch-text">watch it build</span><svg class="watch-arrow" viewBox="0 0 120 96"><path d="M14 8 C 4 46, 40 78, 108 66"/><path d="M95 55 L109 66 L94 77"/></svg></div>
     </div>
     <p class="yours-note small">A sketch made in your browser. The real one uses your photos, hours, prices and reviews.</p>
   </div>
