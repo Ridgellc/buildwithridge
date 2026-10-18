@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>How it goes: step pictures</title>
+<!-- Source for img/how/step-*.jpg. Rendered by tools/how_scenes.mjs; edit here, then re-run it. -->
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root { --teal: #06525c; --deep: #043a41; --paper: #f7f9f8; --soft: #9ad6d0; --line: #dfe6e4; --grey: #e9edec; --text: #17282b; --muted: #5d7275; }
+* { box-sizing: border-box; margin: 0; }
+body { background: #333; font-family: "Geist", Arial, sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; }
+.scene { width: 1280px; height: 800px; position: relative; overflow: hidden; background: var(--teal); margin-bottom: 20px; }
+.scene::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 78% 18%, rgba(154,214,208,.18), transparent 55%); }
+svg { display: block; }
+
+/* windows */
+.win { position: absolute; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(2,30,34,.55), 0 0 0 1px rgba(255,255,255,.08); }
+.win-bar { height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #eef2f1; border-bottom: 1px solid var(--line); }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: #cfd8d6; }
+.addr { margin-left: 18px; flex: 1; height: 28px; border-radius: 8px; background: #fff; display: flex; align-items: center; gap: 8px; padding: 0 12px; font-size: 15px; color: var(--muted); }
+.addr b { color: var(--text); font-weight: 500; }
+.win-shot { display: block; width: 100%; }
+
+/* code editor */
+.editor { background: #0f2427; color: #c9dcdb; }
+.editor .win-bar { background: #0b1c1e; border-color: #1b3437; }
+.editor .dot { background: #2a4447; }
+.tab { margin-left: 18px; font: 14px "Geist Mono", monospace; color: #9ab3b2; background: #0f2427; padding: 6px 12px; border-radius: 6px 6px 0 0; align-self: flex-end; }
+.code { padding: 20px 0; font: 15.5px/1.75 "Geist Mono", monospace; white-space: pre; }
+.code div { padding: 0 22px 0 0; }
+.code i { display: inline-block; width: 46px; padding-right: 16px; text-align: right; color: #47605f; font-style: normal; }
+.code .t { color: #7fd0c7; } .code .a { color: #e6c07b; } .code .s { color: #b5d98f; } .code .c { color: #5f7a79; }
+.code .on { background: rgba(154,214,208,.1); }
+.caret { display: inline-block; width: 2px; height: 1.15em; background: var(--soft); vertical-align: -3px; }
+
+/* cards */
+.card { position: absolute; background: #fff; border-radius: 14px; box-shadow: 0 24px 48px -18px rgba(2,30,34,.6); padding: 22px 24px; }
+.card h4 { font-size: 14px; font-weight: 500; color: var(--muted); margin-bottom: 14px; letter-spacing: .01em; }
+.check { display: flex; align-items: center; gap: 12px; font-size: 18px; padding: 7px 0; }
+.check svg { flex: none; }
+.check.wait { color: var(--muted); }
+.tick { width: 24px; height: 24px; border-radius: 50%; background: var(--teal); display: grid; place-items: center; flex: none; }
+.ring { width: 24px; height: 24px; border-radius: 50%; border: 2px dashed #a8bbb9; flex: none; }
+
+/* phone */
+.phone { position: absolute; width: 380px; height: 760px; border-radius: 54px; background: #0b1c1e; padding: 12px; box-shadow: 0 40px 70px -24px rgba(2,30,34,.75); }
+.screen { height: 100%; border-radius: 43px; background: #fff; overflow: hidden; display: flex; flex-direction: column; }
+.status { height: 50px; display: flex; justify-content: space-between; align-items: center; padding: 6px 30px 0 34px; font-size: 15px; font-weight: 600; }
+.notch { width: 110px; height: 32px; border-radius: 20px; background: #0b1c1e; }
+.who { text-align: center; padding: 6px 0 12px; border-bottom: 1px solid var(--line); }
+.avatar { width: 50px; height: 50px; border-radius: 50%; margin: 0 auto 6px; display: grid; place-items: center; font-size: 19px; font-weight: 600; color: #fff; }
+.who p { font-size: 14px; }
+.thread { flex: 1; padding: 16px 14px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; line-height: 1.38; }
+.when { text-align: center; font-size: 12px; color: var(--muted); margin: 2px 0 4px; }
+.b { max-width: 78%; padding: 10px 14px; border-radius: 20px; }
+.me { align-self: flex-end; background: var(--teal); color: #fff; border-bottom-right-radius: 6px; }
+.them { align-self: flex-start; background: var(--grey); border-bottom-left-radius: 6px; }
+.preview { align-self: flex-end; width: 78%; border-radius: 18px; overflow: hidden; background: var(--grey); border: 1px solid var(--line); }
+.preview img { display: block; width: 100%; height: 150px; object-fit: cover; object-position: top left; }
+.preview div { padding: 10px 14px 12px; font-size: 14px; }
+.preview b { display: block; font-weight: 600; font-size: 15px; }
+.preview span { color: var(--muted); }
+.read { align-self: flex-end; font-size: 12px; color: var(--muted); margin-top: -2px; }
+.compose { margin: 0 14px 22px; height: 40px; border-radius: 20px; border: 1px solid var(--line); display: flex; align-items: center; padding: 0 16px; color: #9aa9a8; font-size: 15px; }
+
+/* search result */
+.result { width: 520px; }
+.search { height: 46px; border-radius: 23px; border: 1px solid var(--line); display: flex; align-items: center; gap: 12px; padding: 0 18px; font-size: 16px; margin-bottom: 20px; }
+.site { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.fav { width: 28px; height: 28px; border-radius: 50%; background: #f4e7dc; display: grid; place-items: center; font-weight: 600; color: #b5452c; font-size: 13px; }
+.site small { display: block; color: var(--muted); font-size: 13px; }
+.result h5 { font-size: 21px; font-weight: 500; color: #1a4fb5; margin: 10px 0 6px; }
+.result p { font-size: 15px; color: var(--muted); line-height: 1.5; }
+.pill { position: absolute; display: inline-flex; align-items: center; gap: 10px; background: #fff; border-radius: 30px; padding: 12px 20px 12px 16px; font-size: 17px; font-weight: 500; box-shadow: 0 20px 40px -16px rgba(2,30,34,.6); }
+.live { width: 12px; height: 12px; border-radius: 50%; background: #1f9d6b; box-shadow: 0 0 0 5px rgba(31,157,107,.2); }
+
+/* hours change */
+.hours { width: 100%; border-collapse: collapse; font-size: 14px; }
+.hours td { padding: 6px 0; border-bottom: 1px solid var(--line); }
+.hours td + td { text-align: right; }
+.hours .new td { color: #b5452c; font-weight: 600; }
+.mini { align-self: flex-end; width: 78%; border-radius: 18px; border: 1px solid var(--line); padding: 12px 14px 8px; background: #fffaf5; }
+.mini b { display: block; font-size: 13px; font-weight: 600; color: #8a4a2e; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<!-- 1 · Build: the site being put together -->
+<section class="scene" id="step-build">
+  <div class="win editor" style="left:64px; top:92px; width:560px; height:560px;">
+    <div class="win-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="tab">index.html</span></div>
+    <div class="code"><div><i>41</i><span class="t">&lt;section</span> <span class="a">id</span>=<span class="s">"hours"</span><span class="t">&gt;</span></div><div><i>42</i>  <span class="t">&lt;h2&gt;</span>Hours<span class="t">&lt;/h2&gt;</span></div><div><i>43</i>  <span class="t">&lt;p&gt;</span>Tue to Sat, 9 to 6<span class="t">&lt;/p&gt;</span></div><div><i>44</i><span class="t">&lt;/section&gt;</span></div><div><i>45</i></div><div><i>46</i><span class="t">&lt;section</span> <span class="a">id</span>=<span class="s">"services"</span><span class="t">&gt;</span></div><div><i>47</i>  <span class="t">&lt;h2&gt;</span>Cuts &amp; shaves<span class="t">&lt;/h2&gt;</span></div><div><i>48</i>  <span class="t">&lt;li&gt;</span>Classic cut <span class="t">&lt;b&gt;</span>$30<span class="t">&lt;/b&gt;&lt;/li&gt;</span></div><div><i>49</i>  <span class="t">&lt;li&gt;</span>Hot towel shave <span class="t">&lt;b&gt;</span>$35<span class="t">&lt;/b&gt;&lt;/li&gt;</span></div><div><i>50</i><span class="t">&lt;/section&gt;</span></div><div><i>51</i></div><div class="on"><i>52</i><span class="t">&lt;section</span> <span class="a">id</span>=<span class="s">"reviews"</span><span class="t">&gt;</span><span class="caret"></span></div><div><i>53</i>  <span class="c">&lt;!-- your best reviews --&gt;</span></div></div>
+  </div>
+  <div class="win" style="left:520px; top:150px; width:700px; height:482px;">
+    <div class="win-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="addr">Preview</span></div>
+    <img class="win-shot" src="../img/examples/copper-comb-barbershop.jpg" alt="">
+  </div>
+  <div class="card" style="left:860px; top:470px; width:300px;">
+    <h4>Going into your site</h4>
+    <div class="check"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" stroke-width="3.2"/></svg></span>Hours and address</div>
+    <div class="check"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" stroke-width="3.2"/></svg></span>Services and prices</div>
+    <div class="check"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" stroke-width="3.2"/></svg></span>Your photos</div>
+    <div class="check wait"><span class="ring"></span>Your reviews</div>
+  </div>
+</section>
+
+<!-- 2 · Send: the link arrives by text -->
+<section class="scene" id="step-send">
+  <div class="phone" style="left:450px; top:70px; height:800px;">
+    <div class="screen">
+      <div class="status"><span>9:41</span><span class="notch"></span><span>5G</span></div>
+      <div class="who"><div class="avatar" style="background:#6f7f4e">W</div><p>Wren Nail Studio</p></div>
+      <div class="thread">
+        <div class="when">Tuesday 10:12 AM</div>
+        <div class="b me">Hi! I'm Michael with Ridge. I built Wren Nail Studio a website, free to look at, no strings attached:</div>
+        <div class="preview"><img src="../img/examples/wren-nail-studio.jpg" alt=""><div><b>Wren Nail Studio</b><span>buildwithridge.com/s/wren</span></div></div>
+        <div class="b them">Wait, this is really nice. Can we use a photo of our own chairs up top?</div>
+        <div class="b me">Of course. Send me the one you like and it's on there today.</div>
+        <div class="read">Read 10:31 AM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · Launch: on their own web address, findable -->
+<section class="scene" id="step-launch">
+  <div class="win" style="left:64px; top:72px; width:860px; height:580px;">
+    <div class="win-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="addr"><svg width="14" height="14" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2" fill="#5d7275"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="#5d7275" stroke-width="2.4"/></svg><b>junipertablecafe.com</b></span></div>
+    <img class="win-shot" src="../img/examples/juniper-table-cafe.jpg" alt="">
+  </div>
+  <div class="card result" style="left:690px; top:400px;">
+    <div class="search"><svg width="18" height="18" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#5d7275" stroke-width="2.4"/><path d="M15.5 15.5 21 21" stroke="#5d7275" stroke-width="2.4"/></svg>cafe arroyo grande</div>
+    <div class="site"><span class="fav">J</span><div>Juniper Table Café<small>https://junipertablecafe.com</small></div></div>
+    <h5>Juniper Table Café | Café &amp; Pie Shop in Arroyo Grande</h5>
+    <p>Breakfast, lunch and fresh pies, Tuesday to Sunday. See the menu, hours and directions, or order ahead.</p>
+  </div>
+  <div class="pill" style="left:960px; top:96px;"><span class="live"></span>Live on your own address</div>
+</section>
+
+<!-- 4 · Manage: a change by text, done the same day -->
+<section class="scene" id="step-manage">
+  <div class="card" style="left:96px; top:250px; width:380px; padding:28px 30px;">
+    <h4>This month on your site</h4>
+    <div class="check"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" stroke-width="3.2"/></svg></span>Hosting, always on</div>
+    <div class="check"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" stroke-width="3.2"/></svg></span>Security and backups</div>
+    <div class="check"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" stroke-width="3.2"/></svg></span>Holiday hours posted</div>
+    <div class="check"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" stroke-width="3.2"/></svg></span>New fall menu added</div>
+    <div class="check"><span class="tick"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" stroke-width="3.2"/></svg></span>Two new photos</div>
+  </div>
+  <div class="phone" style="left:620px; top:70px; height:800px;">
+    <div class="screen">
+      <div class="status"><span>9:41</span><span class="notch"></span><span>5G</span></div>
+      <div class="who"><div class="avatar" style="background:#b5452c">J</div><p>Juniper Table Café</p></div>
+      <div class="thread">
+        <div class="when">Today 8:05 AM</div>
+        <div class="b them">Morning! We're closed Monday for the holiday. Can you put that on the site?</div>
+        <div class="b me">Done, it's up now:</div>
+        <div class="mini"><b>Juniper Table Café · Hours</b>
+          <table class="hours"><tbody>
+            <tr><td>Sunday</td><td>7:00 AM – 2:00 PM</td></tr>
+            <tr class="new"><td>Monday</td><td>Closed (holiday)</td></tr>
+            <tr><td>Tuesday</td><td>7:00 AM – 2:00 PM</td></tr>
+          </tbody></table>
+        </div>
+        <div class="b them">That was fast. Thank you!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
