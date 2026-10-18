@@ -168,7 +168,7 @@ p { text-wrap: pretty; }
 }
 
 /* ---------- real examples: preview cards that open the live demos ---------- */
-.examples { padding: calc(var(--section) * 0.35) var(--margin) 0; }
+.examples { padding: calc(var(--section) * 0.7) var(--margin) var(--section); }
 .ex-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
 .ex-intro { color: var(--muted); max-width: 40ch; }
 .ex-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
@@ -185,10 +185,10 @@ p { text-wrap: pretty; }
   .ex-card:hover .ex-open svg { transform: translate(2px, -2px); }
 }
 @media (max-width: 63.99em) { .ex-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 14px; } }
-@media (max-width: 47.99em) { .examples { padding: 96px 20px 0; } .ex-top { display: block; } .ex-intro { margin-top: 0.6rem; } }
+@media (max-width: 47.99em) { .examples { padding: 80px 20px 96px; } .ex-top { display: block; } .ex-intro { margin-top: 0.6rem; } }
 
 /* ---------- how it goes: one panel, flip through the steps ---------- */
-.how { padding: var(--section) var(--margin); }
+.how { padding: calc(var(--section) * 0.35) var(--margin) 0; }
 .how-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
 .how-intro { color: var(--muted); max-width: 36ch; }
 .steps-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 14px; padding: 0; list-style: none; }
