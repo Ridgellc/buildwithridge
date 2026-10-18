@@ -390,7 +390,6 @@ p { text-wrap: pretty; }
 /* photo placeholders until the real pictures arrive */
 .ph { position: relative; margin: 0; display: grid; place-items: center; background: repeating-linear-gradient(135deg, var(--surface) 0 14px, #e3eae8 14px 28px); color: var(--muted); } /* taste-skill-ignore: striped photo placeholder, replaced by real photos */
 .ph--portrait { aspect-ratio: 4 / 5; }
-.ph--wide { aspect-ratio: 21 / 9; }
 .ph-label { padding: 0.5rem 0.9rem; background: var(--bg); font-size: var(--step-small); font-weight: 500; }
 
 /* business background: a dark band */
@@ -429,7 +428,6 @@ p { text-wrap: pretty; }
 .me-flag-cloth { fill: var(--field-ink2); stroke: none !important; transform-origin: 1px -30px; animation: flutter 2.4s var(--ease-in-out) infinite alternate; }
 @keyframes flutter { from { transform: skewY(-4deg) scaleX(0.94); } to { transform: skewY(4deg) scaleX(1.04); } }
 .me-hiker { fill: var(--bg); stroke: var(--field); stroke-width: 3; }
-.me-base { background: var(--field); padding: 0 var(--margin) var(--section); margin-top: -1px; }
 
 @media (prefers-reduced-motion: reduce) {
   .me-topo g, .me-badge-spin, .me-flag-cloth { animation: none; }
@@ -452,8 +450,6 @@ p { text-wrap: pretty; }
   .me-ridge-text { display: block; padding: 0 20px; }
   .me-ridge-copy { margin-top: 1.2rem; }
   .me-mtn { margin-top: 1rem; }
-  .ph--wide { aspect-ratio: 4 / 3; }
-  .me-base { padding: 0 20px 80px; }
 }
 
 /* ---------- home: the ridge theme from the About page ---------- */
