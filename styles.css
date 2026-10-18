@@ -264,6 +264,7 @@ p { text-wrap: pretty; }
 .vista-clip { grid-column: 9 / -1; overflow: hidden; }
 .vista-clip video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 50%; background: var(--surface); }
 .vista figcaption { grid-column: 1 / -1; color: var(--muted); max-width: 70ch; }
+.vista-credit { grid-column: 1 / -1; color: var(--muted); max-width: 70ch; padding-bottom: 2.5rem; }
 @media (prefers-reduced-motion: no-preference) {
   .vista-img img { animation: drift 24s var(--ease-in-out) infinite alternate; }
 }
@@ -334,23 +335,6 @@ p { text-wrap: pretty; }
   .contact-mail { font-size: 10vw; white-space: normal; }
 }
 
-/* ---------- footer: one quiet row ---------- */
-.end {
-  background: var(--field); color: var(--deep-soft); padding: 22px var(--margin) 26px;
-  display: grid; grid-template-columns: 1fr auto auto; gap: 1rem 2.5rem; align-items: baseline;
-}
-.end-nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
-.end a { color: var(--field-ink); }
-.credits summary { cursor: pointer; color: var(--field-ink); list-style: none; }
-.credits summary::-webkit-details-marker { display: none; }
-.credits summary::after { content: " +"; }
-.credits[open] summary::after { content: " −"; }
-.credits ul { margin-top: 0.8rem; display: grid; gap: 0.3rem; max-width: 46ch; }
-.credits[open] { grid-column: 1 / -1; grid-row: 2; }
-@media (max-width: 47.99em) {
-  .end { grid-template-columns: 1fr; padding: 24px 20px 28px; }
-  .credits[open] { grid-row: auto; }
-}
 
 /* ---------- the bar: name, sections and one action ---------- */
 .bar {

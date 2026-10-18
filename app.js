@@ -41,7 +41,7 @@ const fitAll = () => {
   });
 };
 
-// How it goes: one panel, flip through the steps with the arrows, the step bars, the keyboard or a swipe.
+// How it works: one panel, flip through the steps with the arrows, the step bars, the keyboard or a swipe.
 (() => {
   const root = document.getElementById('steps');
   if (!root) return;
