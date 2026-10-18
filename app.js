@@ -199,3 +199,29 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
     f.hidden = true; done.hidden = false; f.reset();
   });
 })();
+
+// Why Ridge: the trail draws itself up to the flag, and the hiker climbs, as the section scrolls past.
+(() => {
+  const trail = document.getElementById('me-trail');
+  const hiker = document.getElementById('me-hiker');
+  const sec = document.getElementById('why-ridge');
+  if (!trail || !hiker || !sec) return;
+  const len = trail.getTotalLength();
+  trail.style.strokeDasharray = len;
+  const place = (p) => {
+    trail.style.strokeDashoffset = len * (1 - p);
+    const pt = trail.getPointAtLength(len * p);
+    hiker.setAttribute('cx', pt.x); hiker.setAttribute('cy', pt.y);
+  };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { place(1); return; }
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const r = sec.getBoundingClientRect();
+    // starts as the section comes up, reaches the flag a little before it leaves the middle of the screen
+    place(Math.min(1, Math.max(0, (innerHeight - r.top) / (r.height + innerHeight * 0.1))));
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
