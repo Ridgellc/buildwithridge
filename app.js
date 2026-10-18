@@ -179,7 +179,7 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
     const subject = `${mode === 'question' ? 'Question' : 'Website request'}: ${v('business') || v('name')}${v('kind') ? ` (${v('kind')})` : ''}`;
     if (!f.dataset.formKey) {
       const body = `Name: ${v('name')}\nBusiness: ${v('business')}\nType of business: ${v('kind')}\nPhone: ${v('phone')}\nEmail: ${v('email')}\n\n${v('message')}`;
-      location.href = 'mailto:hello@buildwithridge.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      location.href = 'mailto:michaels.web.design1@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       return;
     }
     const btn = f.querySelector('button[type=submit]'), label = btn.textContent;
