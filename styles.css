@@ -245,7 +245,7 @@ p { text-wrap: pretty; }
 .kit-card-title { font-size: 1.3rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.035em; }
 .kit-card-sum { margin-top: 0.6rem; color: #bfe6e2; }
 .kit-checks { margin-top: 1.6rem; display: grid; gap: 0.75rem; line-height: 1.4; }
-.kit-checks li { position: relative; padding-left: 1.9rem; }
+.kit-checks li { position: relative; padding-left: 1.9rem; text-wrap: pretty; }
 .kit-checks li::before {
   content: ""; position: absolute; left: 0; top: 0.12em; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--field-ink2);
 }
