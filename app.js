@@ -219,7 +219,7 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
     ticking = false;
     const r = sec.getBoundingClientRect();
     // starts as the section comes up and reaches the flag once all of it is on screen (it ends the page)
-    const atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 2;
+    const atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 40; // zoom and some screens stop a few pixels short
     place(atEnd ? 1 : Math.min(1, Math.max(0, (innerHeight - r.top) / r.height)));
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
