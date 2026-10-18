@@ -300,7 +300,8 @@ p { text-wrap: pretty; }
 .bar-btn:active { transform: scale(0.97); }
 .bar-btn { white-space: nowrap; }
 @media (max-width: 47.99em) { .bar { padding: 0 16px; } .bar-nav { gap: 0.85rem; } .bar-btn { padding: 0 0.8rem; } }
-@media (max-width: 379px) { .bar-nav a[href="#top"].link, .bar-nav a[href="index.html"].link { display: none; } }
+.bar-nav .link { white-space: nowrap; }
+@media (max-width: 440px) { .bar-nav a[href="#top"].link, .bar-nav a[href="index.html"].link { display: none; } }
 @media (hover: hover) and (pointer: fine) { .bar-btn:hover { background: var(--muted); } }
 @media (prefers-reduced-motion: reduce) { .bar { transition: none; } }
 
