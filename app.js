@@ -163,15 +163,18 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
     dlg.showModal();
     setTimeout(() => el('name').focus(), 50);
   }));
+  ['phone', 'email'].forEach((k) => el(k).addEventListener('input', () => el('phone').setCustomValidity('')));
   dlg.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', () => dlg.close()));
   dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
   f.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!f.reportValidity() || el('botcheck').checked) return;
     const v = (k) => el(k).value.trim();
+    // phone or email: either one is enough, but not neither
+    el('phone').setCustomValidity(v('phone') || v('email') ? '' : 'Add a phone number or an email so I can reach you.');
+    if (!f.reportValidity() || el('botcheck').checked) return;
     const subject = `Website request: ${v('business') || v('name')}${v('kind') ? ` (${v('kind')})` : ''}`;
     if (!f.dataset.formKey) {
-      const body = `Name: ${v('name')}\nBusiness: ${v('business')}\nType of business: ${v('kind')}\nBest way to reach me: ${v('contact')}\n\n${v('message')}`;
+      const body = `Name: ${v('name')}\nBusiness: ${v('business')}\nType of business: ${v('kind')}\nPhone: ${v('phone')}\nEmail: ${v('email')}\n\n${v('message')}`;
       location.href = 'mailto:hello@buildwithridge.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       return;
     }
@@ -180,7 +183,7 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
     try {
       // plain form data (no JSON content type) so the browser skips the CORS preflight
       const body = new FormData();
-      Object.entries({ access_key: f.dataset.formKey, from_name: 'Ridge website', subject, name: v('name'), business: v('business'), kind: v('kind'), contact: v('contact'), message: v('message') })
+      Object.entries({ access_key: f.dataset.formKey, from_name: 'Ridge website', subject, name: v('name'), business: v('business'), kind: v('kind'), phone: v('phone'), email: v('email'), message: v('message') })
         .forEach(([k, val]) => body.append(k, val));
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { Accept: 'application/json' }, body });
       if (!(await res.json()).success) throw new Error('not sent');

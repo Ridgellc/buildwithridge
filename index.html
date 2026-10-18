@@ -270,8 +270,13 @@
       <div><label class="rq-label" for="rq-kind">Type of business</label>
       <input class="field field--small" id="rq-kind" name="kind" type="text" placeholder="Bakery, plumber, salon…"></div>
     </div>
-    <label class="rq-label" for="rq-contact">Phone or email</label>
-    <input class="field field--small" id="rq-contact" name="contact" type="text" autocomplete="email" required>
+    <p class="rq-label rq-label--group" id="rq-reach">How can I reach you? <span class="rq-opt">(one is enough)</span></p>
+    <div class="rq-pair" role="group" aria-labelledby="rq-reach">
+      <div><label class="rq-label" for="rq-phone">Phone</label>
+      <input class="field field--small" id="rq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+      <div><label class="rq-label" for="rq-email">Email</label>
+      <input class="field field--small" id="rq-email" name="email" type="email" autocomplete="email" spellcheck="false"></div>
+    </div>
     <label class="rq-label" for="rq-message">Anything I should know? <span class="rq-opt">(optional)</span></label>
     <textarea class="field field--small rq-message" id="rq-message" name="message" rows="3" placeholder="Your current website, what you'd like on it, questions…"></textarea>
     <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>

@@ -371,6 +371,8 @@ p { text-wrap: pretty; }
 .rq-intro { margin: 0.7rem 0 1.4rem; color: var(--muted); max-width: 42ch; }
 .rq-label { display: block; margin: 1rem 0 0.4rem; font-size: var(--step-small); font-weight: 500; }
 .rq-opt { font-weight: 400; color: var(--muted); }
+.rq-label--group { margin-top: 1.4rem; margin-bottom: 0; }
+.rq-label--group + .rq-pair .rq-label { margin-top: 0.5rem; font-weight: 400; color: var(--muted); }
 .rq-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
 .rq-message { min-height: 0; resize: vertical; line-height: 1.4; padding-block: 0.7rem; }
 .rq-error { margin-top: 1rem; color: #a32a2a; }
