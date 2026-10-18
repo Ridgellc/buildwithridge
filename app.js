@@ -225,3 +225,23 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
   addEventListener('resize', update);
   update();
 })();
+
+// Top bar on the home page: the underline follows the section you're looking at.
+(() => {
+  const links = [...document.querySelectorAll('.bar-nav a.link[href^="#"]')];
+  const spots = links.map((a) => [a, document.querySelector(a.getAttribute('href'))]).filter(([, el]) => el);
+  if (!spots.length) return;
+  let ticking = false;
+  const mark = (on) => links.forEach((a) => (a === on ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current')));
+  const update = () => {
+    ticking = false;
+    // the last section whose top has passed a third of the way down the screen
+    let on = spots[0][0];
+    for (const [a, el] of spots) if (el.getBoundingClientRect().top <= innerHeight * 0.33) on = a;
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) on = spots[spots.length - 1][0];
+    mark(on);
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  links.forEach((a) => a.addEventListener('click', () => mark(a)));
+  update();
+})();

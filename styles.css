@@ -488,7 +488,7 @@ p { text-wrap: pretty; }
 .bar-mark-pre { font-weight: 400; color: var(--muted); }
 .bar-nav .link { position: relative; text-decoration: none; padding: 4px 0; }
 .bar-nav .link::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: right; transition: transform 320ms var(--ease-out); }
-.bar-nav .link[aria-current="page"]::after { transform: scaleX(1); background: var(--field-ink2); }
+.bar-nav .link[aria-current]::after { transform: scaleX(1); background: var(--field-ink2); }
 .bar-btn { position: relative; overflow: hidden; isolation: isolate; gap: 0.5rem; }
 .bar-btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--muted); transform: translateX(-101%); transition: transform 420ms var(--ease-out); }
 .bar-arrow { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-right: -4px; transition: transform 320ms var(--ease-out); }
