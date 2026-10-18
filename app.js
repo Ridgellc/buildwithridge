@@ -155,8 +155,19 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
   const done = document.getElementById('request-done');
   const error = f.querySelector('.rq-error');
   const el = (k) => f.elements.namedItem(k);
+  // the same form, worded for a website request or (data-request="question") for a question
+  const parts = { title: document.getElementById('rq-title'), intro: f.querySelector('.rq-intro'), label: f.querySelector('label[for="rq-message"]'), send: f.querySelector('.rq-send'), done: done.querySelector('.rq-title') };
+  const MODES = {
+    request: { title: parts.title.textContent, intro: parts.intro.textContent, label: parts.label.innerHTML, ph: el('message').placeholder, send: parts.send.textContent, done: parts.done.textContent, need: false },
+    question: { title: 'Ask me a question', intro: "Whatever you'd like to know, ask away. I'll get back to you within a day.", label: 'Your question', ph: 'What would you like to know?', send: 'Send question', done: "Thanks! I'll get back to you soon.", need: true },
+  };
+  let mode = 'request';
   document.querySelectorAll('[data-request]').forEach((b) => b.addEventListener('click', (e) => {
     e.preventDefault();
+    mode = b.dataset.request === 'question' ? 'question' : 'request';
+    const m = MODES[mode];
+    parts.title.textContent = m.title; parts.intro.textContent = m.intro; parts.label.innerHTML = m.label;
+    el('message').placeholder = m.ph; el('message').required = m.need; parts.send.textContent = m.send; parts.done.textContent = m.done;
     f.hidden = false; done.hidden = true; error.hidden = true;
     if (b.dataset.business !== undefined) el('business').value = b.dataset.business;
     if (b.dataset.kind !== undefined) el('kind').value = b.dataset.kind;
@@ -172,7 +183,7 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
     // phone or email: either one is enough, but not neither
     el('phone').setCustomValidity(v('phone') || v('email') ? '' : 'Add a phone number or an email so I can reach you.');
     if (!f.reportValidity() || el('botcheck').checked) return;
-    const subject = `Website request: ${v('business') || v('name')}${v('kind') ? ` (${v('kind')})` : ''}`;
+    const subject = `${mode === 'question' ? 'Question' : 'Website request'}: ${v('business') || v('name')}${v('kind') ? ` (${v('kind')})` : ''}`;
     if (!f.dataset.formKey) {
       const body = `Name: ${v('name')}\nBusiness: ${v('business')}\nType of business: ${v('kind')}\nPhone: ${v('phone')}\nEmail: ${v('email')}\n\n${v('message')}`;
       location.href = 'mailto:hello@buildwithridge.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
