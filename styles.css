@@ -359,8 +359,7 @@ p { text-wrap: pretty; }
   transition: background-color var(--t-hover) ease, transform var(--t-press) var(--ease-out);
 }
 .me-btn:active { transform: scale(0.97); }
-.me-btn--light { background: var(--bg); color: var(--ink); }
-@media (hover: hover) and (pointer: fine) { .me-btn:hover { background: var(--muted); } .me-btn--light:hover { background: var(--field-ink2); } }
+@media (hover: hover) and (pointer: fine) { .me-btn:hover { background: var(--muted); } }
 .me-photo { grid-column: 9 / -1; }
 
 /* photo placeholders until the real pictures arrive */
@@ -385,11 +384,6 @@ p { text-wrap: pretty; }
 
 .me-wide { margin-bottom: var(--section); }
 
-.me-cta { background: var(--field); color: var(--field-ink); padding: var(--section) var(--margin); }
-.me-cta-title { font-size: var(--step-big); line-height: 1; letter-spacing: -0.045em; font-weight: 600; }
-.me-cta-text { margin-top: 1.2rem; font-size: var(--step-mid); line-height: 1.25; max-width: 32ch; color: var(--field-ink2); }
-.me-cta .link-plain { color: var(--field-ink); }
-
 @media (max-width: 47.99em) {
   .me-hero { display: flex; flex-direction: column; align-items: stretch; gap: 2.5rem; padding: 104px 20px 80px; }
   .me-hero-text { padding-bottom: 0; }
@@ -402,5 +396,4 @@ p { text-wrap: pretty; }
 
   .ph--wide { aspect-ratio: 4 / 3; margin: 0 20px; }
   .me-wide { margin-bottom: 80px; }
-  .me-cta { padding: 80px 20px; }
 }
