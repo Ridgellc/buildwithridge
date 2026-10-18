@@ -515,3 +515,32 @@ p { text-wrap: pretty; }
   .bar-peak { width: 20px; height: 13px; }
   .bar-arrow { display: none; }
 }
+
+/* ---------- questions, livelier: a thinking question mark, an ask card, items that open into cards ---------- */
+.faq-side { align-self: start; }
+@media (min-width: 48em) { .faq-side { position: sticky; top: 100px; } }
+.faq-title { font-size: clamp(2.6rem, 1rem + 4.4vw, 5.5rem); line-height: 0.95; letter-spacing: -0.05em; font-weight: 600; }
+.faq-q { display: inline-block; color: var(--field-ink2); margin-left: 0.04em; transform-origin: 50% 85%; animation: think 3.6s var(--ease-in-out) infinite; }
+@keyframes think { 0%, 60%, 100% { transform: rotate(0deg); } 70% { transform: rotate(-12deg); } 80% { transform: rotate(9deg); } 90% { transform: rotate(-4deg); } }
+.faq-ask { margin-top: 2rem; max-width: 22rem; background: var(--field); color: var(--field-ink); padding: 1.6rem 1.6rem 1.8rem; }
+.faq-ask-icon { width: 36px; height: 36px; fill: none; stroke: var(--field-ink2); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.faq-ask .faq-more { margin-top: 0.9rem; color: var(--field-ink); font-size: 1.15rem; line-height: 1.35; }
+.faq-ask-btn {
+  display: inline-flex; align-items: center; min-height: 2.9rem; margin-top: 1.3rem; padding: 0 1.2rem; background: var(--bg); color: var(--ink); font-weight: 500; text-decoration: none;
+  transition: background-color var(--t-hover) ease, transform var(--t-press) var(--ease-out);
+}
+.faq-ask-btn:active { transform: scale(0.97); }
+.faq-item { position: relative; padding: 0 1.2rem; transition: background-color 320ms ease; }
+.faq-item::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--ink); transform: scaleY(0); transform-origin: top; transition: transform 420ms var(--ease-out); }
+.faq-item[open] { background: var(--surface); }
+.faq-item[open]::before { transform: none; }
+.faq-item summary > span { transition: transform 320ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .faq-item:not([open]) summary:hover > span { transform: translateX(6px); }
+  .faq-ask-btn:hover { background: var(--field-ink2); }
+}
+@media (prefers-reduced-motion: reduce) { .faq-q { animation: none; } }
+@media (max-width: 47.99em) {
+  .faq-ask { max-width: none; margin-top: 1.4rem; }
+  .faq-item { padding: 0 0.9rem; }
+}
