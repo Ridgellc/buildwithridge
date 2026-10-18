@@ -79,12 +79,23 @@ const TRADES = {
   nails:   { kind: 'Nail salon', head: 'Simple, elegant nails', desc: (n) => `${n} offers manicures, pedicures, gel and dip in a clean, calm salon with heated massage chairs.`, btn: 'Book now', links: 'Services · Prices · Book', hours: 'Open today, 10 AM to 7 PM', alt: 'a manicure in progress' },
   auto:    { kind: 'Auto repair', head: 'Honest repairs, done right', desc: (n) => `${n} handles brakes, oil changes and diagnostics, with a clear quote before any work starts.`, btn: 'Get a quote', links: 'Services · Reviews · Visit', hours: 'Open today, 8 AM to 5 PM', alt: 'a mechanic working under the hood of a car' },
   builder: { kind: 'Contractor', head: 'Remodels built to last', desc: (n) => `${n} builds kitchens, baths and additions, with clear communication from the first visit to the final walk-through.`, btn: 'Request a quote', links: 'Work · Services · Contact', hours: 'Licensed and insured', alt: 'a finished kitchen remodel' },
+  restaurant:  { kind: 'Restaurant', head: 'Fresh food, made from scratch', desc: (n) => `${n} serves seasonal plates, house cocktails and a menu that changes with what's good. Walk in or book a table.`, btn: 'Reserve a table', links: 'Menu · Reserve · Visit', hours: 'Open tonight, 5 PM to 10 PM', alt: 'a plated dish on a restaurant table' },
+  salon:       { kind: 'Hair salon', head: "Cuts and color you'll love", desc: (n) => `${n} does cuts, color, balayage and blowouts, with stylists who listen first. Book your chair online.`, btn: 'Book now', links: 'Services · Prices · Book', hours: 'Open today, 9 AM to 7 PM', alt: 'a stylist blow-drying hair' },
+  fitness:     { kind: 'Gym', head: 'Get stronger, every week', desc: (n) => `${n} offers open gym, group classes and personal training for every level. Your first class is free.`, btn: 'Try a free class', links: 'Classes · Pricing · Join', hours: 'Open today, 5 AM to 10 PM', alt: 'a bright gym with bikes and a squat rack' },
+  dentist:     { kind: 'Dental office', head: 'Gentle care for the whole family', desc: (n) => `${n} offers cleanings, fillings, whitening and same-week emergency visits in a calm, modern office. New patients welcome.`, btn: 'Book a visit', links: 'Services · Insurance · Book', hours: 'Open today, 8 AM to 5 PM', alt: 'a dental exam room' },
+  accountant:  { kind: 'Accounting & tax', head: 'Taxes done right, on time', desc: (n) => `${n} handles tax returns, bookkeeping and payroll for families and businesses, with real answers all year, not just in April.`, btn: 'Book a consult', links: 'Services · About · Contact', hours: 'Now booking tax appointments', alt: 'a laptop and calculator on a desk' },
+  realestate:  { kind: 'Real estate', head: 'Find the right home', desc: (n) => `${n} helps buyers and sellers with honest advice, sharp pricing and steady communication from the first showing to closing day.`, btn: 'See listings', links: 'Listings · Sell · Contact', hours: 'Free home value estimate', alt: 'a white house with a for-sale sign' },
+  plumber:     { kind: 'Plumbing', head: 'Fast, honest plumbing', desc: (n) => `${n} fixes leaks, clogs and water heaters, with upfront pricing before any work starts.`, btn: 'Call now', links: 'Services · Reviews · Contact', hours: 'Open 24/7 for emergencies', alt: 'two pipe wrenches on a fitting' },
+  landscaping: { kind: 'Landscaping', head: "A yard you'll want to show off", desc: (n) => `${n} handles lawn care, planting, irrigation and full yard makeovers, with free estimates on every job.`, btn: 'Free estimate', links: 'Services · Work · Contact', hours: 'Licensed and insured', alt: 'a trimmed lawn with hedges' },
+  other:       { kind: 'Your business', head: 'Good work, easy to find', desc: (n, k) => `${n} is the place for ${k ? k.toLowerCase() : 'what you do best'}. See what we offer, read the reviews, and get in touch in one tap.`, btn: 'Get in touch', links: 'About · Services · Contact', hours: 'Open today, 9 AM to 5 PM', alt: 'a "come in, we\'re open" sign' },
 };
 const mini = document.getElementById('mini');
 (() => {
   const form = document.getElementById('yours-form');
   const input = document.getElementById('biz');
   const ask = document.getElementById('ask');
+  const kindIn = document.getElementById('kind');
+  const otherBox = document.getElementById('other-kind');
   if (!form || !mini) return;
   const $ = (id) => document.getElementById(id);
   let t;
@@ -92,21 +103,24 @@ const mini = document.getElementById('mini');
     const name = (input.value.trim() || 'Your Business').replace(/\s+/g, ' ');
     const trade = form.querySelector('input[name="trade"]:checked').value;
     const d = TRADES[trade];
+    const typed = trade === 'other' ? kindIn.value.trim().replace(/\s+/g, ' ') : '';
+    const kind = typed ? typed.charAt(0).toUpperCase() + typed.slice(1) : d.kind;
+    otherBox.hidden = trade !== 'other';
     mini.dataset.trade = trade;
     $('mini-logo').textContent = name;
-    $('mini-kind').textContent = $('mini-eyebrow').textContent = d.kind + ' · Central Coast';
-    $('mini-head').textContent = d.head; $('mini-desc').textContent = d.desc(name);
+    $('mini-kind').textContent = $('mini-eyebrow').textContent = kind;
+    $('mini-head').textContent = d.head; $('mini-desc').textContent = d.desc(name, typed);
     $('mini-pill').textContent = d.btn;
     const img = $('mini-img'); if (!img.src.endsWith('/' + trade + '.jpg')) { img.src = 'img/sketch/' + trade + '.jpg'; } img.alt = 'Example photo: ' + d.alt;
     $('mini-url').textContent = (name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '') || 'yourbusiness') + '.com';
     $('mini-btn').textContent = d.btn; $('mini-links').textContent = d.links; $('mini-hours').textContent = d.hours;
-    const label = form.querySelector('input[name="trade"]:checked + span').textContent;
+    const label = typed || (trade === 'other' ? 'other' : form.querySelector('input[name="trade"]:checked + span').textContent);
     const body = `Hi Michael,\n\nI'd like to see a real site for ${input.value.trim() || 'my business'} (${label.toLowerCase()}).\n\nWhere we are:\nBest way to reach me:\n`;
     ask.href = 'mailto:hello@buildwithridge.com?subject=' + encodeURIComponent('Build mine: ' + (input.value.trim() || label)) + '&body=' + encodeURIComponent(body);
     if (animate) { mini.classList.remove('is-building'); void mini.offsetWidth; mini.classList.add('is-building'); }
   };
-  input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => build(true), 260); });
-  form.addEventListener('change', (e) => { if (e.target.name === 'trade') build(true); });
+  [input, kindIn].forEach((el) => el.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => build(true), 260); }));
+  form.addEventListener('change', (e) => { if (e.target.name === 'trade') { build(true); if (e.target.value === 'other') kindIn.focus(); } });
   form.addEventListener('submit', (e) => { e.preventDefault(); build(true); input.blur(); });
   build(false);
   // assemble once when it first comes into view

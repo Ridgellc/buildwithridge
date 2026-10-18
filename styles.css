@@ -95,6 +95,9 @@ p { text-wrap: pretty; }
 .trades input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
 .trades label:active span { transform: scale(0.96); }
 @media (hover: hover) and (pointer: fine) { .trades input:not(:checked):hover + span { background: #dce6e3; } }
+.other-kind { margin-top: 1rem; }
+.other-kind[hidden] { display: none; }
+.field--small { min-height: 2.9rem; font-size: 1.1rem; }
 .yours-ask { margin-top: 2rem; }
 
 .yours-stage { grid-column: 6 / -1; }
@@ -135,6 +138,15 @@ p { text-wrap: pretty; }
 .mini[data-trade="nails"]   { --m-bg: #f8f6f0; --m-ink: #2f3324; --m-accent: #66773a; }
 .mini[data-trade="auto"]    { --m-bg: #f4f5f7; --m-ink: #1c2430; --m-accent: #c8102e; }
 .mini[data-trade="builder"] { --m-bg: #f5f4f0; --m-ink: #26302a; --m-accent: #8a5a2b; }
+.mini[data-trade="restaurant"]  { --m-bg: #f7f4ef; --m-ink: #231a16; --m-accent: #8c2f2b; }
+.mini[data-trade="salon"]       { --m-bg: #f8f4f3; --m-ink: #2b1f24; --m-accent: #a14a6a; }
+.mini[data-trade="fitness"]     { --m-bg: #f3f4f5; --m-ink: #15191d; --m-accent: #e2531c; }
+.mini[data-trade="dentist"]     { --m-bg: #f3f7f8; --m-ink: #17303a; --m-accent: #1d7fa6; }
+.mini[data-trade="accountant"]  { --m-bg: #f4f6f8; --m-ink: #182437; --m-accent: #24508f; }
+.mini[data-trade="realestate"]  { --m-bg: #f6f5f2; --m-ink: #1d2433; --m-accent: #2e4a7d; }
+.mini[data-trade="plumber"]     { --m-bg: #f3f6f9; --m-ink: #14243a; --m-accent: #1f6fd1; }
+.mini[data-trade="landscaping"] { --m-bg: #f4f6f0; --m-ink: #1e2a1c; --m-accent: #3f7a2f; }
+.mini[data-trade="other"]       { --m-bg: #f6f6f4; --m-ink: #1d2326; --m-accent: #06525c; }
 @media (prefers-reduced-motion: no-preference) {
   .mini.is-building .mini-piece { animation: piece 640ms var(--ease-out) both; animation-delay: calc(var(--k) * 80ms); }
 }
