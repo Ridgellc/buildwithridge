@@ -138,13 +138,6 @@ document.fonts.addEventListener && document.fonts.addEventListener('loadingdone'
 addEventListener('load', fitAll);
 let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fitAll, 120); });
 
-// The Morro Rock clip: plays only when on screen and when motion is welcome.
-(() => {
-  const v = document.getElementById('rock');
-  if (!v || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!('IntersectionObserver' in window)) { v.play().catch(() => {}); return; }
-  new IntersectionObserver((es) => { for (const e of es) e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }, { threshold: 0.2 }).observe(v);
-})();
 
 // Request my website: any [data-request] opens the form. With a Web3Forms key (data-form-key on the form)
 // it is emailed to Michael; without one, Send opens a pre-written email so nothing is silently lost.
