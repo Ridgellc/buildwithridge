@@ -192,8 +192,6 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
     } finally {
       btn.disabled = false; btn.textContent = label;
     }
-    const first = v('name').split(/\s+/)[0];
-    done.querySelector('.rq-first').textContent = first ? `, ${first}` : '';
     f.hidden = true; done.hidden = false; f.reset();
   });
 })();
