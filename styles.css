@@ -379,7 +379,8 @@ p { text-wrap: pretty; }
 /* the portrait: a solid teal block offset behind, a spinning badge on the corner */
 .me-photo-wrap { position: relative; grid-column: 9 / -1; margin: 0 18px 18px 0; }
 .me-photo-wrap::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; background: var(--field); }
-.me-photo { position: relative; }
+.me-photo { position: relative; margin: 0; aspect-ratio: 4 / 5; overflow: hidden; background: var(--surface); }
+.me-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 .me-badge { position: absolute; left: -54px; bottom: 36px; width: 128px; height: 128px; }
 .me-badge circle { fill: var(--bg); stroke: var(--ink); stroke-width: 1.5; }
 .me-badge text { font: 600 10.5px var(--font-text); letter-spacing: 0.12em; fill: var(--ink); }
@@ -387,10 +388,6 @@ p { text-wrap: pretty; }
 .me-badge-peak { fill: var(--ink); }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* photo placeholders until the real pictures arrive */
-.ph { position: relative; margin: 0; display: grid; place-items: center; background: repeating-linear-gradient(135deg, var(--surface) 0 14px, #e3eae8 14px 28px); color: var(--muted); } /* taste-skill-ignore: striped photo placeholder, replaced by real photos */
-.ph--portrait { aspect-ratio: 4 / 5; }
-.ph-label { padding: 0.5rem 0.9rem; background: var(--bg); font-size: var(--step-small); font-weight: 500; }
 
 /* business background: a dark band */
 .me-why { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 3.5rem; padding: var(--section) var(--margin); background: var(--field); color: var(--field-ink); }
