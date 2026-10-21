@@ -71,20 +71,20 @@ const fitAll = () => {
 
 // See yours: the visitor's name on a little homepage in the style of the demo sites, one per trade.
 const TRADES = {
-  bakery:  { kind: 'Bakery', head: 'Pan dulce, fresh every morning', desc: (n) => `${n} bakes conchas, cuernos and bolillos every day from 6 AM. Order ahead and skip the line.`, btn: 'Order ahead', links: 'Menu · Hours · Visit', hours: 'Open today, 6 AM to 2 PM', alt: 'a concha on bakery paper' },
-  cafe:    { kind: 'Breakfast & lunch', head: 'Homemade biscuits and big breakfasts', desc: (n) => `${n} serves biscuits and gravy, fluffy omelets and good coffee, every day from 7 to 2.`, btn: 'See the menu', links: 'Menu · Hours · Visit', hours: 'Open today, 7 AM to 2 PM', alt: 'biscuits and gravy in a skillet' },
-  barber:  { kind: 'Barbershop', head: 'Walk in, walk out sharp', desc: (n) => `${n} does fades, tapers and beard line-ups for men and kids. Walk-ins welcome, or book your chair online.`, btn: 'Book a chair', links: 'Services · Book · Visit', hours: 'Open today, 9 AM to 6 PM', alt: 'an old-fashioned barbershop interior' },
-  nails:   { kind: 'Nail salon', head: 'Simple, elegant nails', desc: (n) => `${n} offers manicures, pedicures, gel and dip in a clean, calm salon with heated massage chairs.`, btn: 'Book now', links: 'Services · Prices · Book', hours: 'Open today, 10 AM to 7 PM', alt: 'a manicure in progress' },
-  auto:    { kind: 'Auto repair', head: 'Honest repairs, done right', desc: (n) => `${n} handles brakes, oil changes and diagnostics, with a clear quote before any work starts.`, btn: 'Get a quote', links: 'Services · Reviews · Visit', hours: 'Open today, 8 AM to 5 PM', alt: 'a mechanic working under the hood of a car' },
-  builder: { kind: 'Contractor', head: 'Remodels built to last', desc: (n) => `${n} builds kitchens, baths and additions, with clear communication from the first visit to the final walk-through.`, btn: 'Request a quote', links: 'Work · Services · Contact', hours: 'Licensed and insured', alt: 'a finished kitchen remodel' },
-  restaurant:  { kind: 'Restaurant', head: 'Fresh food, made from scratch', desc: (n) => `${n} serves seasonal plates, house cocktails and a menu that changes with what's good. Walk in or book a table.`, btn: 'Reserve a table', links: 'Menu · Reserve · Visit', hours: 'Open tonight, 5 PM to 10 PM', alt: 'a plated dish on a restaurant table' },
-  salon:       { kind: 'Hair salon', head: "Cuts and color you'll love", desc: (n) => `${n} does cuts, color, balayage and blowouts, with stylists who listen first. Book your chair online.`, btn: 'Book now', links: 'Services · Prices · Book', hours: 'Open today, 9 AM to 7 PM', alt: 'a stylist blow-drying hair' },
-  fitness:     { kind: 'Gym', head: 'Get stronger, every week', desc: (n) => `${n} offers open gym, group classes and personal training for every level. Your first class is free.`, btn: 'Try a free class', links: 'Classes · Pricing · Join', hours: 'Open today, 5 AM to 10 PM', alt: 'a bright gym with bikes and a squat rack' },
-  dentist:     { kind: 'Dental office', head: 'Gentle care for the whole family', desc: (n) => `${n} offers cleanings, fillings, whitening and same-week emergency visits in a calm, modern office. New patients welcome.`, btn: 'Book a visit', links: 'Services · Insurance · Book', hours: 'Open today, 8 AM to 5 PM', alt: 'a dental exam room' },
-  accountant:  { kind: 'Accounting & tax', head: 'Taxes done right, on time', desc: (n) => `${n} handles tax returns, bookkeeping and payroll for families and businesses, with real answers all year, not just in April.`, btn: 'Book a consult', links: 'Services · About · Contact', hours: 'Now booking tax appointments', alt: 'a laptop and calculator on a desk' },
-  realestate:  { kind: 'Real estate', head: 'Find the right home', desc: (n) => `${n} helps buyers and sellers with honest advice, sharp pricing and steady communication from the first showing to closing day.`, btn: 'See listings', links: 'Listings · Sell · Contact', hours: 'Free home value estimate', alt: 'a white house with a for-sale sign' },
-  plumber:     { kind: 'Plumbing', head: 'Fast, honest plumbing', desc: (n) => `${n} fixes leaks, clogs and water heaters, with upfront pricing before any work starts.`, btn: 'Call now', links: 'Services · Reviews · Contact', hours: 'Open 24/7 for emergencies', alt: 'two pipe wrenches on a fitting' },
-  landscaping: { kind: 'Landscaping', head: "A yard you'll want to show off", desc: (n) => `${n} handles lawn care, planting, irrigation and full yard makeovers, with free estimates on every job.`, btn: 'Free estimate', links: 'Services · Work · Contact', hours: 'Licensed and insured', alt: 'a trimmed lawn with hedges' },
+  bakery:  { kind: 'Bakery', head: 'Pan dulce, fresh every morning', desc: (n) => `${n} bakes conchas, cuernos and bolillos every day from 6 AM. Order ahead and skip the line.`, btn: 'Order ahead', links: 'Menu · Hours · Visit', hours: 'Open today, 6 AM to 2 PM', alt: 'a concha on bakery paper', badge: 'Baked fresh daily', btn2: 'Call us' },
+  cafe:    { kind: 'Breakfast & lunch', head: 'Homemade biscuits and big breakfasts', desc: (n) => `${n} serves biscuits and gravy, fluffy omelets and good coffee, every day from 7 to 2.`, btn: 'See the menu', links: 'Menu · Hours · Visit', hours: 'Open today, 7 AM to 2 PM', alt: 'biscuits and gravy in a skillet', badge: 'Breakfast all day', btn2: 'Call us' },
+  barber:  { kind: 'Barbershop', head: 'Walk in, walk out sharp', desc: (n) => `${n} does fades, tapers and beard line-ups for men and kids. Walk-ins welcome, or book your chair online.`, btn: 'Book a chair', links: 'Services · Book · Visit', hours: 'Open today, 9 AM to 6 PM', alt: 'an old-fashioned barbershop interior', badge: 'Walk-ins welcome', btn2: 'Call us' },
+  nails:   { kind: 'Nail salon', head: 'Simple, elegant nails', desc: (n) => `${n} offers manicures, pedicures, gel and dip in a clean, calm salon with heated massage chairs.`, btn: 'Book now', links: 'Services · Prices · Book', hours: 'Open today, 10 AM to 7 PM', alt: 'a manicure in progress', badge: 'Book in 30 seconds', btn2: 'See prices' },
+  auto:    { kind: 'Auto repair', head: 'Honest repairs, done right', desc: (n) => `${n} handles brakes, oil changes and diagnostics, with a clear quote before any work starts.`, btn: 'Get a quote', links: 'Services · Reviews · Visit', hours: 'Open today, 8 AM to 5 PM', alt: 'a mechanic working under the hood of a car', badge: 'Certified mechanics', btn2: 'Call the shop' },
+  builder: { kind: 'Contractor', head: 'Remodels built to last', desc: (n) => `${n} builds kitchens, baths and additions, with clear communication from the first visit to the final walk-through.`, btn: 'Request a quote', links: 'Work · Services · Contact', hours: 'Licensed and insured', alt: 'a finished kitchen remodel', badge: 'Free on-site estimates', btn2: 'See our work' },
+  restaurant:  { kind: 'Restaurant', head: 'Fresh food, made from scratch', desc: (n) => `${n} serves seasonal plates, house cocktails and a menu that changes with what's good. Walk in or book a table.`, btn: 'Reserve a table', links: 'Menu · Reserve · Visit', hours: 'Open tonight, 5 PM to 10 PM', alt: 'a plated dish on a restaurant table', badge: '', btn2: 'See the menu' },
+  salon:       { kind: 'Hair salon', head: "Cuts and color you'll love", desc: (n) => `${n} does cuts, color, balayage and blowouts, with stylists who listen first. Book your chair online.`, btn: 'Book now', links: 'Services · Prices · Book', hours: 'Open today, 9 AM to 7 PM', alt: 'a stylist blow-drying hair', badge: '', btn2: 'Meet the stylists' },
+  fitness:     { kind: 'Gym', head: 'Get stronger, every week', desc: (n) => `${n} offers open gym, group classes and personal training for every level. Your first class is free.`, btn: 'Try a free class', links: 'Classes · Pricing · Join', hours: 'Open today, 5 AM to 10 PM', alt: 'a bright gym with bikes and a squat rack', badge: 'First class free', btn2: 'See classes' },
+  dentist:     { kind: 'Dental office', head: 'Gentle care for the whole family', desc: (n) => `${n} offers cleanings, fillings, whitening and same-week emergency visits in a calm, modern office. New patients welcome.`, btn: 'Book a visit', links: 'Services · Insurance · Book', hours: 'Open today, 8 AM to 5 PM', alt: 'a dental exam room', badge: 'New patients welcome', btn2: 'Call us' },
+  accountant:  { kind: 'Accounting & tax', head: 'Taxes done right, on time', desc: (n) => `${n} handles tax returns, bookkeeping and payroll for families and businesses, with real answers all year, not just in April.`, btn: 'Book a consult', links: 'Services · About · Contact', hours: 'Now booking tax appointments', alt: 'a laptop and calculator on a desk', badge: 'Ready before April 15', btn2: 'Call us' },
+  realestate:  { kind: 'Real estate', head: 'Find the right home', desc: (n) => `${n} helps buyers and sellers with honest advice, sharp pricing and steady communication from the first showing to closing day.`, btn: 'See listings', links: 'Listings · Sell · Contact', hours: 'Free home value estimate', alt: 'a white house with a for-sale sign', badge: 'Search homes by city or ZIP', btn2: 'Sell with us' },
+  plumber:     { kind: 'Plumbing', head: 'Fast, honest plumbing', desc: (n) => `${n} fixes leaks, clogs and water heaters, with upfront pricing before any work starts.`, btn: 'Call now', links: 'Services · Reviews · Contact', hours: 'Open 24/7 for emergencies', alt: 'two pipe wrenches on a fitting', badge: '24/7', btn2: '(555) 555-0142' },
+  landscaping: { kind: 'Landscaping', head: "A yard you'll want to show off", desc: (n) => `${n} handles lawn care, planting, irrigation and full yard makeovers, with free estimates on every job.`, btn: 'Free estimate', links: 'Services · Work · Contact', hours: 'Licensed and insured', alt: 'a trimmed lawn with hedges', badge: 'Free estimates', btn2: 'See our work' },
   other:       { kind: 'Your business', head: 'Good work, easy to find', desc: (n, k) => `${n} is the place for ${k ? k.toLowerCase() : 'what you do best'}. See what we offer, read the reviews, and get in touch in one tap.`, btn: 'Get in touch', links: 'About · Services · Contact', hours: 'Open today, 9 AM to 5 PM', alt: 'a "come in, we\'re open" sign' },
 };
 const mini = document.getElementById('mini');
@@ -96,7 +96,7 @@ const mini = document.getElementById('mini');
   const otherBox = document.getElementById('other-kind');
   if (!form || !mini) return;
   const $ = (id) => document.getElementById(id);
-  let t;
+  let t, lastKey = null, typing = false;
   const build = (animate) => {
     const name = (input.value.trim() || 'Your Business').replace(/\s+/g, ' ');
     const trade = form.querySelector('input[name="trade"]:checked').value;
@@ -107,27 +107,68 @@ const mini = document.getElementById('mini');
     const kind = typed ? typed.charAt(0).toUpperCase() + typed.slice(1) : d.kind;
     otherBox.hidden = trade !== 'other';
     mini.dataset.trade = TRADES[key] ? key : 'other';
+    // each trade button has its own design (fonts, layout, photo shape); the extra looks keep the general one
+    if (TRADES[key] && key !== 'other') mini.dataset.look = key; else delete mini.dataset.look;
     ['--m-bg', '--m-ink', '--m-accent'].forEach((v, i) => (d.colors ? mini.style.setProperty(v, d.colors[i]) : mini.style.removeProperty(v)));
     const photo = d.photo || key;
     $('mini-logo').textContent = name;
     $('mini-kind').textContent = $('mini-eyebrow').textContent = kind;
-    $('mini-head').textContent = d.head; $('mini-desc').textContent = d.desc(name, typed);
+    if (!typing) $('mini-head').textContent = d.head;
+    $('mini-head').dataset.full = d.head;
+    $('mini-desc').textContent = d.desc(name, typed);
     $('mini-pill').textContent = d.btn;
     const img = $('mini-img'); if (!img.src.endsWith('/' + photo + '.jpg')) { img.src = 'img/sketch/' + photo + '.jpg'; } img.alt = 'Example photo: ' + d.alt;
     $('mini-url').textContent = (name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '') || 'yourbusiness') + '.com';
-    $('mini-btn').textContent = d.btn; $('mini-links').textContent = d.links; $('mini-hours').textContent = d.hours;
+    $('mini-btn').textContent = d.btn; $('mini-btn2').textContent = d.btn2 || 'Call us'; $('mini-badge').textContent = d.badge || '';
+    $('mini-links').textContent = d.links; $('mini-hours').textContent = d.hours;
     // the request form opens with what they typed here
     ask.dataset.business = input.value.trim();
     ask.dataset.kind = typed || (trade === 'other' ? '' : form.querySelector('input[name="trade"]:checked + span').textContent);
-    if (animate) { mini.classList.remove('is-building'); void mini.offsetWidth; mini.classList.add('is-building'); }
+    // a new look gets the full build; the same look just takes the new name
+    const changed = key !== lastKey; lastKey = key;
+    if (animate === 'auto' ? changed : animate) play(); else if (animate === 'auto') flash();
   };
-  [input, kindIn].forEach((el) => el.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => build(true), 260); }));
+
+  // The build show: blueprint, then paint (the headline types itself), then the photo develops, then the finishing touches.
+  // data-stage on #mini drives the CSS; no data-stage is the finished page (also the no-script and reduced-motion state).
+  const quiet = matchMedia('(prefers-reduced-motion: reduce)');
+  const status = $('mini-status'), bar = $('mini-progress');
+  let run = 0;
+  const say = (text, p) => { status.textContent = text; bar.style.setProperty('--p', p); mini.classList.toggle('is-working', p < 1); };
+  const wait = (ms, id) => new Promise((ok) => setTimeout(() => ok(id === run), ms));
+  const flash = () => { const l = $('mini-logo'); l.classList.remove('is-new'); void l.offsetWidth; l.classList.add('is-new'); };
+  async function play() {
+    if (quiet.matches) { delete mini.dataset.stage; return; }
+    const id = ++run, head = $('mini-head');
+    typing = false; head.textContent = head.dataset.full; head.style.minHeight = '';
+    mini.dataset.stage = 'wire'; say('Laying out the page', 0.2);
+    mini.classList.remove('is-building'); void mini.offsetWidth; mini.classList.add('is-building');
+    if (!(await wait(1000, id))) return;
+    mini.dataset.stage = 'paint'; say('Adding colors and fonts', 0.5);
+    // type the headline, holding its height so the page doesn't jump
+    head.style.minHeight = head.offsetHeight + 'px'; typing = true; head.textContent = ''; head.classList.add('is-typing');
+    const full = head.dataset.full, step = Math.max(18, Math.min(34, 900 / full.length));
+    for (let i = 1; i <= full.length; i++) { if (!(await wait(step, id))) { head.classList.remove('is-typing'); return; } head.textContent = head.dataset.full.slice(0, i); }
+    typing = false; head.textContent = head.dataset.full; head.style.minHeight = '';
+    if (!(await wait(250, id))) return;
+    head.classList.remove('is-typing');
+    mini.dataset.stage = 'photo'; say('Placing your photo', 0.8);
+    if (!(await wait(750, id))) return;
+    mini.dataset.stage = 'done'; say('Ready: ' + $('mini-url').textContent, 1);
+    if (!(await wait(2600, id))) return;
+    delete mini.dataset.stage; mini.classList.remove('is-working');
+  }
+
+  input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => build('auto'), 260); });
+  kindIn.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => build('auto'), 450); });
   form.addEventListener('change', (e) => { if (e.target.name === 'trade') { build(true); if (e.target.value === 'other') kindIn.focus(); } });
   form.addEventListener('submit', (e) => { e.preventDefault(); build(true); input.blur(); });
+  const again = $('build-again'); if (again) again.addEventListener('click', () => build(true));
   build(false);
-  // assemble once when it first comes into view
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { build(true); io.disconnect(); } }, { threshold: 0.35 });
+  // the first build plays when the sketch comes into view
+  if ('IntersectionObserver' in window && !quiet.matches) {
+    mini.dataset.stage = 'wire';
+    const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { play(); io.disconnect(); } }, { threshold: 0.35 });
     io.observe(mini);
   }
 })();

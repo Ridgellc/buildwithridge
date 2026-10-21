@@ -4,345 +4,250 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Panadería El Girasol | Mexican Bakery in San Luis Obispo, CA</title>
-<meta name="description" content="Conchas, cuernos, bolillos and homemade tamales, baked before sunrise and open 5 AM to 7 PM every day. Order online and skip the line.">
+<title>Panadería El Girasol | Mexican Bakery in San Luis Obispo (example site)</title>
+<meta name="description" content="Example site by Ridge for a made-up Mexican bakery: pan dulce, bolillos and tamales, open 5 AM every day.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231f3fbf'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23f6a723'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../example.css">
 <style>
 :root {
-  --bg: #fff8ef; --surface: #ffffff; --ink: #2d1f1a; --ink-soft: #6b544a;
-  --accent: #c2185b; --accent-ink: #ffffff; --accent-soft: #fbd3e2;
-  --deco1: #ffd36e; --deco2: #8fd8cf; --line: #f0dfcf;
-  --display: 'Playfair Display', Georgia, serif; --body: 'Work Sans', system-ui, sans-serif;
-  --radius: 18px;
+  --paper: #f7efe1; --cobalt: #1f3fbf; --cobalt-deep: #162d8a; --marigold: #f6a723; --chili: #d7332b; --pink: #ec5f9a; --green: #2f9e6b; --ink: #1b1d2e;
+  --display: "Abril Fatface", Georgia, serif; --body: "Outfit", system-ui, sans-serif;
+  --wrap: min(1180px, 100% - 40px);
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-a { color: inherit; }
-h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.1; margin: 0 0 .5em; }
-h2 { font-size: clamp(1.9rem, 6vw, 2.6rem); }
-.wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
-.demo-note { background: #fff4d6; color: #5a3f00; border-bottom: 2px dashed #e2b44a; text-align: center; font-size: .88rem; font-weight: 600; padding: .55rem 1rem; }
-header.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-header.top .btn { display: none; }
-header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 0; }
-.brand { font-family: var(--display); font-size: clamp(1.1rem, 4.4vw, 1.4rem); font-weight: 600; text-decoration: none; line-height: 1.1; }
-.brand small { display: block; font-family: var(--body); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-nav.links { display: none; gap: 1.6rem; font-weight: 600; font-size: .95rem; }
-nav.links a { text-decoration: none; color: var(--ink-soft); }
-nav.links a:hover { color: var(--accent); }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 0; cursor: pointer; font: inherit; font-weight: 700; text-decoration: none; border-radius: 999px; padding: .85rem 1.5rem; background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 35%, transparent); transition: transform .15s; }
-.btn:hover { transform: translateY(-1px); }
-.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--line); }
-.btn.small { padding: .55rem 1.1rem; font-size: .92rem; }
-.hero { position: relative; overflow: hidden; padding: clamp(3.5rem, 12vw, 7rem) 0 clamp(3rem, 9vw, 5.5rem); }
-.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; filter: blur(2px); z-index: 0; }
-.hero::before { width: 520px; height: 520px; right: -160px; top: -140px; background: radial-gradient(circle at 30% 30%, var(--deco1), transparent 68%); }
-.hero::after { width: 380px; height: 380px; left: -140px; bottom: -180px; background: radial-gradient(circle at 60% 40%, var(--deco2), transparent 70%); }
-.hero .wrap { position: relative; z-index: 1; }
-.hero-grid { display: grid; gap: 2.2rem; align-items: center; }
-.hero-photo, .strip-photo { position: relative; margin: 0; border-radius: 24px; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,.14); }
-.hero-photo img, .strip-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.hero-photo { aspect-ratio: 4 / 3; }
-.hero-photo:hover img, .strip-photo:hover img { transform: scale(1.04); }
-.photo-tag { position: absolute; left: .7rem; bottom: .7rem; font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: rgba(255,244,214,.92); color: #5a3f00; border: 1px dashed #e2b44a; border-radius: 6px; padding: .12rem .45rem; }
-.photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-top: clamp(2.5rem, 7vw, 3.5rem); }
-.strip-photo { aspect-ratio: 4 / 3; }
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .hero-photo img, .strip-photo img { transition: none; } }
-@media (max-width: 540px) { .photo-strip { grid-template-columns: 1fr; } }
-.eyebrow { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-.hero h1 { font-size: clamp(2.6rem, 10vw, 4.6rem); max-width: 14ch; letter-spacing: -.01em; }
-.tagline { font-size: clamp(1.1rem, 4vw, 1.35rem); color: var(--ink-soft); max-width: 36ch; margin: 0 0 1.8rem; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 2rem; }
-.rating-pill { display: inline-flex; align-items: center; gap: .6rem; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .5rem 1rem .5rem .8rem; font-weight: 600; font-size: .95rem; }
-.rating-pill .st { color: #e8a317; letter-spacing: .05em; }
-.highlights { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: -1rem; padding-bottom: 1rem; }
-.hl { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
-.hl .ic { font-size: 1.6rem; line-height: 1; margin-bottom: .6rem; }
-.hl strong { display: block; font-family: var(--display); font-size: 1.2rem; margin-bottom: .2rem; }
-.hl span { color: var(--ink-soft); font-size: .95rem; }
-section { padding: clamp(3.5rem, 10vw, 5.5rem) 0; }
-section.alt { background: var(--surface); border-block: 1px solid var(--line); }
-.section-intro { color: var(--ink-soft); max-width: 52ch; margin: -.3rem 0 2.2rem; }
-.tag { display: inline-block; vertical-align: middle; font-family: var(--body); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: #fff4d6; color: #5a3f00; border: 1px dashed #e2b44a; border-radius: 6px; padding: .1rem .45rem; margin-left: .4rem; }
-.menu { display: grid; gap: 1.4rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-.menu-group { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.6rem; }
-section:not(.alt) .menu-group { background: var(--surface); }
-.menu-group h3 { font-size: 1.45rem; color: var(--accent); }
-.menu-group ul { list-style: none; margin: 0; padding: 0; }
-.menu-group li { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px dashed var(--line); }
-.menu-group li:last-child { border-bottom: 0; }
-.menu-group .desc { display: block; color: var(--ink-soft); font-size: .9rem; }
-.price { font-family: var(--body); font-weight: 700; white-space: nowrap; color: var(--ink); font-variant-numeric: tabular-nums; }
-.reviews { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.review { margin: 0; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; }
-section:not(.alt) .review { background: var(--surface); }
-.review-stars { color: #e8a317; letter-spacing: .1em; margin-bottom: .6rem; }
-.review blockquote { margin: 0 0 1rem; font-size: 1.02rem; flex: 1; }
-.review figcaption { color: var(--ink-soft); font-size: .85rem; font-weight: 600; }
-.visit { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; }
-section.alt .card { background: var(--bg); }
-.hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-.hours th, .hours td { padding: .55rem 0; border-bottom: 1px solid var(--line); text-align: left; font-weight: 500; }
-.hours td { text-align: right; }
-.hours tr.today th, .hours tr.today td { color: var(--accent); font-weight: 700; }
-.hours tr.today th::after { content: " · Today"; font-size: .82rem; }
-.contact-line { display: flex; gap: .7rem; align-items: flex-start; margin: 0 0 .9rem; }
-.contact-line .ic { width: 1.4rem; flex: none; text-align: center; }
-.map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); min-height: 320px; }
-.map iframe { width: 100%; height: 100%; min-height: 320px; border: 0; display: block; }
-footer { padding: 2.5rem 0 6rem; text-align: center; color: var(--ink-soft); font-size: .9rem; }
-.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; gap: .6rem; padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px rgba(0,0,0,.06); }
-.sticky-cta .btn { flex: 1; }
-@media (min-width: 820px) {
-  nav.links { display: flex; }
-  header.top .btn { display: inline-flex; }
-  .hero-grid.has-photo { grid-template-columns: 1.05fr .95fr; }
-  .hero-photo { transform: rotate(1.5deg); }
-  .sticky-cta { display: none; }
-  footer { padding-bottom: 2.5rem; }
+body { background: var(--paper); color: var(--ink); font: 17px/1.6 var(--body); }
+.wrap { width: var(--wrap); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 26px; border: 3px solid var(--ink); background: var(--marigold); color: var(--ink); font-weight: 800; text-decoration: none; box-shadow: 5px 5px 0 var(--ink); transition: transform 120ms ease, box-shadow 120ms ease; }
+.btn:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--ink); }
+.btn:active { transform: translate(5px, 5px); box-shadow: none; }
+.btn--white { background: #fff; }
+
+/* papel picado: a string of cut-paper flags */
+.picado { position: relative; height: 92px; overflow: hidden; background: var(--cobalt); }
+.picado::before { content: ""; position: absolute; left: 0; right: 0; top: 10px; height: 2px; background: #fff8; }
+.flags { display: flex; justify-content: center; gap: 6px; padding-top: 10px; animation: sway 6s ease-in-out infinite alternate; transform-origin: 50% 0; }
+.flags svg { width: 74px; height: 80px; flex: none; }
+.flags svg:nth-child(5n+1) { color: var(--marigold); }
+.flags svg:nth-child(5n+2) { color: var(--pink); }
+.flags svg:nth-child(5n+3) { color: #fff; }
+.flags svg:nth-child(5n+4) { color: var(--green); }
+.flags svg:nth-child(5n+5) { color: var(--chili); }
+@keyframes sway { from { transform: rotate(-0.6deg); } to { transform: rotate(0.6deg); } }
+
+.top { background: var(--cobalt); color: #fff; border-bottom: 4px solid var(--ink); }
+.top .wrap { display: flex; align-items: center; gap: 24px; min-height: 72px; }
+.logo { margin-right: auto; font: 400 28px/1 var(--display); text-decoration: none; }
+.logo span { color: var(--marigold); }
+.nav { display: flex; gap: 24px; font-weight: 700; }
+.nav a { text-decoration: none; }
+.nav a:hover { color: var(--marigold); }
+
+/* hero: poster type and a fan of lotería cards */
+.hero { position: relative; padding: 70px 0 90px; overflow: hidden; }
+.hero::before { content: ""; position: absolute; right: -180px; top: -160px; width: 620px; height: 620px; border-radius: 50%; background: repeating-conic-gradient(var(--marigold) 0 9deg, transparent 9deg 18deg); opacity: 0.35; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+.hero h1 { font-size: clamp(3.4rem, 1.2rem + 7vw, 7.4rem); color: var(--cobalt); }
+.hero h1 em { display: block; font-style: normal; color: var(--chili); }
+.hero-lede { margin-top: 24px; max-width: 34ch; font-size: 20px; font-weight: 500; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
+.hero-meta { margin-top: 26px; font-weight: 500; }
+.fan { position: relative; height: 520px; }
+.card { position: absolute; width: 250px; padding: 12px 12px 0; background: #fff; border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+.card-num { position: absolute; left: 20px; top: 18px; z-index: 1; width: 40px; height: 40px; display: grid; place-items: center; background: #fff; border: 2px solid var(--ink); border-radius: 50%; font: 800 17px/1 var(--body); }
+.card figure { position: relative; border: 2px solid var(--ink); }
+.card img { width: 100%; aspect-ratio: 3 / 3.6; object-fit: cover; }
+.card b { display: block; padding: 10px 0 12px; text-align: center; font: 400 24px/1 var(--display); letter-spacing: 0.02em; }
+.card--1 { left: 0; top: 70px; rotate: -10deg; }
+.card--2 { left: 26%; top: 0; rotate: 2deg; z-index: 1; }
+.card--3 { right: 0; top: 90px; rotate: 11deg; }
+.card--1 figure { background: var(--pink); }
+.card--3 figure { background: var(--green); }
+
+/* the ticker band */
+.band { background: var(--chili); color: #fff; border-block: 4px solid var(--ink); overflow: hidden; white-space: nowrap; }
+.band p { display: inline-block; padding: 16px 0; font: 400 28px/1 var(--display); animation: run 28s linear infinite; }
+.band p span { margin: 0 22px; color: var(--marigold); }
+@keyframes run { to { transform: translateX(-50%); } }
+
+/* la lotería: the menu as numbered cards */
+.loteria { padding: 100px 0; }
+.sec-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 40px; margin-bottom: 44px; }
+.sec-head h2 { font-size: clamp(2.6rem, 1.4rem + 3.6vw, 4.4rem); color: var(--cobalt); }
+.sec-head p { max-width: 40ch; font-weight: 500; }
+.deck { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.lot { position: relative; display: flex; flex-direction: column; min-height: 270px; padding: 16px; background: var(--c); color: var(--t, var(--ink)); border: 3px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); transition: rotate 200ms ease; }
+.lot:hover { rotate: -2deg; }
+.lot .n { font: 800 15px/1 var(--body); }
+.lot h3 { margin-top: auto; font-size: 34px; }
+.lot p { margin-top: 8px; font-size: 15px; font-weight: 500; }
+.lot .price { position: absolute; right: 14px; top: 12px; padding: 4px 10px; background: #fff; color: var(--ink); border: 2px solid var(--ink); font: 800 16px/1.2 var(--body); }
+.lot::after { content: ""; position: absolute; inset: 8px; border: 1.5px solid currentColor; opacity: 0.35; pointer-events: none; }
+.deck-note { margin-top: 26px; font-size: 14px; font-weight: 500; }
+
+/* tamale friday */
+.friday { padding: 0 0 100px; }
+.friday-box { display: grid; grid-template-columns: 1fr 1fr; background: var(--cobalt); color: #fff; border: 4px solid var(--ink); box-shadow: 10px 10px 0 var(--marigold); }
+.friday-box > div { padding: clamp(28px, 5vw, 60px); }
+.friday h2 { font-size: clamp(2.6rem, 1.6rem + 3vw, 4.2rem); color: var(--marigold); }
+.friday p { margin-top: 16px; max-width: 38ch; font-size: 18px; }
+.friday .btn { margin-top: 28px; }
+.friday figure { position: relative; border-left: 4px solid var(--ink); }
+.friday img { width: 100%; height: 100%; object-fit: cover; }
+
+/* reviews */
+.reviews { padding: 100px 0; background: var(--marigold); border-top: 4px solid var(--ink); }
+.reviews .sec-head h2 { color: var(--ink); }
+.stars { letter-spacing: 2px; color: var(--chili); }
+.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.quote { padding: 28px; background: var(--paper); border: 3px solid var(--ink); }
+.quote blockquote { margin-top: 12px; font-size: 18px; font-weight: 500; }
+.quote figcaption { margin-top: 16px; display: flex; gap: 8px; align-items: center; font-size: 14px; }
+
+/* visit */
+.visit { padding: 100px 0 110px; }
+.visit .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.visit h2 { font-size: clamp(2.6rem, 1.6rem + 3vw, 4.2rem); color: var(--cobalt); }
+.visit address { margin-top: 18px; font-style: normal; font-size: 20px; font-weight: 500; }
+.visit .hero-btns { margin-top: 26px; }
+.hours { padding: 26px 30px; background: #fff; border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--cobalt); }
+.hours h3 { font-size: 30px; margin-bottom: 10px; }
+.hours li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 2px dotted #d9cdb7; font-weight: 500; }
+.hours li:last-child { border: 0; }
+.hours .today { color: var(--chili); font-weight: 800; }
+.foot { padding: 30px 0 36px; background: var(--ink); color: #d5d7e8; font-size: 14px; }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 30px; }
+
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .hero .wrap, .visit .wrap { grid-template-columns: 1fr; }
+  .hero { padding-top: 44px; }
+  .fan { height: 440px; max-width: 460px; width: 100%; margin-inline: auto; }
+  .card { width: 200px; }
+  .deck { grid-template-columns: repeat(2, 1fr); }
+  .friday-box { grid-template-columns: 1fr; }
+  .friday figure { border-left: 0; border-top: 4px solid var(--ink); }
+  .friday img { aspect-ratio: 4 / 3; }
+  .quotes { grid-template-columns: 1fr; }
 }
-/* ---------- Booking / ordering preview ---------- */
-dialog.flow { border: 0; padding: 0; width: min(560px, 100% - 1.5rem); max-height: min(820px, 100dvh - 1.5rem); border-radius: 22px; background: var(--surface); color: var(--ink); box-shadow: 0 24px 64px rgba(0,0,0,.28); }
-dialog.flow[open] { display: flex; flex-direction: column; }
-dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
-.flow-head { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.3rem; border-bottom: 1px solid var(--line); }
-.flow-head h3 { margin: 0; font-size: 1.35rem; }
-.flow-close { border: 0; background: transparent; font-size: 1.6rem; line-height: 1; cursor: pointer; color: var(--ink-soft); }
-.flow-note { margin: 0; background: #fff4d6; color: #5a3f00; font-size: .84rem; font-weight: 600; text-align: center; padding: .45rem 1rem; }
-.flow-body { padding: 1.2rem 1.3rem 1.4rem; overflow: auto; flex: 1; min-height: 0; }
-.flow-step-label { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .8rem; }
-.opt { display: flex; width: 100%; justify-content: space-between; gap: 1rem; align-items: center; text-align: left; font: inherit; background: var(--bg); color: var(--ink); border: 2px solid var(--line); border-radius: 14px; padding: .8rem 1rem; margin-bottom: .6rem; cursor: pointer; }
-.opt:hover, .opt[aria-pressed="true"] { border-color: var(--accent); }
-.flow-group { margin: 1rem 0 .5rem; font-family: var(--display); font-size: 1.1rem; color: var(--accent); }
-.flow-group:first-of-type { margin-top: 0; }
-.opt small { display: block; color: var(--ink-soft); }
-.qty { display: inline-flex; align-items: center; gap: .5rem; }
-.qty button { width: 2rem; height: 2rem; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); font: inherit; font-weight: 700; cursor: pointer; color: var(--ink); }
-.days { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; margin-bottom: 1rem; }
-.slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
-.chip { font: inherit; font-size: .92rem; background: var(--bg); color: var(--ink); border: 2px solid var(--line); border-radius: 12px; padding: .55rem .3rem; cursor: pointer; text-align: center; }
-.chip small { display: block; font-size: .75rem; color: var(--ink-soft); }
-.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.chip[aria-pressed="true"] small { color: inherit; }
-.chip[disabled] { opacity: .4; cursor: not-allowed; text-decoration: line-through; }
-.field { margin-bottom: .9rem; }
-.field label { display: block; font-weight: 600; font-size: .9rem; margin-bottom: .3rem; }
-.field input { width: 100%; font: inherit; padding: .7rem .9rem; border-radius: 12px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); }
-.flow-foot { display: flex; justify-content: space-between; gap: .8rem; padding: 1rem 1.3rem; border-top: 1px solid var(--line); }
-.flow-foot .btn[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; transform: none; }
-.summary { background: var(--bg); border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
-.done { text-align: center; padding: 1rem 0; }
-.done .big { font-size: 3rem; line-height: 1; margin-bottom: .6rem; }
+@media (max-width: 480px) {
+  .logo { font-size: 22px; }
+  .top .btn { min-height: 42px; padding: 0 14px; font-size: 15px; box-shadow: 3px 3px 0 var(--ink); }
+  .fan { height: 360px; }
+  .card { width: 160px; padding: 8px 8px 0; }
+  .card b { font-size: 18px; }
+  .card-num { width: 32px; height: 32px; font-size: 14px; left: 14px; top: 14px; }
+  .card--2 { left: 22%; }
+  .deck { gap: 14px; }
+  .lot { min-height: 210px; padding: 12px; }
+  .lot h3 { font-size: 26px; }
+  .lot p { display: none; }
+}
 </style>
 </head>
 <body>
-<div class="demo-note">Example site by Ridge. Panadería El Girasol is a made-up business; items tagged “Example” are placeholders.</div>
+<a class="skip" href="#main">Skip to the page</a>
+<div class="demo-note">Example site by <a href="../../">Ridge</a>. Panadería El Girasol is a made-up business; items tagged “Example” are placeholders.</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="flag" viewBox="0 0 74 80"><path fill="currentColor" fill-rule="evenodd" d="M0 0h74v66l-6 8-6-8-6 8-6-8-6 8-6-8-6 8-6-8-6 8-6-8-6 8-6-8-6 8zM37 16l7 10-7 10-7-10zM16 22a5 5 0 1 0 0.1 0zM58 22a5 5 0 1 0 0.1 0zM20 44h34v6H20zM12 54l4 4-4 4-4-4zM62 54l4 4-4 4-4-4zM37 52l3 4-3 4-3-4z"/></symbol>
+</svg>
+<div class="picado" aria-hidden="true"><div class="flags" id="flags"></div></div>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top">Panadería El Girasol<small>Mexican Bakery · San Luis Obispo</small></a>
-    <nav class="links" aria-label="Main">
-      <a href="#menu">Menu</a><a href="#reviews">Reviews</a><a href="#visit">Hours &amp; location</a>
-    </nav>
-    <button class="btn small" data-open-flow>Order online</button>
+    <a class="logo" href="#main">El <span>Girasol</span></a>
+    <nav class="nav" aria-label="Sections"><a href="#loteria">Pan dulce</a><a href="#friday">Tamales</a><a href="#visit">Hours</a></nav>
+    <a class="btn" href="tel:+18055550101">Order ahead</a>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-grid has-photo">
-      <div>
-      <span class="eyebrow">Panadería Mexicana · San Luis Obispo</span>
-      <h1>Pan dulce, fresh every morning</h1>
-      <p class="tagline">Conchas, cuernos, bolillos and homemade tamales, baked before sunrise and open 5 AM to 7 PM every day. Order online and skip the line.</p>
-      <div class="hero-actions">
-        <button class="btn" data-open-flow>Order online</button>
-        <a class="btn ghost" href="tel:+18055550101">Call (805) 555-0101</a>
-      </div>
-      <span class="rating-pill"><span class="st">★★★★½</span>4.7 on Google · 318 reviews <span class="tag">Example</span></span>
-      </div>
-      <figure class="hero-photo"><img src="images/photo-1.jpg" alt="Sugar-topped Mexican sweet bread" fetchpriority="high"><span class="photo-tag">Example photo</span></figure>
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Pan dulce <em>y más.</em></h1>
+      <p class="hero-lede">A Mexican panadería in San Luis Obispo. Ovens on at 3, doors open at 5, tamales every Friday.</p>
+      <div class="hero-btns"><a class="btn" href="tel:+18055550101">Order ahead</a><a class="btn btn--white" href="#loteria">See the case</a></div>
+      <p class="hero-meta"><span class="stars" aria-hidden="true">★★★★★</span> 4.7 from 318 reviews <span class="ex-tag">Example</span></p>
     </div>
-  </section>
-
-  <div class="wrap highlights">
-    <div class="hl reveal"><div class="ic" aria-hidden="true">🌅</div><strong>Open early, every day</strong><span>5 AM to 7 PM, seven days a week.</span></div><div class="hl reveal"><div class="ic" aria-hidden="true">📱</div><strong>Order online</strong><span>Order anything in the case, from one concha to tamales by the dozen.</span></div><div class="hl reveal"><div class="ic" aria-hidden="true">🥖</div><strong>Baked fresh daily</strong><span>Pan dulce, bolillos and traditional Mexican pastries.</span></div>
+    <div class="fan">
+      <div class="card card--1"><span class="card-num">7</span><figure><img src="images/b.jpg" width="960" height="542" alt="Croissants on a tray"></figure><b>El Cuerno</b></div>
+      <div class="card card--2"><span class="card-num">1</span><figure><img src="images/hero.jpg" width="1024" height="684" alt="A round loaf of bread with yellow flowers"><span class="photo-tag">Example photo</span></figure><b>El Pan</b></div>
+      <div class="card card--3"><span class="card-num">12</span><figure><img src="images/d.jpg" width="1400" height="934" alt="Golden bolillo rolls"></figure><b>El Bolillo</b></div>
+    </div>
   </div>
+</section>
 
-  <div class="wrap photo-strip"><figure class="strip-photo reveal"><img src="images/photo-2.jpg" alt="A tray of fresh pastries" loading="lazy"><span class="photo-tag">Example photo</span></figure><figure class="strip-photo reveal"><img src="images/photo-3.jpg" alt="Sweet bread rolls" loading="lazy"><span class="photo-tag">Example photo</span></figure></div>
+<div class="band" aria-hidden="true"><p>Conchas <span>✶</span> Cuernos <span>✶</span> Orejas <span>✶</span> Bolillos <span>✶</span> Tamales los viernes <span>✶</span> Café de olla <span>✶</span> Conchas <span>✶</span> Cuernos <span>✶</span> Orejas <span>✶</span> Bolillos <span>✶</span> Tamales los viernes <span>✶</span> Café de olla <span>✶</span></p></div>
 
-  <section id="menu">
-    <div class="wrap">
-      <h2>Menu</h2>
-      <p class="section-intro">Example items and prices, to show how a full menu looks on the site.</p>
-      <div class="menu"><div class="menu-group reveal"><h3>Pan Dulce <span class="tag">Example</span></h3><ul><li><div><strong>Conchas</strong><span class="desc">Vanilla or chocolate</span></div><span class="price">$1.50</span></li><li><div><strong>Cuernos</strong><span class="desc">Sweet crescent rolls</span></div><span class="price">$1.75</span></li><li><div><strong>Orejas</strong><span class="desc">Flaky and caramelized</span></div><span class="price">$1.75</span></li><li><div><strong>Empanadas</strong><span class="desc">Pumpkin, pineapple or cream</span></div><span class="price">$2.00</span></li></ul></div>
-<div class="menu-group reveal"><h3>Tamales <span class="tag">Example</span></h3><ul><li><div><strong>Beef</strong><span class="desc">Red chile</span></div><span class="price">$3.00</span></li><li><div><strong>Jalapeño &amp; Cheese</strong><span class="desc">A customer favorite</span></div><span class="price">$3.00</span></li><li><div><strong>Pork</strong><span class="desc">Red chile</span></div><span class="price">$3.00</span></li><li><div><strong>By the Dozen</strong><span class="desc">Mix and match</span></div><span class="price">$30</span></li></ul></div>
-<div class="menu-group reveal"><h3>Bread &amp; Drinks <span class="tag">Example</span></h3><ul><li><div><strong>Bolillos</strong><span class="desc">Baked fresh every morning</span></div><span class="price">$0.75</span></li><li><div><strong>Champurrado</strong><span class="desc">Hot chocolate atole</span></div><span class="price">$3.50</span></li><li><div><strong>Café de Olla</strong><span class="desc">Cinnamon &amp; piloncillo</span></div><span class="price">$3.00</span></li></ul></div></div>
-    </div>
-  </section>
+<section class="loteria" id="loteria" aria-labelledby="lot-title">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="lot-title">¡Lotería!</h2><p>Pick your cards. Everything is baked here each morning, and the case is full by 6 AM.</p></div>
+    <ul class="deck">
+      <li class="lot" style="--c:#ec5f9a"><span class="n">No. 1</span><span class="price">$1.50</span><h3>La Concha</h3><p>Soft sweet roll, crackly sugar shell.</p></li>
+      <li class="lot" style="--c:#f6a723"><span class="n">No. 2</span><span class="price">$1.75</span><h3>El Cuerno</h3><p>Buttery horn, lightly sugared.</p></li>
+      <li class="lot" style="--c:#1f3fbf;--t:#fff"><span class="n">No. 3</span><span class="price">$1.50</span><h3>La Oreja</h3><p>Caramelized puff pastry that shatters.</p></li>
+      <li class="lot" style="--c:#fff"><span class="n">No. 4</span><span class="price">$1.25</span><h3>El Marranito</h3><p>Molasses-ginger cookie bread.</p></li>
+      <li class="lot" style="--c:#2f9e6b;--t:#fff"><span class="n">No. 5</span><span class="price">$2.25</span><h3>La Empanada</h3><p>Spiced pumpkin in a tender crust.</p></li>
+      <li class="lot" style="--c:#d7332b;--t:#fff"><span class="n">No. 6</span><span class="price">3 / $2</span><h3>El Bolillo</h3><p>Crusty outside, soft inside.</p></li>
+      <li class="lot" style="--c:#fff"><span class="n">No. 7</span><span class="price">$4.50</span><h3>Tres Leches</h3><p>Milk-soaked cake, whipped cream.</p></li>
+      <li class="lot" style="--c:#f6a723"><span class="n">No. 8</span><span class="price">$3</span><h3>Café de Olla</h3><p>Cinnamon and piloncillo coffee.</p></li>
+    </ul>
+    <p class="deck-note"><span class="ex-tag">Example</span> Items and prices are placeholders to show how a menu looks.</p>
+  </div>
+</section>
 
-  <section id="reviews" class="alt">
-    <div class="wrap">
-      <h2>What people say</h2>
-      <p class="section-intro">4.7 stars from 318 reviews on Google. These reviews are examples.</p>
-      <div class="reviews"><figure class="review reveal"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>The conchas are still warm at 6 in the morning. I grab a dozen for the office every Friday and they are gone by nine.</blockquote><figcaption>Example review · 3 weeks ago</figcaption></figure>
-<figure class="review reveal"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>Best tamales in town, hands down. The jalapeño and cheese ones are my favorite, and ordering ahead online made pickup so easy.</blockquote><figcaption>Example review · 2 months ago</figcaption></figure>
-<figure class="review reveal"><div class="review-stars" aria-label="4 out of 5 stars">★★★★</div><blockquote>Friendly staff and a huge selection of pan dulce. Gets busy on weekends, so order online and skip the line.</blockquote><figcaption>Example review · a month ago</figcaption></figure></div>
-    </div>
-  </section>
-
-  <section id="visit">
-    <div class="wrap">
-      <h2>Hours &amp; location</h2>
-      <div class="visit">
-        <div class="card">
-          <p class="contact-line"><span class="ic" aria-hidden="true">📍</span><span>100 Main St, San Luis Obispo, CA 93401<br><a href="https://www.google.com/maps/search/?api=1&query=Panader%C3%ADa%20El%20Girasol%2C%20100%20Main%20St%2C%20San%20Luis%20Obispo%2C%20CA%2093401" target="_blank" rel="noopener">Get directions</a></span></p>
-          <p class="contact-line"><span class="ic" aria-hidden="true">📞</span><a href="tel:+18055550101">(805) 555-0101</a></p>
-          <table class="hours" aria-label="Opening hours"><tbody>
-<tr data-day="Monday"><th>Monday</th><td>5:00 AM – 7:00 PM</td></tr>
-<tr data-day="Tuesday"><th>Tuesday</th><td>5:00 AM – 7:00 PM</td></tr>
-<tr data-day="Wednesday"><th>Wednesday</th><td>5:00 AM – 7:00 PM</td></tr>
-<tr data-day="Thursday"><th>Thursday</th><td>5:00 AM – 7:00 PM</td></tr>
-<tr data-day="Friday"><th>Friday</th><td>5:00 AM – 7:00 PM</td></tr>
-<tr data-day="Saturday"><th>Saturday</th><td>5:00 AM – 7:00 PM</td></tr>
-<tr data-day="Sunday"><th>Sunday</th><td>5:00 AM – 7:00 PM</td></tr>
-          </tbody></table>
-        </div>
-        <div class="map"><iframe title="Map of Panadería El Girasol" loading="lazy" src="https://www.google.com/maps?q=Panader%C3%ADa%20El%20Girasol%2C%20100%20Main%20St%2C%20San%20Luis%20Obispo%2C%20CA%2093401&output=embed"></iframe></div>
+<section class="friday" id="friday" aria-labelledby="fri-title">
+  <div class="wrap">
+    <div class="friday-box">
+      <div>
+        <h2 id="fri-title">Tamale Friday.</h2>
+        <p>Pork in red chile, chicken in green, and jalapeño with cheese, made by hand every Friday. $30 a dozen. Call by Thursday and we'll hold yours.</p>
+        <a class="btn" href="tel:+18055550101">Reserve a dozen</a>
       </div>
+      <figure><img src="images/c.jpg" width="1024" height="732" alt="Hands working dough" loading="lazy"><span class="photo-tag">Example photo</span></figure>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="reviews" aria-labelledby="rev-title">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="rev-title">Dicen los clientes</h2><p><span class="stars" aria-hidden="true">★★★★★</span> 4.7 from 318 reviews <span class="ex-tag">Example</span></p></div>
+    <div class="quotes">
+      <figure class="quote"><span class="stars" aria-label="5 stars">★★★★★</span><blockquote>The conchas are still warm at 6 in the morning. I grab a dozen for the office every Friday and they are gone by nine.</blockquote><figcaption>3 weeks ago <span class="ex-tag">Example</span></figcaption></figure>
+      <figure class="quote"><span class="stars" aria-label="5 stars">★★★★★</span><blockquote>Best tamales in town, hands down. The jalapeño and cheese ones are my favorite, and ordering ahead made pickup so easy.</blockquote><figcaption>2 months ago <span class="ex-tag">Example</span></figcaption></figure>
+      <figure class="quote"><span class="stars" aria-label="4 stars">★★★★☆</span><blockquote>Friendly staff and a huge selection of pan dulce. Gets busy on weekends, so order ahead and skip the line.</blockquote><figcaption>a month ago <span class="ex-tag">Example</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit" aria-labelledby="visit-title">
+  <div class="wrap">
+    <div>
+      <h2 id="visit-title">Ven temprano.</h2>
+      <address>100 Main St<br>San Luis Obispo, CA 93401</address>
+      <div class="hero-btns"><a class="btn" href="tel:+18055550101">Call (805) 555-0101</a><a class="btn btn--white" href="#visit">Directions</a></div>
+    </div>
+    <div class="hours">
+      <h3>Horario</h3>
+      <ul id="hours">
+        <li><span>Monday</span><span>5 AM – 7 PM</span></li><li><span>Tuesday</span><span>5 AM – 7 PM</span></li><li><span>Wednesday</span><span>5 AM – 7 PM</span></li><li><span>Thursday</span><span>5 AM – 7 PM</span></li><li><span>Friday</span><span>5 AM – 7 PM</span></li><li><span>Saturday</span><span>5 AM – 7 PM</span></li><li><span>Sunday</span><span>5 AM – 7 PM</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer>
-  <div class="wrap">© Panadería El Girasol · 100 Main St, San Luis Obispo, CA 93401 · (805) 555-0101</div>
-</footer>
-
-<div class="sticky-cta">
-  <a class="btn ghost" href="tel:+18055550101">Call</a>
-  <button class="btn" data-open-flow>Order online</button>
-</div>
-
-<dialog class="flow" id="flow" aria-labelledby="flow-title">
-  <div class="flow-head"><h3 id="flow-title">Order online</h3><button class="flow-close" aria-label="Close" data-close>×</button></div>
-  <p class="flow-note">Preview: this shows how online ordering will work. Nothing is ordered.</p>
-  <div class="flow-body" id="flow-body"></div>
-  <div class="flow-foot"><button class="btn ghost small" id="flow-back">Back</button><button class="btn small" id="flow-next">Next</button></div>
-</dialog>
-
+<footer class="foot"><div class="wrap"><span>Panadería El Girasol, 100 Main St, San Luis Obispo</span><span>An example site by <a href="../../">Ridge</a>. This business is made up.</span></div></footer>
 <script>
-const KIND = "order";
-const ITEMS = [{"name": "Conchas", "detail": "Vanilla or chocolate", "price": "$1.50", "group": "Pan Dulce"}, {"name": "Cuernos", "detail": "Sweet crescent rolls", "price": "$1.75", "group": "Pan Dulce"}, {"name": "Orejas", "detail": "Flaky and caramelized", "price": "$1.75", "group": "Pan Dulce"}, {"name": "Empanadas", "detail": "Pumpkin, pineapple or cream", "price": "$2.00", "group": "Pan Dulce"}, {"name": "Beef", "detail": "Red chile", "price": "$3.00", "group": "Tamales"}, {"name": "Jalape\u00f1o & Cheese", "detail": "A customer favorite", "price": "$3.00", "group": "Tamales"}, {"name": "Pork", "detail": "Red chile", "price": "$3.00", "group": "Tamales"}, {"name": "By the Dozen", "detail": "Mix and match", "price": "$30", "group": "Tamales"}, {"name": "Bolillos", "detail": "Baked fresh every morning", "price": "$0.75", "group": "Bread & Drinks"}, {"name": "Champurrado", "detail": "Hot chocolate atole", "price": "$3.50", "group": "Bread & Drinks"}, {"name": "Caf\u00e9 de Olla", "detail": "Cinnamon & piloncillo", "price": "$3.00", "group": "Bread & Drinks"}];
-const HOURS = ["Monday: 5:00 AM \u2013 7:00 PM", "Tuesday: 5:00 AM \u2013 7:00 PM", "Wednesday: 5:00 AM \u2013 7:00 PM", "Thursday: 5:00 AM \u2013 7:00 PM", "Friday: 5:00 AM \u2013 7:00 PM", "Saturday: 5:00 AM \u2013 7:00 PM", "Sunday: 5:00 AM \u2013 7:00 PM"];
-const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
-// Fade cards and photos in as they scroll into view
-if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
-  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-} else document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
-
-// Highlight today's hours
-const todayName = DAYS[new Date().getDay()];
-document.querySelectorAll(".hours tr").forEach(tr => tr.classList.toggle("today", tr.dataset.day === todayName));
-
-// Open hours per day -> [openMinutes, closeMinutes] or null
-function parseHours(day) {
-  const line = HOURS.find(h => h.startsWith(day + ":"));
-  if (!line || /closed/i.test(line)) return null;
-  const m = line.replace(/[\u202f\u2009]/g, " ").match(/(\d+):(\d+)\s*(AM|PM)\s*[–-]\s*(\d+):(\d+)\s*(AM|PM)/i);
-  if (!m) return null;
-  const toMin = (h, mi, ap) => ((+h % 12) + (/pm/i.test(ap) ? 12 : 0)) * 60 + +mi;
-  return [toMin(m[1], m[2], m[3]), toMin(m[4], m[5], m[6])];
-}
-const fmt = min => { const h = Math.floor(min / 60), m = min % 60; return `${(h % 12) || 12}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`; };
-
-const st = { step: 0, item: null, cart: {}, day: null, slot: null, name: "", phone: "" };
-const dlg = document.getElementById("flow"), body = document.getElementById("flow-body");
-const next = document.getElementById("flow-next"), back = document.getElementById("flow-back");
-
-function upcomingDays() {
-  const out = [];
-  for (let i = 0; out.length < 8 && i < 14; i++) {
-    const d = new Date(); d.setDate(d.getDate() + i);
-    const day = { date: d, open: parseHours(DAYS[d.getDay()]) };
-    if (day.open && !slotsFor(day).length) day.open = null;  // closed for the rest of today
-    out.push(day);
-  }
-  return out;
-}
-function slotsFor(day) {
-  if (!day.open) return [];
-  const [o, c] = day.open, out = [];
-  // Today: only times at least 30 minutes from now
-  const now = new Date(), isToday = day.date.toDateString() === now.toDateString();
-  const earliest = isToday ? now.getHours() * 60 + now.getMinutes() + 30 : 0;
-  const step = KIND === "book" ? 30 : 15;
-  for (let t = Math.max(o, KIND === "book" ? o : o + 30); t + (KIND === "book" ? 45 : 0) <= c; t += step) if (t >= earliest) out.push(t);
-  // Demo only: mark some times as taken so it looks real (same every time)
-  return out.slice(0, 18).map((t, i) => ({ t, taken: KIND === "book" && (i * 7 + day.date.getDate()) % 5 === 0 }));
-}
-function cartTotal() { return Object.entries(st.cart).reduce((t, [i, q]) => t + q * parseFloat(ITEMS[i].price.replace(/[^0-9.]/g, "")), 0); }
-function cartCount() { return Object.values(st.cart).reduce((a, b) => a + b, 0); }
-
-function render() {
-  back.style.visibility = st.step === 0 || st.step === 3 ? "hidden" : "visible";
-  next.style.display = st.step === 3 ? "none" : "";
-  if (st.step === 0) {
-    body.innerHTML = `<div class="flow-step-label">${KIND === "book" ? "1 · Choose a service" : "1 · Choose what you'd like"}</div>` +
-      ITEMS.map((it, i) => (it.group && it.group !== (ITEMS[i - 1] || {}).group ? `<h4 class="flow-group">${it.group}</h4>` : "") + (KIND === "book"
-        ? `<button class="opt" data-i="${i}" aria-pressed="${st.item === i}"><span><strong>${it.name}</strong><small>${it.detail}</small></span><span class="price">${it.price}</span></button>`
-        : `<div class="opt" style="cursor:default"><span><strong>${it.name}</strong><small>${it.detail} · ${it.price}</small></span><span class="qty"><button data-dec="${i}" aria-label="Remove one">−</button><span>${st.cart[i] || 0}</span><button data-inc="${i}" aria-label="Add one">+</button></span></div>`)
-      ).join("");
-    body.querySelectorAll("[data-i]").forEach(b => b.onclick = () => { st.item = +b.dataset.i; render(); });
-    const keep = fn => () => { const y = body.scrollTop; fn(); render(); body.scrollTop = y; };
-    body.querySelectorAll("[data-inc]").forEach(b => b.onclick = keep(() => { st.cart[b.dataset.inc] = (st.cart[b.dataset.inc] || 0) + 1; }));
-    body.querySelectorAll("[data-dec]").forEach(b => b.onclick = keep(() => { st.cart[b.dataset.dec] = Math.max(0, (st.cart[b.dataset.dec] || 0) - 1); }));
-    next.disabled = KIND === "book" ? st.item === null : cartCount() === 0;
-    next.textContent = KIND === "order" && cartCount() ? `Next · ${cartCount()} item${cartCount() > 1 ? "s" : ""} · $${cartTotal().toFixed(2)}` : "Next";
-  } else if (st.step === 1) {
-    const days = upcomingDays();
-    if (st.day === null) st.day = days.findIndex(d => d.open);
-    const slots = slotsFor(days[st.day]);
-    body.innerHTML = `<div class="flow-step-label">2 · ${KIND === "book" ? "Pick a day and time" : "Pick a pickup time"}</div><div class="days">` +
-      days.map((d, i) => `<button class="chip" data-d="${i}" aria-pressed="${st.day === i}" ${d.open ? "" : "disabled"}>${d.date.toLocaleDateString(undefined, { weekday: "short" })}<small>${d.date.toLocaleDateString(undefined, { month: "short", day: "numeric" })}</small></button>`).join("") +
-      `</div><div class="slots">` + slots.map(s => `<button class="chip" data-t="${s.t}" aria-pressed="${st.slot === s.t}" ${s.taken ? "disabled" : ""}>${fmt(s.t)}</button>`).join("") + `</div>`;
-    body.querySelectorAll("[data-d]").forEach(b => b.onclick = () => { st.day = +b.dataset.d; st.slot = null; render(); });
-    body.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { st.slot = +b.dataset.t; render(); });
-    next.disabled = st.slot === null;
-    next.textContent = "Next";
-  } else if (st.step === 2) {
-    const d = upcomingDays()[st.day].date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
-    const what = KIND === "book" ? ITEMS[st.item].name : Object.entries(st.cart).filter(([, q]) => q).map(([i, q]) => `${q} × ${ITEMS[i].name}`).join("<br>");
-    body.innerHTML = `<div class="flow-step-label">3 · Your details</div><div class="summary"><strong>${what}</strong><br>${d} at ${fmt(st.slot)}</div>
-      <div class="field"><label for="f-name">Name</label><input id="f-name" autocomplete="off" value="${st.name}"></div>
-      <div class="field"><label for="f-phone">Phone (for a text reminder)</label><input id="f-phone" type="tel" autocomplete="off" value="${st.phone}"></div>`;
-    const n = body.querySelector("#f-name"), ph = body.querySelector("#f-phone");
-    const check = () => { st.name = n.value; st.phone = ph.value; next.disabled = !n.value.trim(); };
-    n.oninput = ph.oninput = check; check();
-    next.textContent = KIND === "book" ? "Book appointment" : "Place order";
-  } else {
-    body.innerHTML = `<div class="done"><div class="big">✓</div><h3>${KIND === "book" ? "You're booked!" : "Order received!"}</h3>
-      <p>This is where customers would see their confirmation and get a text ${KIND === "book" ? "reminder before their appointment" : "when their order is ready"}.</p>
-      <p style="color:var(--ink-soft);font-size:.9rem">(Preview only. Nothing was ${KIND === "book" ? "booked" : "ordered"}.)</p>
-      <button class="btn" data-close>Done</button></div>`;
-    body.querySelector("[data-close]").onclick = () => dlg.close();
-  }
-}
-next.onclick = () => { st.step++; render(); };
-back.onclick = () => { st.step = Math.max(0, st.step - 1); render(); };
-document.querySelectorAll("[data-open-flow]").forEach(b => b.onclick = () => {
-  Object.assign(st, { step: 0, item: null, cart: {}, day: null, slot: null });
-  render(); dlg.showModal();
-});
-dlg.querySelector(".flow-head [data-close]").onclick = () => dlg.close();
-dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  // string of flags across the top, as many as fit
+  const f = document.getElementById('flags');
+  f.innerHTML = '<svg><use href="#flag"/></svg>'.repeat(Math.ceil(innerWidth / 80) + 2);
+  const rows = document.querySelectorAll('#hours li'), day = (new Date().getDay() + 6) % 7;
+  if (rows[day]) rows[day].classList.add('today');
 </script>
 </body>
 </html>

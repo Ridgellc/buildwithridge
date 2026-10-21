@@ -4,344 +4,228 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Copper Comb Barbershop | Barbershop in Paso Robles, CA</title>
-<meta name="description" content="Haircuts, fades, beard trims and hot towel shaves just off the square. Walk in, or book your chair online any time.">
+<title>Copper Comb Barbershop | Paso Robles (example site)</title>
+<meta name="description" content="Example site by Ridge for a made-up barbershop: cuts, fades, beard work and hot towel shaves.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23183a2e'/%3E%3Cpath d='M16 5l11 11-11 11L5 16z' fill='none' stroke='%23c46f3c' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../example.css">
 <style>
 :root {
-  --bg: #f3f6f9; --surface: #ffffff; --ink: #121a26; --ink-soft: #526072;
-  --accent: #1d5fae; --accent-ink: #ffffff; --accent-soft: #d4e4f7;
-  --deco1: #d4e4f7; --deco2: #f6dccd; --line: #dfe6ee;
-  --display: 'Bebas Neue', 'Arial Narrow', sans-serif; --body: 'Inter', system-ui, sans-serif;
-  --radius: 18px;
+  --forest: #183a2e; --deep: #10291f; --copper: #c46f3c; --copper-lt: #e0a477; --cream: #f3ead8; --mist: #b9c7bd;
+  --display: "Limelight", Georgia, serif; --body: "Josefin Sans", system-ui, sans-serif;
+  --wrap: min(1140px, 100% - 40px);
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-a { color: inherit; }
-h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.1; margin: 0 0 .5em; }
-h2 { font-size: clamp(1.9rem, 6vw, 2.6rem); }
-.wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
-.demo-note { background: #fff4d6; color: #5a3f00; border-bottom: 2px dashed #e2b44a; text-align: center; font-size: .88rem; font-weight: 600; padding: .55rem 1rem; }
-header.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-header.top .btn { display: none; }
-header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 0; }
-.brand { font-family: var(--display); font-size: clamp(1.1rem, 4.4vw, 1.4rem); font-weight: 600; text-decoration: none; line-height: 1.1; }
-.brand small { display: block; font-family: var(--body); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-nav.links { display: none; gap: 1.6rem; font-weight: 600; font-size: .95rem; }
-nav.links a { text-decoration: none; color: var(--ink-soft); }
-nav.links a:hover { color: var(--accent); }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 0; cursor: pointer; font: inherit; font-weight: 700; text-decoration: none; border-radius: 999px; padding: .85rem 1.5rem; background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 35%, transparent); transition: transform .15s; }
-.btn:hover { transform: translateY(-1px); }
-.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--line); }
-.btn.small { padding: .55rem 1.1rem; font-size: .92rem; }
-.hero { position: relative; overflow: hidden; padding: clamp(3.5rem, 12vw, 7rem) 0 clamp(3rem, 9vw, 5.5rem); }
-.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; filter: blur(2px); z-index: 0; }
-.hero::before { width: 520px; height: 520px; right: -160px; top: -140px; background: radial-gradient(circle at 30% 30%, var(--deco1), transparent 68%); }
-.hero::after { width: 380px; height: 380px; left: -140px; bottom: -180px; background: radial-gradient(circle at 60% 40%, var(--deco2), transparent 70%); }
-.hero .wrap { position: relative; z-index: 1; }
-.hero-grid { display: grid; gap: 2.2rem; align-items: center; }
-.hero-photo, .strip-photo { position: relative; margin: 0; border-radius: 24px; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,.14); }
-.hero-photo img, .strip-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.hero-photo { aspect-ratio: 4 / 3; }
-.hero-photo:hover img, .strip-photo:hover img { transform: scale(1.04); }
-.photo-tag { position: absolute; left: .7rem; bottom: .7rem; font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: rgba(255,244,214,.92); color: #5a3f00; border: 1px dashed #e2b44a; border-radius: 6px; padding: .12rem .45rem; }
-.photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-top: clamp(2.5rem, 7vw, 3.5rem); }
-.strip-photo { aspect-ratio: 4 / 3; }
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .hero-photo img, .strip-photo img { transition: none; } }
-@media (max-width: 540px) { .photo-strip { grid-template-columns: 1fr; } }
-.eyebrow { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-.hero h1 { font-size: clamp(2.6rem, 10vw, 4.6rem); max-width: 14ch; letter-spacing: -.01em; }
-.tagline { font-size: clamp(1.1rem, 4vw, 1.35rem); color: var(--ink-soft); max-width: 36ch; margin: 0 0 1.8rem; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 2rem; }
-.rating-pill { display: inline-flex; align-items: center; gap: .6rem; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .5rem 1rem .5rem .8rem; font-weight: 600; font-size: .95rem; }
-.rating-pill .st { color: #e8a317; letter-spacing: .05em; }
-.highlights { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: -1rem; padding-bottom: 1rem; }
-.hl { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
-.hl .ic { font-size: 1.6rem; line-height: 1; margin-bottom: .6rem; }
-.hl strong { display: block; font-family: var(--display); font-size: 1.2rem; margin-bottom: .2rem; }
-.hl span { color: var(--ink-soft); font-size: .95rem; }
-section { padding: clamp(3.5rem, 10vw, 5.5rem) 0; }
-section.alt { background: var(--surface); border-block: 1px solid var(--line); }
-.section-intro { color: var(--ink-soft); max-width: 52ch; margin: -.3rem 0 2.2rem; }
-.tag { display: inline-block; vertical-align: middle; font-family: var(--body); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: #fff4d6; color: #5a3f00; border: 1px dashed #e2b44a; border-radius: 6px; padding: .1rem .45rem; margin-left: .4rem; }
-.menu { display: grid; gap: 1.4rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-.menu-group { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.6rem; }
-section:not(.alt) .menu-group { background: var(--surface); }
-.menu-group h3 { font-size: 1.45rem; color: var(--accent); }
-.menu-group ul { list-style: none; margin: 0; padding: 0; }
-.menu-group li { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px dashed var(--line); }
-.menu-group li:last-child { border-bottom: 0; }
-.menu-group .desc { display: block; color: var(--ink-soft); font-size: .9rem; }
-.price { font-family: var(--body); font-weight: 700; white-space: nowrap; color: var(--ink); font-variant-numeric: tabular-nums; }
-.reviews { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.review { margin: 0; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; }
-section:not(.alt) .review { background: var(--surface); }
-.review-stars { color: #e8a317; letter-spacing: .1em; margin-bottom: .6rem; }
-.review blockquote { margin: 0 0 1rem; font-size: 1.02rem; flex: 1; }
-.review figcaption { color: var(--ink-soft); font-size: .85rem; font-weight: 600; }
-.visit { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; }
-section.alt .card { background: var(--bg); }
-.hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-.hours th, .hours td { padding: .55rem 0; border-bottom: 1px solid var(--line); text-align: left; font-weight: 500; }
-.hours td { text-align: right; }
-.hours tr.today th, .hours tr.today td { color: var(--accent); font-weight: 700; }
-.hours tr.today th::after { content: " · Today"; font-size: .82rem; }
-.contact-line { display: flex; gap: .7rem; align-items: flex-start; margin: 0 0 .9rem; }
-.contact-line .ic { width: 1.4rem; flex: none; text-align: center; }
-.map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); min-height: 320px; }
-.map iframe { width: 100%; height: 100%; min-height: 320px; border: 0; display: block; }
-footer { padding: 2.5rem 0 6rem; text-align: center; color: var(--ink-soft); font-size: .9rem; }
-.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; gap: .6rem; padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px rgba(0,0,0,.06); }
-.sticky-cta .btn { flex: 1; }
-@media (min-width: 820px) {
-  nav.links { display: flex; }
-  header.top .btn { display: inline-flex; }
-  .hero-grid.has-photo { grid-template-columns: 1.05fr .95fr; }
-  .hero-photo { transform: rotate(1.5deg); }
-  .sticky-cta { display: none; }
-  footer { padding-bottom: 2.5rem; }
+body { background: var(--forest); color: var(--cream); font: 18px/1.6 var(--body); }
+.wrap { width: var(--wrap); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; }
+.caps { font-weight: 700; font-size: 14px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--copper-lt); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 4px 30px 0; background: var(--copper); color: var(--deep); font-weight: 700; font-size: 15px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; outline: 1px solid var(--copper); outline-offset: 4px; transition: background-color 160ms ease, outline-offset 160ms ease; }
+.btn:hover { background: var(--copper-lt); outline-offset: 7px; }
+.btn--line { background: transparent; color: var(--cream); box-shadow: inset 0 0 0 1px var(--copper); outline: 0; }
+.btn--line:hover { background: rgba(196,111,60,0.15); }
+.btn:focus-visible, .btn--line:focus-visible { outline: 3px solid var(--cream); outline-offset: 4px; }
+.rule { display: flex; align-items: center; gap: 16px; justify-content: center; color: var(--copper); }
+.rule::before, .rule::after { content: ""; width: 90px; height: 5px; border-block: 1px solid currentColor; }
+.rule i { width: 10px; height: 10px; rotate: 45deg; background: currentColor; }
+
+/* centered masthead, nav split around the name */
+.mast { border-bottom: 1px solid rgba(196,111,60,0.4); }
+.mast .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; min-height: 96px; }
+.mast nav { display: flex; gap: 30px; }
+.mast nav:last-child { justify-content: flex-end; align-items: center; }
+.mast nav a:not(.btn) { font-weight: 600; font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+.mast nav a:not(.btn):hover { color: var(--copper-lt); }
+.logo { text-align: center; text-decoration: none; }
+.logo b { display: block; font: 400 30px/1 var(--display); letter-spacing: 0.04em; }
+.logo small { display: block; margin-top: 6px; font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--copper-lt); }
+
+/* hero: sunburst, stepped frame, centered */
+.hero { position: relative; padding: 70px 0 100px; text-align: center; overflow: hidden; }
+.burst { position: absolute; left: 50%; top: 140px; width: 1400px; height: 1400px; translate: -50% 0; background: repeating-conic-gradient(from -90deg at 50% 50%, rgba(196,111,60,0.16) 0 2deg, transparent 2deg 9deg); -webkit-mask: radial-gradient(circle, #000 25%, transparent 62%); mask: radial-gradient(circle, #000 25%, transparent 62%); pointer-events: none; }
+.hero .wrap { position: relative; }
+.hero h1 { margin-top: 18px; font-size: clamp(3rem, 1.4rem + 5.6vw, 6.4rem); }
+.hero h1 span { color: var(--copper-lt); }
+.hero-lede { margin: 22px auto 0; max-width: 46ch; color: var(--mist); }
+.hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; margin-top: 36px; }
+.portal { position: relative; width: min(100%, 520px); margin: 64px auto 0; padding: 14px; border: 1px solid var(--copper); clip-path: polygon(0 60px, 30px 60px, 30px 30px, 60px 30px, 60px 0, calc(100% - 60px) 0, calc(100% - 60px) 30px, calc(100% - 30px) 30px, calc(100% - 30px) 60px, 100% 60px, 100% 100%, 0 100%); }
+.portal::before { content: ""; position: absolute; inset: 0; border: 1px solid var(--copper); clip-path: inherit; }
+.portal figure { position: relative; clip-path: polygon(0 48px, 22px 48px, 22px 24px, 46px 24px, 46px 0, calc(100% - 46px) 0, calc(100% - 46px) 24px, calc(100% - 22px) 24px, calc(100% - 22px) 48px, 100% 48px, 100% 100%, 0 100%); }
+.portal img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 35%; }
+.hero-meta { margin-top: 26px; color: var(--mist); font-size: 15px; }
+
+/* services: a deco menu card */
+.services { padding: 100px 0; background: var(--deep); }
+.card { position: relative; max-width: 900px; margin-inline: auto; padding: clamp(36px, 6vw, 70px); border: 1px solid var(--copper); text-align: center; }
+.card::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(196,111,60,0.45); pointer-events: none; }
+.card::after { content: ""; position: absolute; left: 50%; top: -1px; width: 140px; height: 70px; translate: -50% 0; background: var(--deep); border: 1px solid var(--copper); border-top: 0; border-radius: 0 0 140px 140px; background-image: repeating-conic-gradient(from 90deg at 50% 0, var(--copper) 0 3deg, transparent 3deg 15deg); }
+.card h2 { margin-top: 56px; font-size: clamp(2.4rem, 1.6rem + 2.8vw, 3.8rem); }
+.card .rule { margin-top: 18px; }
+.svc { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; margin-top: 44px; text-align: left; }
+.svc li { display: flex; align-items: baseline; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(196,111,60,0.25); }
+.svc li::after { content: ""; order: 1; flex: 1; border-bottom: 1px dotted rgba(243,234,216,0.3); translate: 0 -5px; }
+.svc li span:last-child { order: 2; font-family: var(--display); color: var(--copper-lt); font-size: 22px; }
+.svc li span:first-child { font-weight: 600; font-size: 17px; letter-spacing: 0.06em; text-transform: uppercase; }
+.card-note { margin-top: 30px; color: var(--mist); font-size: 14px; }
+
+/* the ritual: the hot towel shave in four steps */
+.ritual { padding: 110px 0; }
+.ritual .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.ritual h2 { margin-top: 12px; font-size: clamp(2.4rem, 1.6rem + 2.8vw, 3.8rem); }
+.steps { margin-top: 34px; display: grid; gap: 22px; }
+.steps li { display: grid; grid-template-columns: 54px 1fr; gap: 18px; align-items: start; }
+.steps .rn { display: grid; place-items: center; width: 54px; height: 54px; rotate: 45deg; border: 1px solid var(--copper); }
+.steps .rn span { rotate: -45deg; font: 400 20px/1 var(--display); color: var(--copper-lt); }
+.steps b { display: block; font-size: 19px; letter-spacing: 0.04em; }
+.steps p { color: var(--mist); font-size: 16px; }
+.duo { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.duo figure { position: relative; border: 1px solid var(--copper); padding: 8px; }
+.duo img { width: 100%; aspect-ratio: 3 / 4.4; object-fit: cover; }
+.duo figure:last-child { translate: 0 50px; }
+
+/* reviews */
+.reviews { padding: 110px 0 120px; background: var(--deep); text-align: center; }
+.reviews h2 { margin-top: 12px; font-size: clamp(2.4rem, 1.6rem + 2.8vw, 3.8rem); }
+.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 50px; }
+.quotes figure { padding: 10px 34px; }
+.quotes figure + figure { border-left: 1px solid rgba(196,111,60,0.35); }
+.quotes blockquote { font-size: 19px; }
+.quotes figcaption { margin-top: 16px; display: flex; gap: 8px; justify-content: center; align-items: center; color: var(--mist); font-size: 14px; }
+.stars { color: var(--copper-lt); letter-spacing: 3px; }
+
+/* visit */
+.visit { padding: 110px 0; text-align: center; }
+.visit h2 { margin-top: 12px; font-size: clamp(2.4rem, 1.6rem + 2.8vw, 3.8rem); }
+.visit address { margin-top: 18px; font-style: normal; color: var(--mist); }
+.hours { display: grid; grid-template-columns: repeat(7, 1fr); max-width: 980px; margin: 44px auto 0; border: 1px solid var(--copper); }
+.hours li { padding: 20px 8px; }
+.hours li + li { border-left: 1px solid rgba(196,111,60,0.4); }
+.hours b { display: block; font-weight: 700; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--copper-lt); }
+.hours span { display: block; margin-top: 8px; font-size: 15px; }
+.hours .today { background: rgba(196,111,60,0.16); }
+.visit .hero-btns { margin-top: 40px; }
+.foot { padding: 28px 0 34px; background: var(--deep); color: var(--mist); font-size: 14px; }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 30px; }
+
+@media (max-width: 900px) {
+  .mast .wrap { grid-template-columns: 1fr auto; }
+  .mast nav:first-child { display: none; }
+  .logo { text-align: left; }
+  .mast nav:last-child a:not(.btn) { display: none; }
+  .ritual .wrap { grid-template-columns: 1fr; gap: 56px; }
+  .quotes { grid-template-columns: 1fr; gap: 30px; }
+  .quotes figure + figure { border-left: 0; border-top: 1px solid rgba(196,111,60,0.35); padding-top: 30px; }
+  .hours { grid-template-columns: 1fr; max-width: 420px; }
+  .hours li { display: flex; justify-content: space-between; padding: 14px 20px; }
+  .hours li + li { border-left: 0; border-top: 1px solid rgba(196,111,60,0.4); }
+  .hours span { margin: 0; }
 }
-/* ---------- Booking / ordering preview ---------- */
-dialog.flow { border: 0; padding: 0; width: min(560px, 100% - 1.5rem); max-height: min(820px, 100dvh - 1.5rem); border-radius: 22px; background: var(--surface); color: var(--ink); box-shadow: 0 24px 64px rgba(0,0,0,.28); }
-dialog.flow[open] { display: flex; flex-direction: column; }
-dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
-.flow-head { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.3rem; border-bottom: 1px solid var(--line); }
-.flow-head h3 { margin: 0; font-size: 1.35rem; }
-.flow-close { border: 0; background: transparent; font-size: 1.6rem; line-height: 1; cursor: pointer; color: var(--ink-soft); }
-.flow-note { margin: 0; background: #fff4d6; color: #5a3f00; font-size: .84rem; font-weight: 600; text-align: center; padding: .45rem 1rem; }
-.flow-body { padding: 1.2rem 1.3rem 1.4rem; overflow: auto; flex: 1; min-height: 0; }
-.flow-step-label { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .8rem; }
-.opt { display: flex; width: 100%; justify-content: space-between; gap: 1rem; align-items: center; text-align: left; font: inherit; background: var(--bg); color: var(--ink); border: 2px solid var(--line); border-radius: 14px; padding: .8rem 1rem; margin-bottom: .6rem; cursor: pointer; }
-.opt:hover, .opt[aria-pressed="true"] { border-color: var(--accent); }
-.flow-group { margin: 1rem 0 .5rem; font-family: var(--display); font-size: 1.1rem; color: var(--accent); }
-.flow-group:first-of-type { margin-top: 0; }
-.opt small { display: block; color: var(--ink-soft); }
-.qty { display: inline-flex; align-items: center; gap: .5rem; }
-.qty button { width: 2rem; height: 2rem; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); font: inherit; font-weight: 700; cursor: pointer; color: var(--ink); }
-.days { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; margin-bottom: 1rem; }
-.slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
-.chip { font: inherit; font-size: .92rem; background: var(--bg); color: var(--ink); border: 2px solid var(--line); border-radius: 12px; padding: .55rem .3rem; cursor: pointer; text-align: center; }
-.chip small { display: block; font-size: .75rem; color: var(--ink-soft); }
-.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.chip[aria-pressed="true"] small { color: inherit; }
-.chip[disabled] { opacity: .4; cursor: not-allowed; text-decoration: line-through; }
-.field { margin-bottom: .9rem; }
-.field label { display: block; font-weight: 600; font-size: .9rem; margin-bottom: .3rem; }
-.field input { width: 100%; font: inherit; padding: .7rem .9rem; border-radius: 12px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); }
-.flow-foot { display: flex; justify-content: space-between; gap: .8rem; padding: 1rem 1.3rem; border-top: 1px solid var(--line); }
-.flow-foot .btn[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; transform: none; }
-.summary { background: var(--bg); border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
-.done { text-align: center; padding: 1rem 0; }
-.done .big { font-size: 3rem; line-height: 1; margin-bottom: .6rem; }
+@media (max-width: 600px) {
+  .svc { grid-template-columns: 1fr; }
+  .logo b { font-size: 24px; }
+  .mast .btn { min-height: 42px; padding: 3px 14px 0; font-size: 12px; letter-spacing: 0.12em; }
+  .portal { clip-path: none; padding: 10px; }
+  .portal figure { clip-path: none; }
+  .rule::before, .rule::after { width: 50px; }
+}
 </style>
 </head>
 <body>
-<div class="demo-note">Example site by Ridge. Copper Comb Barbershop is a made-up business; items tagged “Example” are placeholders.</div>
+<a class="skip" href="#main">Skip to the page</a>
+<div class="demo-note">Example site by <a href="../../">Ridge</a>. Copper Comb Barbershop is a made-up business; items tagged “Example” are placeholders.</div>
 
-<header class="top">
+<header class="mast">
   <div class="wrap">
-    <a class="brand" href="#top">Copper Comb Barbershop<small>Barbershop · Paso Robles</small></a>
-    <nav class="links" aria-label="Main">
-      <a href="#menu">Services</a><a href="#reviews">Reviews</a><a href="#visit">Hours &amp; location</a>
-    </nav>
-    <button class="btn small" data-open-flow>Book now</button>
+    <nav aria-label="Sections"><a href="#services">Services</a><a href="#ritual">The shave</a></nav>
+    <a class="logo" href="#main"><b>Copper Comb</b><small>Paso Robles</small></a>
+    <nav aria-label="More"><a href="#visit">Hours</a><a class="btn" href="#visit">Book</a></nav>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-grid has-photo">
-      <div>
-      <span class="eyebrow">Barbershop · Paso Robles</span>
-      <h1>Sharp cuts, no waiting around</h1>
-      <p class="tagline">Haircuts, fades, beard trims and hot towel shaves just off the square. Walk in, or book your chair online any time.</p>
-      <div class="hero-actions">
-        <button class="btn" data-open-flow>Book now</button>
-        <a class="btn ghost" href="tel:+18055550104">Call (805) 555-0104</a>
-      </div>
-      <span class="rating-pill"><span class="st">★★★★½</span>4.8 on Google · 241 reviews <span class="tag">Example</span></span>
-      </div>
-      <figure class="hero-photo"><img src="images/photo-1.jpg" alt="Barber giving a fade" fetchpriority="high"><span class="photo-tag">Example photo</span></figure>
-    </div>
-  </section>
-
-  <div class="wrap highlights">
-    <div class="hl reveal"><div class="ic" aria-hidden="true">💈</div><strong>Cuts &amp; beard trims</strong><span>Fades, tapers and line-ups, done right.</span></div><div class="hl reveal"><div class="ic" aria-hidden="true">🪒</div><strong>Hot towel shaves</strong><span>A straight razor finish, the old-school way.</span></div><div class="hl reveal"><div class="ic" aria-hidden="true">📅</div><strong>Book online 24/7</strong><span>Pick your service and time, and get a text reminder.</span></div>
+<main id="main">
+<section class="hero">
+  <div class="burst" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="caps">Barbers on Main Street</p>
+    <h1>The art of <span>the sharp cut.</span></h1>
+    <p class="hero-lede">Classic cuts, skin fades, beard work and the full hot towel shave, done with a steady hand in a room built for taking your time.</p>
+    <div class="hero-btns"><a class="btn" href="#visit">Book a chair</a><a class="btn btn--line" href="tel:+18055550104">(805) 555-0104</a></div>
+    <p class="hero-meta"><span class="stars" aria-hidden="true">★★★★★</span> 4.8 from 241 reviews <span class="ex-tag">Example</span></p>
+    <div class="portal"><figure><img src="images/hero.jpg" width="960" height="1440" alt="A client in the barber chair by the window"><span class="photo-tag">Example photo</span></figure></div>
   </div>
+</section>
 
-  <div class="wrap photo-strip"><figure class="strip-photo reveal"><img src="images/photo-2.jpg" alt="Shave kit" loading="lazy"><span class="photo-tag">Example photo</span></figure><figure class="strip-photo reveal"><img src="images/photo-3.jpg" alt="A classic barber shop" loading="lazy"><span class="photo-tag">Example photo</span></figure></div>
-
-  <section id="menu">
-    <div class="wrap">
-      <h2>Services</h2>
-      <p class="section-intro">Example items and prices, to show how a full menu looks on the site.</p>
-      <div class="menu"><div class="menu-group reveal"><h3>Cuts <span class="tag">Example</span></h3><ul><li><div><strong>Haircut</strong><span class="desc">Scissor or clipper cut</span></div><span class="price">$40</span></li><li><div><strong>Skin Fade</strong><span class="desc">Clean, crisp blend</span></div><span class="price">$45</span></li><li><div><strong>Kids&#x27; Cut</strong><span class="desc">12 and under</span></div><span class="price">$30</span></li><li><div><strong>Buzz Cut</strong><span class="desc">One length all over</span></div><span class="price">$25</span></li></ul></div>
-<div class="menu-group reveal"><h3>Beard &amp; Shave <span class="tag">Example</span></h3><ul><li><div><strong>Beard Trim</strong><span class="desc">Shape and line-up</span></div><span class="price">$20</span></li><li><div><strong>Hot Towel Shave</strong><span class="desc">Straight razor finish</span></div><span class="price">$40</span></li><li><div><strong>Cut + Beard</strong><span class="desc">The full refresh</span></div><span class="price">$55</span></li></ul></div></div>
+<section class="services" id="services" aria-labelledby="svc-title">
+  <div class="wrap">
+    <div class="card">
+      <p class="caps" style="margin-top:40px">The menu</p>
+      <h2 id="svc-title">Services</h2>
+      <div class="rule"><i></i></div>
+      <ul class="svc">
+        <li><span>Classic cut</span><span>35</span></li>
+        <li><span>Skin fade</span><span>40</span></li>
+        <li><span>Beard sculpt</span><span>22</span></li>
+        <li><span>Hot towel shave</span><span>45</span></li>
+        <li><span>Cut and beard</span><span>55</span></li>
+        <li><span>The full service</span><span>85</span></li>
+        <li><span>Young gents, 12 and under</span><span>25</span></li>
+        <li><span>Gray blending</span><span>30</span></li>
+      </ul>
+      <p class="card-note"><span class="ex-tag">Example</span> Services and prices are placeholders.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="reviews" class="alt">
-    <div class="wrap">
-      <h2>What people say</h2>
-      <p class="section-intro">4.8 stars from 241 reviews on Google. These reviews are examples.</p>
-      <div class="reviews"><figure class="review reveal"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>Cleanest fade I have had in years. Booked online the night before and was in the chair right on time.</blockquote><figcaption>Example review · 5 days ago</figcaption></figure>
-<figure class="review reveal"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>The hot towel shave is worth every penny. Great conversation and a sharp finish.</blockquote><figcaption>Example review · a month ago</figcaption></figure>
-<figure class="review reveal"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>Brought my son in for his first real haircut and they were so patient with him. We will be back.</blockquote><figcaption>Example review · 2 months ago</figcaption></figure></div>
+<section class="ritual" id="ritual" aria-labelledby="ritual-title">
+  <div class="wrap">
+    <div>
+      <p class="caps">Forty-five minutes</p>
+      <h2 id="ritual-title">The hot towel shave</h2>
+      <ol class="steps">
+        <li><span class="rn"><span>I</span></span><div><b>Hot towel</b><p>Steamed towels open everything up.</p></div></li>
+        <li><span class="rn"><span>II</span></span><div><b>Warm lather</b><p>Brushed on thick, with a pre-shave oil.</p></div></li>
+        <li><span class="rn"><span>III</span></span><div><b>Straight razor</b><p>Two passes, with the grain and against it.</p></div></li>
+        <li><span class="rn"><span>IV</span></span><div><b>Cold towel and balm</b><p>Closes it all down. You'll feel it all day.</p></div></li>
+      </ol>
     </div>
-  </section>
+    <div class="duo">
+      <figure><img src="images/c.jpg" width="1024" height="684" alt="A straight razor and shaving brush" loading="lazy"></figure>
+      <figure><img src="images/b.jpg" width="960" height="1200" alt="A barber trimming a client's hair" loading="lazy"><span class="photo-tag">Example photo</span></figure>
+    </div>
+  </div>
+</section>
 
-  <section id="visit">
-    <div class="wrap">
-      <h2>Hours &amp; location</h2>
-      <div class="visit">
-        <div class="card">
-          <p class="contact-line"><span class="ic" aria-hidden="true">📍</span><span>100 Main St, Paso Robles, CA 93446<br><a href="https://www.google.com/maps/search/?api=1&query=Copper%20Comb%20Barbershop%2C%20100%20Main%20St%2C%20Paso%20Robles%2C%20CA%2093446" target="_blank" rel="noopener">Get directions</a></span></p>
-          <p class="contact-line"><span class="ic" aria-hidden="true">📞</span><a href="tel:+18055550104">(805) 555-0104</a></p>
-          <table class="hours" aria-label="Opening hours"><tbody>
-<tr data-day="Monday"><th>Monday</th><td>Closed</td></tr>
-<tr data-day="Tuesday"><th>Tuesday</th><td>9:00 AM – 6:00 PM</td></tr>
-<tr data-day="Wednesday"><th>Wednesday</th><td>9:00 AM – 6:00 PM</td></tr>
-<tr data-day="Thursday"><th>Thursday</th><td>9:00 AM – 6:00 PM</td></tr>
-<tr data-day="Friday"><th>Friday</th><td>9:00 AM – 6:00 PM</td></tr>
-<tr data-day="Saturday"><th>Saturday</th><td>9:00 AM – 6:00 PM</td></tr>
-<tr data-day="Sunday"><th>Sunday</th><td>9:00 AM – 6:00 PM</td></tr>
-          </tbody></table>
-        </div>
-        <div class="map"><iframe title="Map of Copper Comb Barbershop" loading="lazy" src="https://www.google.com/maps?q=Copper%20Comb%20Barbershop%2C%20100%20Main%20St%2C%20Paso%20Robles%2C%20CA%2093446&output=embed"></iframe></div>
-      </div>
+<section class="reviews" aria-labelledby="rev-title">
+  <div class="wrap">
+    <p class="caps">Word around town <span class="ex-tag">Example</span></p>
+    <h2 id="rev-title">From the chair</h2>
+    <div class="rule" style="margin-top:18px"><i></i></div>
+    <div class="quotes">
+      <figure><blockquote>“Cleanest fade I have had in years. Booked online the night before and was in the chair right on time.”</blockquote><figcaption><span class="stars" aria-label="5 stars">★★★★★</span> 5 days ago</figcaption></figure>
+      <figure><blockquote>“The hot towel shave is worth every penny. Great conversation and a sharp finish.”</blockquote><figcaption><span class="stars" aria-label="5 stars">★★★★★</span> a month ago</figcaption></figure>
+      <figure><blockquote>“Brought my son in for his first real haircut and they were so patient with him.”</blockquote><figcaption><span class="stars" aria-label="5 stars">★★★★★</span> 2 months ago</figcaption></figure>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="visit" id="visit" aria-labelledby="visit-title">
+  <div class="wrap">
+    <p class="caps">100 Main Street</p>
+    <h2 id="visit-title">Take a seat.</h2>
+    <address>100 Main St, Paso Robles, CA 93446</address>
+    <ul class="hours" id="hours">
+      <li><b>Mon</b><span>Closed</span></li><li><b>Tue</b><span>9 – 6</span></li><li><b>Wed</b><span>9 – 6</span></li><li><b>Thu</b><span>9 – 6</span></li><li><b>Fri</b><span>9 – 6</span></li><li><b>Sat</b><span>9 – 6</span></li><li><b>Sun</b><span>9 – 6</span></li>
+    </ul>
+    <div class="hero-btns"><a class="btn" href="tel:+18055550104">Call (805) 555-0104</a><a class="btn btn--line" href="#visit">Directions</a></div>
+  </div>
+</section>
 </main>
 
-<footer>
-  <div class="wrap">© Copper Comb Barbershop · 100 Main St, Paso Robles, CA 93446 · (805) 555-0104</div>
-</footer>
-
-<div class="sticky-cta">
-  <a class="btn ghost" href="tel:+18055550104">Call</a>
-  <button class="btn" data-open-flow>Book now</button>
-</div>
-
-<dialog class="flow" id="flow" aria-labelledby="flow-title">
-  <div class="flow-head"><h3 id="flow-title">Book now</h3><button class="flow-close" aria-label="Close" data-close>×</button></div>
-  <p class="flow-note">Preview: this shows how online booking will work. Nothing is booked.</p>
-  <div class="flow-body" id="flow-body"></div>
-  <div class="flow-foot"><button class="btn ghost small" id="flow-back">Back</button><button class="btn small" id="flow-next">Next</button></div>
-</dialog>
-
+<footer class="foot"><div class="wrap"><span>Copper Comb Barbershop, 100 Main St, Paso Robles</span><span>An example site by <a href="../../">Ridge</a>. This business is made up.</span></div></footer>
 <script>
-const KIND = "book";
-const ITEMS = [{"name": "Haircut", "detail": "45 min", "price": "$40"}, {"name": "Skin Fade", "detail": "45 min", "price": "$45"}, {"name": "Cut + Beard", "detail": "60 min", "price": "$55"}, {"name": "Hot Towel Shave", "detail": "30 min", "price": "$40"}, {"name": "Kids' Cut", "detail": "30 min", "price": "$30"}];
-const HOURS = ["Monday: Closed", "Tuesday: 9:00 AM \u2013 6:00 PM", "Wednesday: 9:00 AM \u2013 6:00 PM", "Thursday: 9:00 AM \u2013 6:00 PM", "Friday: 9:00 AM \u2013 6:00 PM", "Saturday: 9:00 AM \u2013 6:00 PM", "Sunday: 9:00 AM \u2013 6:00 PM"];
-const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
-// Fade cards and photos in as they scroll into view
-if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
-  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-} else document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
-
-// Highlight today's hours
-const todayName = DAYS[new Date().getDay()];
-document.querySelectorAll(".hours tr").forEach(tr => tr.classList.toggle("today", tr.dataset.day === todayName));
-
-// Open hours per day -> [openMinutes, closeMinutes] or null
-function parseHours(day) {
-  const line = HOURS.find(h => h.startsWith(day + ":"));
-  if (!line || /closed/i.test(line)) return null;
-  const m = line.replace(/[\u202f\u2009]/g, " ").match(/(\d+):(\d+)\s*(AM|PM)\s*[–-]\s*(\d+):(\d+)\s*(AM|PM)/i);
-  if (!m) return null;
-  const toMin = (h, mi, ap) => ((+h % 12) + (/pm/i.test(ap) ? 12 : 0)) * 60 + +mi;
-  return [toMin(m[1], m[2], m[3]), toMin(m[4], m[5], m[6])];
-}
-const fmt = min => { const h = Math.floor(min / 60), m = min % 60; return `${(h % 12) || 12}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`; };
-
-const st = { step: 0, item: null, cart: {}, day: null, slot: null, name: "", phone: "" };
-const dlg = document.getElementById("flow"), body = document.getElementById("flow-body");
-const next = document.getElementById("flow-next"), back = document.getElementById("flow-back");
-
-function upcomingDays() {
-  const out = [];
-  for (let i = 0; out.length < 8 && i < 14; i++) {
-    const d = new Date(); d.setDate(d.getDate() + i);
-    const day = { date: d, open: parseHours(DAYS[d.getDay()]) };
-    if (day.open && !slotsFor(day).length) day.open = null;  // closed for the rest of today
-    out.push(day);
-  }
-  return out;
-}
-function slotsFor(day) {
-  if (!day.open) return [];
-  const [o, c] = day.open, out = [];
-  // Today: only times at least 30 minutes from now
-  const now = new Date(), isToday = day.date.toDateString() === now.toDateString();
-  const earliest = isToday ? now.getHours() * 60 + now.getMinutes() + 30 : 0;
-  const step = KIND === "book" ? 30 : 15;
-  for (let t = Math.max(o, KIND === "book" ? o : o + 30); t + (KIND === "book" ? 45 : 0) <= c; t += step) if (t >= earliest) out.push(t);
-  // Demo only: mark some times as taken so it looks real (same every time)
-  return out.slice(0, 18).map((t, i) => ({ t, taken: KIND === "book" && (i * 7 + day.date.getDate()) % 5 === 0 }));
-}
-function cartTotal() { return Object.entries(st.cart).reduce((t, [i, q]) => t + q * parseFloat(ITEMS[i].price.replace(/[^0-9.]/g, "")), 0); }
-function cartCount() { return Object.values(st.cart).reduce((a, b) => a + b, 0); }
-
-function render() {
-  back.style.visibility = st.step === 0 || st.step === 3 ? "hidden" : "visible";
-  next.style.display = st.step === 3 ? "none" : "";
-  if (st.step === 0) {
-    body.innerHTML = `<div class="flow-step-label">${KIND === "book" ? "1 · Choose a service" : "1 · Choose what you'd like"}</div>` +
-      ITEMS.map((it, i) => (it.group && it.group !== (ITEMS[i - 1] || {}).group ? `<h4 class="flow-group">${it.group}</h4>` : "") + (KIND === "book"
-        ? `<button class="opt" data-i="${i}" aria-pressed="${st.item === i}"><span><strong>${it.name}</strong><small>${it.detail}</small></span><span class="price">${it.price}</span></button>`
-        : `<div class="opt" style="cursor:default"><span><strong>${it.name}</strong><small>${it.detail} · ${it.price}</small></span><span class="qty"><button data-dec="${i}" aria-label="Remove one">−</button><span>${st.cart[i] || 0}</span><button data-inc="${i}" aria-label="Add one">+</button></span></div>`)
-      ).join("");
-    body.querySelectorAll("[data-i]").forEach(b => b.onclick = () => { st.item = +b.dataset.i; render(); });
-    const keep = fn => () => { const y = body.scrollTop; fn(); render(); body.scrollTop = y; };
-    body.querySelectorAll("[data-inc]").forEach(b => b.onclick = keep(() => { st.cart[b.dataset.inc] = (st.cart[b.dataset.inc] || 0) + 1; }));
-    body.querySelectorAll("[data-dec]").forEach(b => b.onclick = keep(() => { st.cart[b.dataset.dec] = Math.max(0, (st.cart[b.dataset.dec] || 0) - 1); }));
-    next.disabled = KIND === "book" ? st.item === null : cartCount() === 0;
-    next.textContent = KIND === "order" && cartCount() ? `Next · ${cartCount()} item${cartCount() > 1 ? "s" : ""} · $${cartTotal().toFixed(2)}` : "Next";
-  } else if (st.step === 1) {
-    const days = upcomingDays();
-    if (st.day === null) st.day = days.findIndex(d => d.open);
-    const slots = slotsFor(days[st.day]);
-    body.innerHTML = `<div class="flow-step-label">2 · ${KIND === "book" ? "Pick a day and time" : "Pick a pickup time"}</div><div class="days">` +
-      days.map((d, i) => `<button class="chip" data-d="${i}" aria-pressed="${st.day === i}" ${d.open ? "" : "disabled"}>${d.date.toLocaleDateString(undefined, { weekday: "short" })}<small>${d.date.toLocaleDateString(undefined, { month: "short", day: "numeric" })}</small></button>`).join("") +
-      `</div><div class="slots">` + slots.map(s => `<button class="chip" data-t="${s.t}" aria-pressed="${st.slot === s.t}" ${s.taken ? "disabled" : ""}>${fmt(s.t)}</button>`).join("") + `</div>`;
-    body.querySelectorAll("[data-d]").forEach(b => b.onclick = () => { st.day = +b.dataset.d; st.slot = null; render(); });
-    body.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { st.slot = +b.dataset.t; render(); });
-    next.disabled = st.slot === null;
-    next.textContent = "Next";
-  } else if (st.step === 2) {
-    const d = upcomingDays()[st.day].date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
-    const what = KIND === "book" ? ITEMS[st.item].name : Object.entries(st.cart).filter(([, q]) => q).map(([i, q]) => `${q} × ${ITEMS[i].name}`).join("<br>");
-    body.innerHTML = `<div class="flow-step-label">3 · Your details</div><div class="summary"><strong>${what}</strong><br>${d} at ${fmt(st.slot)}</div>
-      <div class="field"><label for="f-name">Name</label><input id="f-name" autocomplete="off" value="${st.name}"></div>
-      <div class="field"><label for="f-phone">Phone (for a text reminder)</label><input id="f-phone" type="tel" autocomplete="off" value="${st.phone}"></div>`;
-    const n = body.querySelector("#f-name"), ph = body.querySelector("#f-phone");
-    const check = () => { st.name = n.value; st.phone = ph.value; next.disabled = !n.value.trim(); };
-    n.oninput = ph.oninput = check; check();
-    next.textContent = KIND === "book" ? "Book appointment" : "Place order";
-  } else {
-    body.innerHTML = `<div class="done"><div class="big">✓</div><h3>${KIND === "book" ? "You're booked!" : "Order received!"}</h3>
-      <p>This is where customers would see their confirmation and get a text ${KIND === "book" ? "reminder before their appointment" : "when their order is ready"}.</p>
-      <p style="color:var(--ink-soft);font-size:.9rem">(Preview only. Nothing was ${KIND === "book" ? "booked" : "ordered"}.)</p>
-      <button class="btn" data-close>Done</button></div>`;
-    body.querySelector("[data-close]").onclick = () => dlg.close();
-  }
-}
-next.onclick = () => { st.step++; render(); };
-back.onclick = () => { st.step = Math.max(0, st.step - 1); render(); };
-document.querySelectorAll("[data-open-flow]").forEach(b => b.onclick = () => {
-  Object.assign(st, { step: 0, item: null, cart: {}, day: null, slot: null });
-  render(); dlg.showModal();
-});
-dlg.querySelector(".flow-head [data-close]").onclick = () => dlg.close();
-dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  const rows = document.querySelectorAll('#hours li'), day = (new Date().getDay() + 6) % 7;
+  if (rows[day]) rows[day].classList.add('today');
 </script>
 </body>
 </html>

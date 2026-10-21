@@ -36,7 +36,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=4">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Archivo+Black&family=Big+Shoulders+Display:wght@800&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=DM+Serif+Display&family=Figtree:wght@400;600;800&family=Fraunces:ital,wght@0,600;1,600&family=Libre+Baskerville:wght@400;700&family=Playfair+Display:ital,wght@1,400&family=Young+Serif&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="styles.css?v=8">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -95,8 +96,9 @@
   <div class="yours-stage" data-rise style="--i:2">
     <div class="mini-wrap">
     <div class="mini" id="mini" data-ui data-trade="bakery" aria-live="polite">
-      <div class="mini-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mini-url" id="mini-url">yourbusiness.com</span></div>
+      <div class="mini-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mini-url" id="mini-url">yourbusiness.com</span><span class="mini-status" id="mini-status"></span><span class="mini-progress" id="mini-progress"></span></div>
       <div class="mini-page">
+        <span class="mini-deco" aria-hidden="true"></span>
         <div class="mini-nav mini-piece" style="--k:0">
           <span class="mini-brand"><span class="mini-logo" id="mini-logo">Your Business</span><span class="mini-kind" id="mini-kind">Bakery</span></span>
           <span class="mini-links" id="mini-links">Menu · Hours · Visit</span>
@@ -107,16 +109,17 @@
             <p class="mini-eyebrow mini-piece" style="--k:1" id="mini-eyebrow">Bakery</p><!-- taste-skill-ignore: the demo template label, inside the sketch (data-ui) -->
             <p class="mini-head mini-piece" style="--k:2" id="mini-head">Pan dulce, fresh every morning</p>
             <p class="mini-desc mini-piece" style="--k:3" id="mini-desc">Your Business bakes conchas, cuernos and bolillos every day from 6 AM. Order ahead and skip the line.</p>
-            <div class="mini-btns mini-piece" style="--k:4"><span class="mini-btn" id="mini-btn">Order ahead</span><span class="mini-btn mini-btn--ghost">Call us</span></div>
+            <div class="mini-btns mini-piece" style="--k:4"><span class="mini-btn" id="mini-btn">Order ahead</span><span class="mini-btn mini-btn--ghost" id="mini-btn2">Call us</span></div>
             <p class="mini-hours mini-piece" style="--k:5" id="mini-hours">Open today, 6 AM to 2 PM</p>
           </div>
           <figure class="mini-photo mini-piece" style="--k:3"><img id="mini-img" src="img/sketch/bakery.jpg" width="900" height="675" alt="Example photo: a concha on bakery paper" decoding="async"><span class="mini-tag">Example photo</span></figure>
+          <span class="mini-badge mini-piece" style="--k:5" id="mini-badge"></span>
         </div>
       </div>
     </div>
     <div class="watch" aria-hidden="true"><span class="watch-text">watch it build</span><svg class="watch-arrow" viewBox="0 0 120 96"><path d="M14 8 C 4 46, 40 78, 108 66"/><path d="M95 55 L109 66 L94 77"/></svg></div>
     </div>
-    <p class="yours-note small">A sketch made in your browser. The real one uses your photos, hours, prices and reviews.</p>
+    <div class="yours-foot"><p class="yours-note small">A sketch made in your browser. The real one uses your photos, hours, prices and reviews.</p><button type="button" class="build-again small" id="build-again"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2.5V5h-2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Build it again</button></div>
   </div>
 </section>
 
@@ -177,25 +180,25 @@
   </div>
   <ul class="ex-grid">
     <li data-reveal style="--i:0"><a class="ex-card" href="examples/el-girasol-panaderia/" target="_blank" rel="noopener">
-      <span class="ex-pic"><img src="img/examples/el-girasol-panaderia.jpg" width="1280" height="800" alt="A bakery case of pan dulce with an order-ahead button" loading="lazy" decoding="async"></span>
+      <span class="ex-pic"><img src="img/examples/el-girasol-panaderia.jpg?v=3" width="1280" height="800" alt="A bright folk-poster bakery site with papel picado and lotería cards" loading="lazy" decoding="async"></span>
       <span class="ex-name">Panadería El Girasol</span>
       <span class="ex-kind">Mexican bakery · San Luis Obispo</span>
       <span class="ex-open">Open the example <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="sr-only"> (opens in a new tab)</span></span>
     </a></li>
     <li data-reveal style="--i:1"><a class="ex-card" href="examples/juniper-table-cafe/" target="_blank" rel="noopener">
-      <span class="ex-pic"><img src="img/examples/juniper-table-cafe.jpg" width="1280" height="800" alt="Homemade pies and breakfasts with online ordering" loading="lazy" decoding="async"></span>
+      <span class="ex-pic"><img src="img/examples/juniper-table-cafe.jpg?v=3" width="1280" height="800" alt="A deep green magazine-style café site over a photo of pancakes" loading="lazy" decoding="async"></span>
       <span class="ex-name">Juniper Table Café</span>
-      <span class="ex-kind">Café and pies · Arroyo Grande</span>
+      <span class="ex-kind">Breakfast and pie · Arroyo Grande</span>
       <span class="ex-open">Open the example <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="sr-only"> (opens in a new tab)</span></span>
     </a></li>
     <li data-reveal style="--i:2"><a class="ex-card" href="examples/wren-nail-studio/" target="_blank" rel="noopener">
-      <span class="ex-pic"><img src="img/examples/wren-nail-studio.jpg" width="1280" height="800" alt="A calm nail salon site with online booking" loading="lazy" decoding="async"></span>
+      <span class="ex-pic"><img src="img/examples/wren-nail-studio.jpg?v=3" width="1280" height="800" alt="A bold black nail studio site with the name in giant photo-filled letters" loading="lazy" decoding="async"></span>
       <span class="ex-name">Wren Nail Studio</span>
       <span class="ex-kind">Nail studio · Morro Bay</span>
       <span class="ex-open">Open the example <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="sr-only"> (opens in a new tab)</span></span>
     </a></li>
     <li data-reveal style="--i:3"><a class="ex-card" href="examples/copper-comb-barbershop/" target="_blank" rel="noopener">
-      <span class="ex-pic"><img src="img/examples/copper-comb-barbershop.jpg" width="1280" height="800" alt="A barbershop site with online booking" loading="lazy" decoding="async"></span>
+      <span class="ex-pic"><img src="img/examples/copper-comb-barbershop.jpg?v=3" width="1280" height="800" alt="An Art Deco barbershop site in forest green and copper" loading="lazy" decoding="async"></span>
       <span class="ex-name">Copper Comb Barbershop</span>
       <span class="ex-kind">Barbershop · Paso Robles</span>
       <span class="ex-open">Open the example <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="sr-only"> (opens in a new tab)</span></span>
@@ -329,7 +332,7 @@
   </div>
 </dialog>
 
-<script src="kinds.js?v=4" defer></script>
-<script src="app.js?v=4" defer></script>
+<script src="kinds.js?v=7" defer></script>
+<script src="app.js?v=7" defer></script>
 </body>
 </html>

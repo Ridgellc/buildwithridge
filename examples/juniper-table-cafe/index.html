@@ -4,346 +4,253 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Juniper Table Café | Café &amp; Pie Shop in Arroyo Grande, CA</title>
-<meta name="description" content="Fresh-made pies, fluffy omelets and good coffee in the village. Order breakfast, lunch or a whole pie online and skip the wait.">
+<title>Juniper Table Café | Breakfast, Lunch and Pie in Arroyo Grande (example site)</title>
+<meta name="description" content="Example site by Ridge for a made-up café: slow breakfasts, lunch and homemade pie in Arroyo Grande.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%231f3d2b'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%234a5d8c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../example.css">
 <style>
 :root {
-  --bg: #fbf6ee; --surface: #fffdf9; --ink: #3b2a1e; --ink-soft: #6e5a4b;
-  --accent: #b4472c; --accent-ink: #ffffff; --accent-soft: #f6d9c9;
-  --deco1: #f3cfa6; --deco2: #f6d9c9; --line: #ead9c6;
-  --display: 'Fraunces', Georgia, serif; --body: 'Inter', system-ui, sans-serif;
-  --radius: 18px;
+  --oat: #efe9dd; --cream: #faf7f0; --juniper: #1f3d2b; --juniper-2: #2c5139; --berry: #4a5d8c; --butter: #e9c46a; --ink: #1d2620; --soft: #5b665e; --line: #d8d0bf;
+  --display: "Instrument Serif", Georgia, serif; --body: "Manrope", system-ui, sans-serif;
+  --wrap: min(1200px, 100% - 40px);
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-a { color: inherit; }
-h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.1; margin: 0 0 .5em; }
-h2 { font-size: clamp(1.9rem, 6vw, 2.6rem); }
-.wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
-.demo-note { background: #fff4d6; color: #5a3f00; border-bottom: 2px dashed #e2b44a; text-align: center; font-size: .88rem; font-weight: 600; padding: .55rem 1rem; }
-header.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-header.top .btn { display: none; }
-header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 0; }
-.brand { font-family: var(--display); font-size: clamp(1.1rem, 4.4vw, 1.4rem); font-weight: 600; text-decoration: none; line-height: 1.1; }
-.brand small { display: block; font-family: var(--body); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-nav.links { display: none; gap: 1.6rem; font-weight: 600; font-size: .95rem; }
-nav.links a { text-decoration: none; color: var(--ink-soft); }
-nav.links a:hover { color: var(--accent); }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 0; cursor: pointer; font: inherit; font-weight: 700; text-decoration: none; border-radius: 999px; padding: .85rem 1.5rem; background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 35%, transparent); transition: transform .15s; }
-.btn:hover { transform: translateY(-1px); }
-.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--line); }
-.btn.small { padding: .55rem 1.1rem; font-size: .92rem; }
-.hero { position: relative; overflow: hidden; padding: clamp(3.5rem, 12vw, 7rem) 0 clamp(3rem, 9vw, 5.5rem); }
-.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; filter: blur(2px); z-index: 0; }
-.hero::before { width: 520px; height: 520px; right: -160px; top: -140px; background: radial-gradient(circle at 30% 30%, var(--deco1), transparent 68%); }
-.hero::after { width: 380px; height: 380px; left: -140px; bottom: -180px; background: radial-gradient(circle at 60% 40%, var(--deco2), transparent 70%); }
-.hero .wrap { position: relative; z-index: 1; }
-.hero-grid { display: grid; gap: 2.2rem; align-items: center; }
-.hero-photo, .strip-photo { position: relative; margin: 0; border-radius: 24px; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,.14); }
-.hero-photo img, .strip-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.hero-photo { aspect-ratio: 4 / 3; }
-.hero-photo:hover img, .strip-photo:hover img { transform: scale(1.04); }
-.photo-tag { position: absolute; left: .7rem; bottom: .7rem; font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: rgba(255,244,214,.92); color: #5a3f00; border: 1px dashed #e2b44a; border-radius: 6px; padding: .12rem .45rem; }
-.photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding-top: clamp(2.5rem, 7vw, 3.5rem); }
-.strip-photo { aspect-ratio: 4 / 3; }
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .hero-photo img, .strip-photo img { transition: none; } }
-@media (max-width: 540px) { .photo-strip { grid-template-columns: 1fr; } }
-.eyebrow { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
-.hero h1 { font-size: clamp(2.6rem, 10vw, 4.6rem); max-width: 14ch; letter-spacing: -.01em; }
-.tagline { font-size: clamp(1.1rem, 4vw, 1.35rem); color: var(--ink-soft); max-width: 36ch; margin: 0 0 1.8rem; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 2rem; }
-.rating-pill { display: inline-flex; align-items: center; gap: .6rem; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .5rem 1rem .5rem .8rem; font-weight: 600; font-size: .95rem; }
-.rating-pill .st { color: #e8a317; letter-spacing: .05em; }
-.highlights { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: -1rem; padding-bottom: 1rem; }
-.hl { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
-.hl .ic { font-size: 1.6rem; line-height: 1; margin-bottom: .6rem; }
-.hl strong { display: block; font-family: var(--display); font-size: 1.2rem; margin-bottom: .2rem; }
-.hl span { color: var(--ink-soft); font-size: .95rem; }
-section { padding: clamp(3.5rem, 10vw, 5.5rem) 0; }
-section.alt { background: var(--surface); border-block: 1px solid var(--line); }
-.section-intro { color: var(--ink-soft); max-width: 52ch; margin: -.3rem 0 2.2rem; }
-.tag { display: inline-block; vertical-align: middle; font-family: var(--body); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: #fff4d6; color: #5a3f00; border: 1px dashed #e2b44a; border-radius: 6px; padding: .1rem .45rem; margin-left: .4rem; }
-.menu { display: grid; gap: 1.4rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-.menu-group { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.6rem; }
-section:not(.alt) .menu-group { background: var(--surface); }
-.menu-group h3 { font-size: 1.45rem; color: var(--accent); }
-.menu-group ul { list-style: none; margin: 0; padding: 0; }
-.menu-group li { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px dashed var(--line); }
-.menu-group li:last-child { border-bottom: 0; }
-.menu-group .desc { display: block; color: var(--ink-soft); font-size: .9rem; }
-.price { font-family: var(--body); font-weight: 700; white-space: nowrap; color: var(--ink); font-variant-numeric: tabular-nums; }
-.reviews { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.review { margin: 0; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; }
-section:not(.alt) .review { background: var(--surface); }
-.review-stars { color: #e8a317; letter-spacing: .1em; margin-bottom: .6rem; }
-.review blockquote { margin: 0 0 1rem; font-size: 1.02rem; flex: 1; }
-.review figcaption { color: var(--ink-soft); font-size: .85rem; font-weight: 600; }
-.visit { display: grid; gap: 1.6rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.6rem; }
-section.alt .card { background: var(--bg); }
-.hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
-.hours th, .hours td { padding: .55rem 0; border-bottom: 1px solid var(--line); text-align: left; font-weight: 500; }
-.hours td { text-align: right; }
-.hours tr.today th, .hours tr.today td { color: var(--accent); font-weight: 700; }
-.hours tr.today th::after { content: " · Today"; font-size: .82rem; }
-.contact-line { display: flex; gap: .7rem; align-items: flex-start; margin: 0 0 .9rem; }
-.contact-line .ic { width: 1.4rem; flex: none; text-align: center; }
-.map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); min-height: 320px; }
-.map iframe { width: 100%; height: 100%; min-height: 320px; border: 0; display: block; }
-footer { padding: 2.5rem 0 6rem; text-align: center; color: var(--ink-soft); font-size: .9rem; }
-.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; gap: .6rem; padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom)); background: var(--surface); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px rgba(0,0,0,.06); }
-.sticky-cta .btn { flex: 1; }
-@media (min-width: 820px) {
-  nav.links { display: flex; }
-  header.top .btn { display: inline-flex; }
-  .hero-grid.has-photo { grid-template-columns: 1.05fr .95fr; }
-  .hero-photo { transform: rotate(1.5deg); }
-  .sticky-cta { display: none; }
-  footer { padding-bottom: 2.5rem; }
+body { background: var(--oat); color: var(--ink); font: 17px/1.65 var(--body); }
+.wrap { width: var(--wrap); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1; letter-spacing: -0.01em; }
+.link { display: inline-flex; align-items: center; gap: 10px; padding-bottom: 4px; border-bottom: 1px solid currentColor; font-weight: 600; text-decoration: none; transition: gap 160ms ease; }
+.link:hover { gap: 16px; }
+.pill { display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border-radius: 99px; background: var(--butter); color: var(--juniper); font-weight: 700; text-decoration: none; transition: background-color 160ms ease; }
+.pill:hover { background: #f2d78e; }
+
+/* masthead */
+.mast { position: absolute; left: 0; right: 0; z-index: 5; color: var(--cream); }
+.mast .wrap { display: flex; align-items: center; gap: 30px; min-height: 84px; border-bottom: 1px solid rgba(250,247,240,0.25); }
+.logo { margin-right: auto; font: 400 30px/1 var(--display); text-decoration: none; }
+.logo i { color: var(--butter); }
+.nav { display: flex; gap: 28px; font-size: 15px; font-weight: 500; }
+.nav a { text-decoration: none; opacity: 0.85; }
+.nav a:hover { opacity: 1; }
+
+/* cover: full-bleed photo, editorial headline */
+.cover { position: relative; min-height: min(92vh, 860px); display: flex; align-items: flex-end; color: var(--cream); background: var(--juniper); overflow: hidden; }
+.cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+.cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,38,27,0.92) 0%, rgba(20,38,27,0.6) 45%, rgba(20,38,27,0.05) 80%); }
+.cover .wrap { position: relative; z-index: 1; padding: 160px 0 80px; }
+.issue { font-size: 14px; font-weight: 600; color: var(--butter); }
+.cover h1 { margin-top: 16px; max-width: 11ch; font-size: clamp(3.6rem, 1.4rem + 7vw, 8rem); line-height: 0.92; }
+.cover h1 i { color: var(--butter); }
+.cover p { margin-top: 24px; max-width: 38ch; font-size: 19px; color: #e4e9e1; }
+.cover-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; margin-top: 34px; }
+.cover .photo-tag { left: auto; right: 20px; bottom: 20px; }
+
+/* a morning at juniper: the day as a timeline */
+.day { padding: 110px 0 100px; }
+.day-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 56px; }
+.day h2 { font-size: clamp(2.6rem, 1.4rem + 3.6vw, 4.6rem); }
+.day h2 i { color: var(--berry); }
+.day-head p { color: var(--soft); max-width: 44ch; justify-self: end; }
+.line { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+.line::before { content: ""; position: absolute; left: 0; right: 0; top: 34px; height: 1px; background: var(--juniper); }
+.line li { position: relative; padding-top: 58px; }
+.line li::before { content: ""; position: absolute; left: 0; top: 28px; width: 13px; height: 13px; border-radius: 50%; background: var(--oat); border: 1.5px solid var(--juniper); }
+.line li:nth-child(3)::before { background: var(--butter); border-color: var(--butter); box-shadow: 0 0 0 6px rgba(233,196,106,0.35); }
+.line time { position: absolute; top: 0; left: 0; font: 400 28px/1 var(--display); }
+.line b { display: block; font-size: 17px; }
+.line span { display: block; margin-top: 6px; color: var(--soft); font-size: 15px; }
+
+/* pie of the week: a magazine spread */
+.spread { background: var(--juniper); color: var(--cream); overflow: hidden; }
+.spread .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; min-height: 640px; }
+.spread figure { position: relative; margin-left: calc((100vw - var(--wrap)) / -2); }
+.spread img { width: 100%; height: 100%; object-fit: cover; }
+.spread-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 0 80px clamp(32px, 6vw, 90px); }
+.kicker { font-size: 14px; font-weight: 600; color: var(--butter); }
+.spread h2 { margin-top: 14px; font-size: clamp(2.8rem, 1.6rem + 3.4vw, 5rem); }
+.spread p { margin-top: 20px; color: #cfd8cf; max-width: 40ch; }
+.slices { margin-top: 30px; display: grid; gap: 12px; }
+.slices li { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(250,247,240,0.18); }
+.slices li span:first-child { font: italic 400 22px/1.2 var(--display); }
+.spread .pill { margin-top: 30px; align-self: flex-start; }
+
+/* the menu: two columns, editorial */
+.menu { padding: 110px 0; }
+.menu-head { text-align: center; margin-bottom: 60px; }
+.menu-head h2 { font-size: clamp(2.8rem, 1.6rem + 3.6vw, 5rem); }
+.menu-head p { margin-top: 10px; color: var(--soft); }
+.cols { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0 56px; }
+.cols .rule { width: 1px; background: var(--line); }
+.cols h3 { font: italic 400 32px/1 var(--display); color: var(--berry); margin-bottom: 18px; }
+.dish { display: grid; grid-template-columns: 1fr auto; gap: 2px 20px; padding: 16px 0; border-top: 1px solid var(--line); }
+.dish b { font-weight: 600; }
+.dish em { font-style: normal; font: 400 22px/1 var(--display); }
+.dish span { grid-column: 1 / -1; color: var(--soft); font-size: 15px; }
+.menu-note { margin-top: 36px; text-align: center; font-size: 14px; color: var(--soft); }
+.menu-pic { margin: 70px auto 0; max-width: 760px; position: relative; }
+.menu-pic img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 2px; }
+.menu-pic figcaption { margin-top: 10px; font: italic 400 18px/1.4 var(--display); color: var(--soft); text-align: center; }
+
+/* reviews: one big pull quote */
+.reviews { padding: 110px 0; background: var(--cream); border-top: 1px solid var(--line); }
+.pull { max-width: 22ch; margin-inline: auto; text-align: center; font: 400 clamp(2rem, 1.2rem + 3vw, 3.6rem)/1.1 var(--display); }
+.pull-by { margin-top: 20px; text-align: center; color: var(--soft); font-size: 15px; display: flex; gap: 10px; justify-content: center; align-items: center; }
+.minor { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 64px auto 0; padding-top: 40px; border-top: 1px solid var(--line); }
+.minor blockquote { font: italic 400 22px/1.35 var(--display); }
+.minor figcaption { margin-top: 12px; color: var(--soft); font-size: 14px; display: flex; gap: 8px; align-items: center; }
+.stars { color: var(--berry); letter-spacing: 2px; }
+
+/* visit */
+.visit { padding: 110px 0; background: var(--juniper); color: var(--cream); }
+.visit .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start; }
+.visit h2 { font-size: clamp(2.8rem, 1.6rem + 3.6vw, 5rem); }
+.visit h2 i { color: var(--butter); }
+.visit address { margin-top: 22px; font-style: normal; font-size: 19px; color: #dfe6dd; }
+.visit .cover-btns { margin-top: 30px; }
+.hours li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(250,247,240,0.18); }
+.hours .today { color: var(--butter); font-weight: 700; }
+.foot { padding: 28px 0 34px; background: #17301f; color: #a9b8ab; font-size: 14px; }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 30px; }
+
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .cover .wrap { padding-bottom: 56px; }
+  .cover::after { background: linear-gradient(0deg, rgba(20,38,27,0.95) 0%, rgba(20,38,27,0.7) 55%, rgba(20,38,27,0.2) 100%); }
+  .day-head, .spread .wrap, .visit .wrap { grid-template-columns: 1fr; }
+  .day-head p { justify-self: start; }
+  .line { grid-template-columns: 1fr; gap: 0; }
+  .line::before { left: 6px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
+  .line li { padding: 0 0 26px 40px; }
+  .line li::before { top: 8px; }
+  .line time { position: static; display: block; margin-bottom: 4px; }
+  .spread figure { margin: 0 -20px; }
+  .spread img { aspect-ratio: 4 / 3; }
+  .spread-text { padding: 56px 0; }
+  .cols { grid-template-columns: 1fr; gap: 40px; }
+  .cols .rule { display: none; }
+  .minor { grid-template-columns: 1fr; }
 }
-/* ---------- Booking / ordering preview ---------- */
-dialog.flow { border: 0; padding: 0; width: min(560px, 100% - 1.5rem); max-height: min(820px, 100dvh - 1.5rem); border-radius: 22px; background: var(--surface); color: var(--ink); box-shadow: 0 24px 64px rgba(0,0,0,.28); }
-dialog.flow[open] { display: flex; flex-direction: column; }
-dialog.flow::backdrop { background: rgba(20, 16, 18, .55); }
-.flow-head { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.3rem; border-bottom: 1px solid var(--line); }
-.flow-head h3 { margin: 0; font-size: 1.35rem; }
-.flow-close { border: 0; background: transparent; font-size: 1.6rem; line-height: 1; cursor: pointer; color: var(--ink-soft); }
-.flow-note { margin: 0; background: #fff4d6; color: #5a3f00; font-size: .84rem; font-weight: 600; text-align: center; padding: .45rem 1rem; }
-.flow-body { padding: 1.2rem 1.3rem 1.4rem; overflow: auto; flex: 1; min-height: 0; }
-.flow-step-label { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .8rem; }
-.opt { display: flex; width: 100%; justify-content: space-between; gap: 1rem; align-items: center; text-align: left; font: inherit; background: var(--bg); color: var(--ink); border: 2px solid var(--line); border-radius: 14px; padding: .8rem 1rem; margin-bottom: .6rem; cursor: pointer; }
-.opt:hover, .opt[aria-pressed="true"] { border-color: var(--accent); }
-.flow-group { margin: 1rem 0 .5rem; font-family: var(--display); font-size: 1.1rem; color: var(--accent); }
-.flow-group:first-of-type { margin-top: 0; }
-.opt small { display: block; color: var(--ink-soft); }
-.qty { display: inline-flex; align-items: center; gap: .5rem; }
-.qty button { width: 2rem; height: 2rem; border-radius: 50%; border: 2px solid var(--line); background: var(--surface); font: inherit; font-weight: 700; cursor: pointer; color: var(--ink); }
-.days { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; margin-bottom: 1rem; }
-.slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
-.chip { font: inherit; font-size: .92rem; background: var(--bg); color: var(--ink); border: 2px solid var(--line); border-radius: 12px; padding: .55rem .3rem; cursor: pointer; text-align: center; }
-.chip small { display: block; font-size: .75rem; color: var(--ink-soft); }
-.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.chip[aria-pressed="true"] small { color: inherit; }
-.chip[disabled] { opacity: .4; cursor: not-allowed; text-decoration: line-through; }
-.field { margin-bottom: .9rem; }
-.field label { display: block; font-weight: 600; font-size: .9rem; margin-bottom: .3rem; }
-.field input { width: 100%; font: inherit; padding: .7rem .9rem; border-radius: 12px; border: 2px solid var(--line); background: var(--bg); color: var(--ink); }
-.flow-foot { display: flex; justify-content: space-between; gap: .8rem; padding: 1rem 1.3rem; border-top: 1px solid var(--line); }
-.flow-foot .btn[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; transform: none; }
-.summary { background: var(--bg); border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
-.done { text-align: center; padding: 1rem 0; }
-.done .big { font-size: 3rem; line-height: 1; margin-bottom: .6rem; }
+@media (max-width: 480px) {
+  .logo { font-size: 26px; }
+  .mast .pill { min-height: 42px; padding: 0 16px; font-size: 15px; }
+}
 </style>
 </head>
 <body>
-<div class="demo-note">Example site by Ridge. Juniper Table Café is a made-up business; items tagged “Example” are placeholders.</div>
+<a class="skip" href="#main">Skip to the page</a>
+<div class="demo-note">Example site by <a href="../../">Ridge</a>. Juniper Table Café is a made-up business; items tagged “Example” are placeholders.</div>
 
-<header class="top">
+<div style="position:relative">
+<header class="mast">
   <div class="wrap">
-    <a class="brand" href="#top">Juniper Table Café<small>Café &amp; Pie Shop · Arroyo Grande</small></a>
-    <nav class="links" aria-label="Main">
-      <a href="#menu">Menu</a><a href="#reviews">Reviews</a><a href="#visit">Hours &amp; location</a>
-    </nav>
-    <button class="btn small" data-open-flow>Order online</button>
+    <a class="logo" href="#main">Juniper <i>Table</i></a>
+    <nav class="nav" aria-label="Sections"><a href="#day">The day</a><a href="#pie">Pie</a><a href="#menu">Menu</a><a href="#visit">Visit</a></nav>
+    <a class="pill" href="#menu">See the menu</a>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-grid has-photo">
-      <div>
-      <span class="eyebrow">Café &amp; Pie Shop · Arroyo Grande</span>
-      <h1>Homemade pies and hearty breakfasts</h1>
-      <p class="tagline">Fresh-made pies, fluffy omelets and good coffee in the village. Order breakfast, lunch or a whole pie online and skip the wait.</p>
-      <div class="hero-actions">
-        <button class="btn" data-open-flow>Order online</button>
-        <a class="btn ghost" href="tel:+18055550102">Call (805) 555-0102</a>
-      </div>
-      <span class="rating-pill"><span class="st">★★★★½</span>4.6 on Google · 214 reviews <span class="tag">Example</span></span>
-      </div>
-      <figure class="hero-photo"><img src="images/photo-1.jpg" alt="A golden homemade pie" fetchpriority="high"><span class="photo-tag">Example photo</span></figure>
-    </div>
-  </section>
-
-  <div class="wrap highlights">
-    <div class="hl reveal"><div class="ic" aria-hidden="true">🥧</div><strong>Fresh-made pies</strong><span>Whole pies to order for holidays, birthdays and the office.</span></div><div class="hl reveal"><div class="ic" aria-hidden="true">🍳</div><strong>Breakfast &amp; lunch</strong><span>Omelets, pancakes, sandwiches and daily specials.</span></div><div class="hl reveal"><div class="ic" aria-hidden="true">📱</div><strong>Order online</strong><span>Order anything on the menu and pick a pickup time, any time of day.</span></div>
+<main id="main">
+<section class="cover">
+  <img src="images/hero.jpg" width="960" height="640" alt="Syrup pouring over a stack of pancakes">
+  <span class="photo-tag">Example photo</span>
+  <div class="wrap">
+    <p class="issue">Breakfast, lunch and pie, Arroyo Grande</p>
+    <h1>Mornings, <i>slowly.</i></h1>
+    <p>Pancakes off the griddle, a pot of coffee that never runs dry, and pie that's out of the oven by eleven. Stay as long as you like.</p>
+    <div class="cover-btns"><a class="pill" href="#menu">See the menu</a><a class="link" href="tel:+18055550102">Call (805) 555-0102 <span aria-hidden="true">→</span></a></div>
   </div>
-
-  <div class="wrap photo-strip"><figure class="strip-photo reveal"><img src="images/photo-2.jpg" alt="Lattice-top apple pie" loading="lazy"><span class="photo-tag">Example photo</span></figure><figure class="strip-photo reveal"><img src="images/photo-3.jpg" alt="Meringue pie" loading="lazy"><span class="photo-tag">Example photo</span></figure></div>
-
-  <section id="menu">
-    <div class="wrap">
-      <h2>Menu</h2>
-      <p class="section-intro">Example items and prices, to show how a full menu looks on the site.</p>
-      <div class="menu"><div class="menu-group reveal"><h3>Breakfast <span class="tag">Example</span></h3><ul><li><div><strong>Garden Omelet</strong><span class="desc">With hash browns and toast</span></div><span class="price">$14.95</span></li><li><div><strong>Ham &amp; Cheese Omelet</strong><span class="desc">Black Forest ham and cheddar</span></div><span class="price">$13.95</span></li><li><div><strong>Pancakes &amp; Hash Browns</strong><span class="desc">Stack of three</span></div><span class="price">$11.95</span></li></ul></div>
-<div class="menu-group reveal"><h3>Lunch <span class="tag">Example</span></h3><ul><li><div><strong>Turkey Sandwich</strong><span class="desc">On fresh-baked bread</span></div><span class="price">$13.50</span></li><li><div><strong>Club Sandwich</strong><span class="desc">The house special</span></div><span class="price">$14.50</span></li><li><div><strong>Soup of the Day</strong><span class="desc">Cup or bowl</span></div><span class="price">$7.95</span></li></ul></div>
-<div class="menu-group reveal"><h3>Pies &amp; Bakery <span class="tag">Example</span></h3><ul><li><div><strong>Key Lime Pie</strong><span class="desc">Whole 9-inch pie</span></div><span class="price">$24</span></li><li><div><strong>Pumpkin Pie</strong><span class="desc">Seasonal favorite</span></div><span class="price">$22</span></li><li><div><strong>Pie by the Slice</strong><span class="desc">Ask what&#x27;s fresh today</span></div><span class="price">$5.50</span></li></ul></div>
-<div class="menu-group reveal"><h3>Drinks <span class="tag">Example</span></h3><ul><li><div><strong>Pumpkin Latte</strong><span class="desc">Seasonal</span></div><span class="price">$5.25</span></li><li><div><strong>Fresh-Brewed Coffee</strong><span class="desc">Free refills</span></div><span class="price">$3.00</span></li></ul></div></div>
-    </div>
-  </section>
-
-  <section id="reviews" class="alt">
-    <div class="wrap">
-      <h2>What people say</h2>
-      <p class="section-intro">4.6 stars from 214 reviews on Google. These reviews are examples.</p>
-      <div class="reviews"><figure class="review reveal"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>We ordered a whole key lime pie for my mom&#x27;s birthday and it was perfect. The breakfast is just as good as the pie.</blockquote><figcaption>Example review · a week ago</figcaption></figure>
-<figure class="review reveal"><div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>Fluffy omelets, great hash browns and the coffee keeps coming. Our new Sunday spot.</blockquote><figcaption>Example review · 2 months ago</figcaption></figure>
-<figure class="review reveal"><div class="review-stars" aria-label="4 out of 5 stars">★★★★</div><blockquote>Cozy little café with homemade everything. The club sandwich was huge and the soup of the day was excellent.</blockquote><figcaption>Example review · 3 weeks ago</figcaption></figure></div>
-    </div>
-  </section>
-
-  <section id="visit">
-    <div class="wrap">
-      <h2>Hours &amp; location</h2>
-      <div class="visit">
-        <div class="card">
-          <p class="contact-line"><span class="ic" aria-hidden="true">📍</span><span>100 Main St, Arroyo Grande, CA 93420<br><a href="https://www.google.com/maps/search/?api=1&query=Juniper%20Table%20Caf%C3%A9%2C%20100%20Main%20St%2C%20Arroyo%20Grande%2C%20CA%2093420" target="_blank" rel="noopener">Get directions</a></span></p>
-          <p class="contact-line"><span class="ic" aria-hidden="true">📞</span><a href="tel:+18055550102">(805) 555-0102</a></p>
-          <table class="hours" aria-label="Opening hours"><tbody>
-<tr data-day="Monday"><th>Monday</th><td>Closed</td></tr>
-<tr data-day="Tuesday"><th>Tuesday</th><td>7:00 AM – 2:00 PM</td></tr>
-<tr data-day="Wednesday"><th>Wednesday</th><td>7:00 AM – 2:00 PM</td></tr>
-<tr data-day="Thursday"><th>Thursday</th><td>7:00 AM – 2:00 PM</td></tr>
-<tr data-day="Friday"><th>Friday</th><td>7:00 AM – 2:00 PM</td></tr>
-<tr data-day="Saturday"><th>Saturday</th><td>7:00 AM – 2:00 PM</td></tr>
-<tr data-day="Sunday"><th>Sunday</th><td>7:00 AM – 2:00 PM</td></tr>
-          </tbody></table>
-        </div>
-        <div class="map"><iframe title="Map of Juniper Table Café" loading="lazy" src="https://www.google.com/maps?q=Juniper%20Table%20Caf%C3%A9%2C%20100%20Main%20St%2C%20Arroyo%20Grande%2C%20CA%2093420&output=embed"></iframe></div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">© Juniper Table Café · 100 Main St, Arroyo Grande, CA 93420 · (805) 555-0102</div>
-</footer>
-
-<div class="sticky-cta">
-  <a class="btn ghost" href="tel:+18055550102">Call</a>
-  <button class="btn" data-open-flow>Order online</button>
+</section>
 </div>
 
-<dialog class="flow" id="flow" aria-labelledby="flow-title">
-  <div class="flow-head"><h3 id="flow-title">Order online</h3><button class="flow-close" aria-label="Close" data-close>×</button></div>
-  <p class="flow-note">Preview: this shows how online ordering will work. Nothing is ordered.</p>
-  <div class="flow-body" id="flow-body"></div>
-  <div class="flow-foot"><button class="btn ghost small" id="flow-back">Back</button><button class="btn small" id="flow-next">Next</button></div>
-</dialog>
+<section class="day" id="day" aria-labelledby="day-title">
+  <div class="wrap">
+    <div class="day-head">
+      <h2 id="day-title">A morning at <i>Juniper</i></h2>
+      <p>Tuesday to Sunday, the day runs the same comfortable way. Come early for a quiet table, or late for warm pie.</p>
+    </div>
+    <ol class="line">
+      <li><time>7:00</time><b>First pot of coffee</b><span>Doors open, griddle on.</span></li>
+      <li><time>8:30</time><b>The regulars' rush</b><span>Pancakes and omelets fly out.</span></li>
+      <li><time>11:00</time><b>Pies come out</b><span>Today's slices hit the case.</span></li>
+      <li><time>12:00</time><b>Lunch</b><span>Sandwiches, soup and salads.</span></li>
+      <li><time>2:00</time><b>Last slice</b><span>We close up. Pie to go till then.</span></li>
+    </ol>
+  </div>
+</section>
 
+<section class="spread" id="pie" aria-labelledby="pie-title">
+  <div class="wrap">
+    <figure><img src="images/b.jpg" width="960" height="640" alt="A whole baked pie with a golden crust" loading="lazy"><span class="photo-tag">Example photo</span></figure>
+    <div class="spread-text">
+      <p class="kicker">Pie of the week</p>
+      <h2 id="pie-title">Olallieberry, lattice top.</h2>
+      <p>Our take on the Central Coast classic: berries from up the road, a little lemon, and an all-butter crust we roll by hand every morning.</p>
+      <ul class="slices">
+        <li><span>By the slice</span><span>$5.50</span></li>
+        <li><span>À la mode</span><span>$7.50</span></li>
+        <li><span>Whole pie, order a day ahead</span><span>$28</span></li>
+      </ul>
+      <a class="pill" href="tel:+18055550102">Order a whole pie</a>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu" aria-labelledby="menu-title">
+  <div class="wrap">
+    <div class="menu-head"><h2 id="menu-title">The menu</h2><p>Served 7 AM to 2 PM, Tuesday to Sunday.</p></div>
+    <div class="cols">
+      <div>
+        <h3>Breakfast</h3>
+        <div class="dish"><b>Buttermilk pancakes</b><em>11</em><span>Three tall ones, whipped butter, warm syrup.</span></div>
+        <div class="dish"><b>Garden omelet</b><em>14</em><span>Spinach, mushroom, tomato, jack cheese, potatoes.</span></div>
+        <div class="dish"><b>Belgian waffle</b><em>12</em><span>Fresh berries and whipped cream.</span></div>
+        <div class="dish"><b>Biscuits and gravy</b><em>12</em><span>Two eggs any style on the side.</span></div>
+      </div>
+      <div class="rule"></div>
+      <div>
+        <h3>Lunch</h3>
+        <div class="dish"><b>Club sandwich</b><em>15</em><span>Turkey, bacon, avocado on toasted sourdough.</span></div>
+        <div class="dish"><b>Patty melt</b><em>15</em><span>Grilled onions, Swiss, rye, fries.</span></div>
+        <div class="dish"><b>Soup of the day</b><em>8</em><span>Cup or bowl, with a warm roll.</span></div>
+        <div class="dish"><b>Cobb salad</b><em>14</em><span>Chicken, egg, bacon, blue cheese, avocado.</span></div>
+      </div>
+    </div>
+    <p class="menu-note"><span class="ex-tag">Example</span> Dishes and prices are placeholders.</p>
+    <figure class="menu-pic"><img src="images/d.jpg" width="960" height="874" alt="A waffle with berries, cream and coffee" loading="lazy"><figcaption>The Belgian waffle, with a cup of the house blend.</figcaption></figure>
+  </div>
+</section>
+
+<section class="reviews" aria-labelledby="rev-title">
+  <div class="wrap">
+    <h2 id="rev-title" class="sr-only">Reviews</h2>
+    <p class="pull">“We ordered a whole key lime pie for my mom's birthday and it was perfect. The breakfast is just as good.”</p>
+    <p class="pull-by"><span class="stars" aria-label="5 stars">★★★★★</span> a week ago <span class="ex-tag">Example</span></p>
+    <div class="minor">
+      <figure><blockquote>Fluffy pancakes, great hash browns and the coffee keeps coming. Our new Sunday spot.</blockquote><figcaption><span class="stars" aria-label="5 stars">★★★★★</span> 2 months ago <span class="ex-tag">Example</span></figcaption></figure>
+      <figure><blockquote>Cozy little café with homemade everything. The soup of the day was excellent.</blockquote><figcaption><span class="stars" aria-label="4 stars">★★★★☆</span> 3 weeks ago <span class="ex-tag">Example</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit" aria-labelledby="visit-title">
+  <div class="wrap">
+    <div>
+      <h2 id="visit-title">Pull up a chair <i>at the table.</i></h2>
+      <address>100 Main St, Arroyo Grande, CA 93420</address>
+      <div class="cover-btns"><a class="pill" href="tel:+18055550102">Call (805) 555-0102</a><a class="link" href="#visit">Directions <span aria-hidden="true">→</span></a></div>
+    </div>
+    <ul class="hours" id="hours">
+      <li><span>Monday</span><span>Closed</span></li><li><span>Tuesday</span><span>7 AM – 2 PM</span></li><li><span>Wednesday</span><span>7 AM – 2 PM</span></li><li><span>Thursday</span><span>7 AM – 2 PM</span></li><li><span>Friday</span><span>7 AM – 2 PM</span></li><li><span>Saturday</span><span>7 AM – 2 PM</span></li><li><span>Sunday</span><span>7 AM – 2 PM</span></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>Juniper Table Café, 100 Main St, Arroyo Grande</span><span>An example site by <a href="../../">Ridge</a>. This business is made up.</span></div></footer>
 <script>
-const KIND = "order";
-const ITEMS = [{"name": "Garden Omelet", "detail": "With hash browns and toast", "price": "$14.95", "group": "Breakfast"}, {"name": "Ham & Cheese Omelet", "detail": "Black Forest ham and cheddar", "price": "$13.95", "group": "Breakfast"}, {"name": "Pancakes & Hash Browns", "detail": "Stack of three", "price": "$11.95", "group": "Breakfast"}, {"name": "Turkey Sandwich", "detail": "On fresh-baked bread", "price": "$13.50", "group": "Lunch"}, {"name": "Club Sandwich", "detail": "The house special", "price": "$14.50", "group": "Lunch"}, {"name": "Soup of the Day", "detail": "Cup or bowl", "price": "$7.95", "group": "Lunch"}, {"name": "Key Lime Pie", "detail": "Whole 9-inch pie", "price": "$24", "group": "Pies & Bakery"}, {"name": "Pumpkin Pie", "detail": "Seasonal favorite", "price": "$22", "group": "Pies & Bakery"}, {"name": "Pie by the Slice", "detail": "Ask what's fresh today", "price": "$5.50", "group": "Pies & Bakery"}, {"name": "Pumpkin Latte", "detail": "Seasonal", "price": "$5.25", "group": "Drinks"}, {"name": "Fresh-Brewed Coffee", "detail": "Free refills", "price": "$3.00", "group": "Drinks"}];
-const HOURS = ["Monday: Closed", "Tuesday: 7:00 AM \u2013 2:00 PM", "Wednesday: 7:00 AM \u2013 2:00 PM", "Thursday: 7:00 AM \u2013 2:00 PM", "Friday: 7:00 AM \u2013 2:00 PM", "Saturday: 7:00 AM \u2013 2:00 PM", "Sunday: 7:00 AM \u2013 2:00 PM"];
-const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
-// Fade cards and photos in as they scroll into view
-if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
-  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-} else document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
-
-// Highlight today's hours
-const todayName = DAYS[new Date().getDay()];
-document.querySelectorAll(".hours tr").forEach(tr => tr.classList.toggle("today", tr.dataset.day === todayName));
-
-// Open hours per day -> [openMinutes, closeMinutes] or null
-function parseHours(day) {
-  const line = HOURS.find(h => h.startsWith(day + ":"));
-  if (!line || /closed/i.test(line)) return null;
-  const m = line.replace(/[\u202f\u2009]/g, " ").match(/(\d+):(\d+)\s*(AM|PM)\s*[–-]\s*(\d+):(\d+)\s*(AM|PM)/i);
-  if (!m) return null;
-  const toMin = (h, mi, ap) => ((+h % 12) + (/pm/i.test(ap) ? 12 : 0)) * 60 + +mi;
-  return [toMin(m[1], m[2], m[3]), toMin(m[4], m[5], m[6])];
-}
-const fmt = min => { const h = Math.floor(min / 60), m = min % 60; return `${(h % 12) || 12}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`; };
-
-const st = { step: 0, item: null, cart: {}, day: null, slot: null, name: "", phone: "" };
-const dlg = document.getElementById("flow"), body = document.getElementById("flow-body");
-const next = document.getElementById("flow-next"), back = document.getElementById("flow-back");
-
-function upcomingDays() {
-  const out = [];
-  for (let i = 0; out.length < 8 && i < 14; i++) {
-    const d = new Date(); d.setDate(d.getDate() + i);
-    const day = { date: d, open: parseHours(DAYS[d.getDay()]) };
-    if (day.open && !slotsFor(day).length) day.open = null;  // closed for the rest of today
-    out.push(day);
-  }
-  return out;
-}
-function slotsFor(day) {
-  if (!day.open) return [];
-  const [o, c] = day.open, out = [];
-  // Today: only times at least 30 minutes from now
-  const now = new Date(), isToday = day.date.toDateString() === now.toDateString();
-  const earliest = isToday ? now.getHours() * 60 + now.getMinutes() + 30 : 0;
-  const step = KIND === "book" ? 30 : 15;
-  for (let t = Math.max(o, KIND === "book" ? o : o + 30); t + (KIND === "book" ? 45 : 0) <= c; t += step) if (t >= earliest) out.push(t);
-  // Demo only: mark some times as taken so it looks real (same every time)
-  return out.slice(0, 18).map((t, i) => ({ t, taken: KIND === "book" && (i * 7 + day.date.getDate()) % 5 === 0 }));
-}
-function cartTotal() { return Object.entries(st.cart).reduce((t, [i, q]) => t + q * parseFloat(ITEMS[i].price.replace(/[^0-9.]/g, "")), 0); }
-function cartCount() { return Object.values(st.cart).reduce((a, b) => a + b, 0); }
-
-function render() {
-  back.style.visibility = st.step === 0 || st.step === 3 ? "hidden" : "visible";
-  next.style.display = st.step === 3 ? "none" : "";
-  if (st.step === 0) {
-    body.innerHTML = `<div class="flow-step-label">${KIND === "book" ? "1 · Choose a service" : "1 · Choose what you'd like"}</div>` +
-      ITEMS.map((it, i) => (it.group && it.group !== (ITEMS[i - 1] || {}).group ? `<h4 class="flow-group">${it.group}</h4>` : "") + (KIND === "book"
-        ? `<button class="opt" data-i="${i}" aria-pressed="${st.item === i}"><span><strong>${it.name}</strong><small>${it.detail}</small></span><span class="price">${it.price}</span></button>`
-        : `<div class="opt" style="cursor:default"><span><strong>${it.name}</strong><small>${it.detail} · ${it.price}</small></span><span class="qty"><button data-dec="${i}" aria-label="Remove one">−</button><span>${st.cart[i] || 0}</span><button data-inc="${i}" aria-label="Add one">+</button></span></div>`)
-      ).join("");
-    body.querySelectorAll("[data-i]").forEach(b => b.onclick = () => { st.item = +b.dataset.i; render(); });
-    const keep = fn => () => { const y = body.scrollTop; fn(); render(); body.scrollTop = y; };
-    body.querySelectorAll("[data-inc]").forEach(b => b.onclick = keep(() => { st.cart[b.dataset.inc] = (st.cart[b.dataset.inc] || 0) + 1; }));
-    body.querySelectorAll("[data-dec]").forEach(b => b.onclick = keep(() => { st.cart[b.dataset.dec] = Math.max(0, (st.cart[b.dataset.dec] || 0) - 1); }));
-    next.disabled = KIND === "book" ? st.item === null : cartCount() === 0;
-    next.textContent = KIND === "order" && cartCount() ? `Next · ${cartCount()} item${cartCount() > 1 ? "s" : ""} · $${cartTotal().toFixed(2)}` : "Next";
-  } else if (st.step === 1) {
-    const days = upcomingDays();
-    if (st.day === null) st.day = days.findIndex(d => d.open);
-    const slots = slotsFor(days[st.day]);
-    body.innerHTML = `<div class="flow-step-label">2 · ${KIND === "book" ? "Pick a day and time" : "Pick a pickup time"}</div><div class="days">` +
-      days.map((d, i) => `<button class="chip" data-d="${i}" aria-pressed="${st.day === i}" ${d.open ? "" : "disabled"}>${d.date.toLocaleDateString(undefined, { weekday: "short" })}<small>${d.date.toLocaleDateString(undefined, { month: "short", day: "numeric" })}</small></button>`).join("") +
-      `</div><div class="slots">` + slots.map(s => `<button class="chip" data-t="${s.t}" aria-pressed="${st.slot === s.t}" ${s.taken ? "disabled" : ""}>${fmt(s.t)}</button>`).join("") + `</div>`;
-    body.querySelectorAll("[data-d]").forEach(b => b.onclick = () => { st.day = +b.dataset.d; st.slot = null; render(); });
-    body.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { st.slot = +b.dataset.t; render(); });
-    next.disabled = st.slot === null;
-    next.textContent = "Next";
-  } else if (st.step === 2) {
-    const d = upcomingDays()[st.day].date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
-    const what = KIND === "book" ? ITEMS[st.item].name : Object.entries(st.cart).filter(([, q]) => q).map(([i, q]) => `${q} × ${ITEMS[i].name}`).join("<br>");
-    body.innerHTML = `<div class="flow-step-label">3 · Your details</div><div class="summary"><strong>${what}</strong><br>${d} at ${fmt(st.slot)}</div>
-      <div class="field"><label for="f-name">Name</label><input id="f-name" autocomplete="off" value="${st.name}"></div>
-      <div class="field"><label for="f-phone">Phone (for a text reminder)</label><input id="f-phone" type="tel" autocomplete="off" value="${st.phone}"></div>`;
-    const n = body.querySelector("#f-name"), ph = body.querySelector("#f-phone");
-    const check = () => { st.name = n.value; st.phone = ph.value; next.disabled = !n.value.trim(); };
-    n.oninput = ph.oninput = check; check();
-    next.textContent = KIND === "book" ? "Book appointment" : "Place order";
-  } else {
-    body.innerHTML = `<div class="done"><div class="big">✓</div><h3>${KIND === "book" ? "You're booked!" : "Order received!"}</h3>
-      <p>This is where customers would see their confirmation and get a text ${KIND === "book" ? "reminder before their appointment" : "when their order is ready"}.</p>
-      <p style="color:var(--ink-soft);font-size:.9rem">(Preview only. Nothing was ${KIND === "book" ? "booked" : "ordered"}.)</p>
-      <button class="btn" data-close>Done</button></div>`;
-    body.querySelector("[data-close]").onclick = () => dlg.close();
-  }
-}
-next.onclick = () => { st.step++; render(); };
-back.onclick = () => { st.step = Math.max(0, st.step - 1); render(); };
-document.querySelectorAll("[data-open-flow]").forEach(b => b.onclick = () => {
-  Object.assign(st, { step: 0, item: null, cart: {}, day: null, slot: null });
-  render(); dlg.showModal();
-});
-dlg.querySelector(".flow-head [data-close]").onclick = () => dlg.close();
-dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  const rows = document.querySelectorAll('#hours li'), day = (new Date().getDay() + 6) % 7;
+  if (rows[day]) rows[day].classList.add('today');
 </script>
 </body>
 </html>
