@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../example.css">
+<link rel="stylesheet" href="../example.css?v=2">
 <style>
 :root {
   --paper: #f7efe1; --cobalt: #1f3fbf; --cobalt-deep: #162d8a; --marigold: #f6a723; --chili: #d7332b; --pink: #ec5f9a; --green: #2f9e6b; --ink: #1b1d2e;
@@ -82,6 +82,11 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; }
 .lot:hover { rotate: -2deg; }
 .lot .n { font: 800 15px/1 var(--body); }
 .lot h3 { margin-top: auto; font-size: 34px; }
+.lot-pic { position: relative; margin: 14px 0 14px; aspect-ratio: 4 / 3; overflow: hidden; border: 3px solid var(--ink); background: #fff; }
+.lot-pic img { width: 100%; height: 100%; object-fit: cover; transition: scale 400ms ease; }
+.lot:hover .lot-pic img { scale: 1.05; }
+.lot-pic .photo-tag { left: 8px; bottom: 8px; font-size: 9px; padding: 2px 6px; }
+.lot .n { line-height: 30px; }
 .lot p { margin-top: 8px; font-size: 15px; font-weight: 500; }
 .lot .price { position: absolute; right: 14px; top: 12px; padding: 4px 10px; background: #fff; color: var(--ink); border: 2px solid var(--ink); font: 800 16px/1.2 var(--body); }
 .lot::after { content: ""; position: absolute; inset: 8px; border: 1.5px solid currentColor; opacity: 0.35; pointer-events: none; }
@@ -145,6 +150,9 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; }
   .lot h3 { font-size: 26px; }
   .lot p { display: none; }
 }
+dialog.flow { --fl-bg: var(--paper); --fl-ink: var(--ink); --fl-soft: #5b5d6e; --fl-line: rgba(27,29,46,.22); --fl-accent: var(--cobalt); --fl-accent-ink: #fff; --fl-radius: 0px; --fl-display: var(--display); --fl-body: var(--body); }
+dialog.flow .flow-head { background: var(--cobalt); color: #fff; border: 0; }
+dialog.flow .flow-close { color: #fff; }
 </style>
 </head>
 <body>
@@ -160,7 +168,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; }
   <div class="wrap">
     <a class="logo" href="#main">El <span>Girasol</span></a>
     <nav class="nav" aria-label="Sections"><a href="#loteria">Pan dulce</a><a href="#friday">Tamales</a><a href="#visit">Hours</a></nav>
-    <a class="btn" href="tel:+18055550101">Order ahead</a>
+    <a class="btn" href="tel:+18055550101" data-open-flow>Order ahead</a>
   </div>
 </header>
 
@@ -170,7 +178,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; }
     <div>
       <h1>Pan dulce <em>y más.</em></h1>
       <p class="hero-lede">A Mexican panadería in San Luis Obispo. Ovens on at 3, doors open at 5, tamales every Friday.</p>
-      <div class="hero-btns"><a class="btn" href="tel:+18055550101">Order ahead</a><a class="btn btn--white" href="#loteria">See the case</a></div>
+      <div class="hero-btns"><a class="btn" href="tel:+18055550101" data-open-flow>Order ahead</a><a class="btn btn--white" href="#loteria">See the case</a></div>
       <p class="hero-meta"><span class="stars" aria-hidden="true">★★★★★</span> 4.7 from 318 reviews <span class="ex-tag">Example</span></p>
     </div>
     <div class="fan">
@@ -187,14 +195,14 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; }
   <div class="wrap">
     <div class="sec-head"><h2 id="lot-title">¡Lotería!</h2><p>Pick your cards. Everything is baked here each morning, and the case is full by 6 AM.</p></div>
     <ul class="deck">
-      <li class="lot" style="--c:#ec5f9a"><span class="n">No. 1</span><span class="price">$1.50</span><h3>La Concha</h3><p>Soft sweet roll, crackly sugar shell.</p></li>
-      <li class="lot" style="--c:#f6a723"><span class="n">No. 2</span><span class="price">$1.75</span><h3>El Cuerno</h3><p>Buttery horn, lightly sugared.</p></li>
-      <li class="lot" style="--c:#1f3fbf;--t:#fff"><span class="n">No. 3</span><span class="price">$1.50</span><h3>La Oreja</h3><p>Caramelized puff pastry that shatters.</p></li>
-      <li class="lot" style="--c:#fff"><span class="n">No. 4</span><span class="price">$1.25</span><h3>El Marranito</h3><p>Molasses-ginger cookie bread.</p></li>
-      <li class="lot" style="--c:#2f9e6b;--t:#fff"><span class="n">No. 5</span><span class="price">$2.25</span><h3>La Empanada</h3><p>Spiced pumpkin in a tender crust.</p></li>
-      <li class="lot" style="--c:#d7332b;--t:#fff"><span class="n">No. 6</span><span class="price">3 / $2</span><h3>El Bolillo</h3><p>Crusty outside, soft inside.</p></li>
-      <li class="lot" style="--c:#fff"><span class="n">No. 7</span><span class="price">$4.50</span><h3>Tres Leches</h3><p>Milk-soaked cake, whipped cream.</p></li>
-      <li class="lot" style="--c:#f6a723"><span class="n">No. 8</span><span class="price">$3</span><h3>Café de Olla</h3><p>Cinnamon and piloncillo coffee.</p></li>
+      <li class="lot" style="--c:#ec5f9a"><span class="n">No. 1</span><span class="price">$1.50</span><figure class="lot-pic"><img src="images/lot-concha.jpg" width="720" height="960" alt="Conchas with pink and white sugar shells" loading="lazy" style="object-position:50% 40%"><span class="photo-tag">Example photo</span></figure><h3>La Concha</h3><p>Soft sweet roll, crackly sugar shell.</p></li>
+      <li class="lot" style="--c:#f6a723"><span class="n">No. 2</span><span class="price">$1.75</span><figure class="lot-pic"><img src="images/lot-cuerno.jpg" width="720" height="482" alt="A golden cuerno on a red plate" loading="lazy" style="object-position:50% 55%"><span class="photo-tag">Example photo</span></figure><h3>El Cuerno</h3><p>Buttery horn, lightly sugared.</p></li>
+      <li class="lot" style="--c:#1f3fbf;--t:#fff"><span class="n">No. 3</span><span class="price">$1.50</span><figure class="lot-pic"><img src="images/lot-oreja.jpg" width="720" height="540" alt="A plate of orejas, some dipped in chocolate" loading="lazy" style="object-position:50% 50%"><span class="photo-tag">Example photo</span></figure><h3>La Oreja</h3><p>Caramelized puff pastry that shatters.</p></li>
+      <li class="lot" style="--c:#fff"><span class="n">No. 4</span><span class="price">$3.50</span><figure class="lot-pic"><img src="images/lot-muerto.jpg" width="720" height="540" alt="A sugared pan de muerto on a plate" loading="lazy" style="object-position:50% 45%"><span class="photo-tag">Example photo</span></figure><h3>Pan de Muerto</h3><p>Orange blossom and sugar, for Día de Muertos.</p></li>
+      <li class="lot" style="--c:#2f9e6b;--t:#fff"><span class="n">No. 5</span><span class="price">$2.25</span><figure class="lot-pic"><img src="images/lot-empanada.jpg" width="720" height="960" alt="A sweet empanada on a metal plate" loading="lazy" style="object-position:35% 62%"><span class="photo-tag">Example photo</span></figure><h3>La Empanada</h3><p>Spiced pumpkin in a tender crust.</p></li>
+      <li class="lot" style="--c:#d7332b;--t:#fff"><span class="n">No. 6</span><span class="price">3 / $2</span><figure class="lot-pic"><img src="images/lot-bolillo.jpg" width="720" height="960" alt="A basket of fresh bolillos" loading="lazy" style="object-position:50% 55%"><span class="photo-tag">Example photo</span></figure><h3>El Bolillo</h3><p>Crusty outside, soft inside.</p></li>
+      <li class="lot" style="--c:#fff"><span class="n">No. 7</span><span class="price">$4.50</span><figure class="lot-pic"><img src="images/lot-tresleches.jpg" width="720" height="540" alt="A slice of tres leches cake" loading="lazy" style="object-position:50% 45%"><span class="photo-tag">Example photo</span></figure><h3>Tres Leches</h3><p>Milk-soaked cake, whipped cream.</p></li>
+      <li class="lot" style="--c:#f6a723"><span class="n">No. 8</span><span class="price">$3</span><figure class="lot-pic"><img src="images/lot-cafe.jpg" width="615" height="396" alt="A cup of coffee with cinnamon sticks" loading="lazy" style="object-position:62% 50%"><span class="photo-tag">Example photo</span></figure><h3>Café de Olla</h3><p>Cinnamon and piloncillo coffee.</p></li>
     </ul>
     <p class="deck-note"><span class="ex-tag">Example</span> Items and prices are placeholders to show how a menu looks.</p>
   </div>
@@ -206,7 +214,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; }
       <div>
         <h2 id="fri-title">Tamale Friday.</h2>
         <p>Pork in red chile, chicken in green, and jalapeño with cheese, made by hand every Friday. $30 a dozen. Call by Thursday and we'll hold yours.</p>
-        <a class="btn" href="tel:+18055550101">Reserve a dozen</a>
+        <a class="btn" href="tel:+18055550101" data-open-flow data-group="Tamales by the dozen" data-title="Reserve a dozen">Reserve a dozen</a>
       </div>
       <figure><img src="images/c.jpg" width="1024" height="732" alt="Hands working dough" loading="lazy"><span class="photo-tag">Example photo</span></figure>
     </div>
@@ -249,6 +257,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 0.95; }
   const rows = document.querySelectorAll('#hours li'), day = (new Date().getDay() + 6) % 7;
   if (rows[day]) rows[day].classList.add('today');
 </script>
+<script type="application/json" id="flow-data">{"kind": "order", "title": "Order ahead", "hours": [[300, 1140], [300, 1140], [300, 1140], [300, 1140], [300, 1140], [300, 1140], [300, 1140]], "items": [{"name": "La Concha", "detail": "Soft sweet roll, crackly sugar shell", "price": "$1.50", "group": "Pan dulce"}, {"name": "El Cuerno", "detail": "Buttery horn, lightly sugared", "price": "$1.75", "group": "Pan dulce"}, {"name": "La Oreja", "detail": "Caramelized puff pastry", "price": "$1.50", "group": "Pan dulce"}, {"name": "Pan de Muerto", "detail": "Orange blossom and sugar", "price": "$3.50", "group": "Pan dulce"}, {"name": "La Empanada", "detail": "Spiced pumpkin", "price": "$2.25", "group": "Pan dulce"}, {"name": "El Bolillo", "detail": "Crusty outside, soft inside", "price": "3 for $2", "group": "Pan dulce"}, {"name": "Tres Leches", "detail": "Milk-soaked cake", "price": "$4.50", "group": "Pan dulce"}, {"name": "Café de Olla", "detail": "Cinnamon and piloncillo coffee", "price": "$3", "group": "Pan dulce"}, {"name": "Pork in red chile", "detail": "A dozen", "price": "$30", "group": "Tamales by the dozen"}, {"name": "Chicken in green chile", "detail": "A dozen", "price": "$30", "group": "Tamales by the dozen"}, {"name": "Jalapeño and cheese", "detail": "A dozen", "price": "$30", "group": "Tamales by the dozen"}]}</script>
+<script src="../flow.js?v=1" defer></script>
 <!-- Cloudflare Web Analytics: visitor counts, no cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7d8a91e38ed746dba1ee8d5ddc9d0e8c"}'></script>
 </body>
 </html>

@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../example.css">
+<link rel="stylesheet" href="../example.css?v=2">
 <style>
 :root {
   --forest: #183a2e; --deep: #10291f; --copper: #c46f3c; --copper-lt: #e0a477; --cream: #f3ead8; --mist: #b9c7bd;
@@ -129,6 +129,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; }
   .portal figure { clip-path: none; }
   .rule::before, .rule::after { width: 50px; }
 }
+dialog.flow { --fl-bg: var(--forest); --fl-ink: var(--cream); --fl-soft: var(--mist); --fl-line: rgba(243,234,216,.22); --fl-accent: var(--copper); --fl-accent-ink: var(--deep); --fl-radius: 0px; --fl-display: var(--display); --fl-body: var(--body); }
 </style>
 </head>
 <body>
@@ -139,7 +140,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; }
   <div class="wrap">
     <nav aria-label="Sections"><a href="#services">Services</a><a href="#ritual">The shave</a></nav>
     <a class="logo" href="#main"><b>Copper Comb</b><small>Paso Robles</small></a>
-    <nav aria-label="More"><a href="#visit">Hours</a><a class="btn" href="#visit">Book</a></nav>
+    <nav aria-label="More"><a href="#visit">Hours</a><a class="btn" href="#visit" data-open-flow>Book</a></nav>
   </div>
 </header>
 
@@ -150,7 +151,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; }
     <p class="caps">Barbers on Main Street</p>
     <h1>The art of <span>the sharp cut.</span></h1>
     <p class="hero-lede">Classic cuts, skin fades, beard work and the full hot towel shave, done with a steady hand in a room built for taking your time.</p>
-    <div class="hero-btns"><a class="btn" href="#visit">Book a chair</a><a class="btn btn--line" href="tel:+18055550104">(805) 555-0104</a></div>
+    <div class="hero-btns"><a class="btn" href="#visit" data-open-flow>Book a chair</a><a class="btn btn--line" href="tel:+18055550104">(805) 555-0104</a></div>
     <p class="hero-meta"><span class="stars" aria-hidden="true">★★★★★</span> 4.8 from 241 reviews <span class="ex-tag">Example</span></p>
     <div class="portal"><figure><img src="images/hero.jpg" width="960" height="1440" alt="A client in the barber chair by the window"><span class="photo-tag">Example photo</span></figure></div>
   </div>
@@ -227,6 +228,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; }
   const rows = document.querySelectorAll('#hours li'), day = (new Date().getDay() + 6) % 7;
   if (rows[day]) rows[day].classList.add('today');
 </script>
+<script type="application/json" id="flow-data">{"kind": "book", "title": "Book a chair", "hours": [[540, 1080], null, [540, 1080], [540, 1080], [540, 1080], [540, 1080], [540, 1080]], "items": [{"name": "Classic cut", "detail": "30 min", "price": "$35"}, {"name": "Skin fade", "detail": "40 min", "price": "$40"}, {"name": "Beard sculpt", "detail": "20 min", "price": "$22"}, {"name": "Hot towel shave", "detail": "45 min", "price": "$45"}, {"name": "Cut and beard", "detail": "50 min", "price": "$55"}, {"name": "The full service", "detail": "Cut, beard and hot towel shave · 90 min", "price": "$85"}, {"name": "Young gents, 12 and under", "detail": "25 min", "price": "$25"}, {"name": "Gray blending", "detail": "30 min", "price": "$30"}]}</script>
+<script src="../flow.js?v=1" defer></script>
 <!-- Cloudflare Web Analytics: visitor counts, no cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7d8a91e38ed746dba1ee8d5ddc9d0e8c"}'></script>
 </body>
 </html>

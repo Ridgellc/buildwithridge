@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../example.css">
+<link rel="stylesheet" href="../example.css?v=2">
 <style>
 :root {
   --black: #0d0d0d; --off: #f2efe9; --cherry: #e0263c; --chrome: linear-gradient(100deg, #8d8d8d, #f5f5f5 30%, #9a9a9a 52%, #ffffff 70%, #7b7b7b);
@@ -112,6 +112,9 @@ body { background: var(--black); color: var(--off); font: 400 17px/1.6 var(--fon
   .logo { font-size: 18px; }
   .top .btn { min-height: 42px; padding: 0 14px; font-size: 13px; }
 }
+dialog.flow { --fl-bg: var(--black); --fl-ink: var(--off); --fl-soft: var(--grey); --fl-line: #3a3a3a; --fl-accent: var(--cherry); --fl-accent-ink: #fff; --fl-radius: 0px; --fl-display: var(--font); --fl-body: var(--font); }
+dialog.flow .flow-head h2, dialog.flow .done h3 { font-weight: 900; font-stretch: 125%; text-transform: uppercase; letter-spacing: -0.01em; }
+dialog.flow .fl-btn { text-transform: uppercase; letter-spacing: .06em; }
 </style>
 </head>
 <body>
@@ -122,7 +125,7 @@ body { background: var(--black); color: var(--off); font: 400 17px/1.6 var(--fon
   <div class="wrap">
     <a class="logo" href="#main">Wren<span>.</span></a>
     <nav class="nav" aria-label="Sections"><a href="#shades">Shades</a><a href="#services">Services</a><a href="#visit">Visit</a></nav>
-    <a class="btn" href="#visit">Book</a>
+    <a class="btn" href="#visit" data-open-flow>Book</a>
   </div>
 </header>
 
@@ -133,7 +136,7 @@ body { background: var(--black); color: var(--off); font: 400 17px/1.6 var(--fon
     <div class="hero-row">
       <h1 class="wide">Nails that start <em>conversations.</em></h1>
       <div><p>Gel, dip, chrome and hand-painted art in a small studio in Morro Bay. Bring a photo, leave with it on your hands.</p><p class="hero-meta"><span class="stars" aria-hidden="true">★★★★★</span> 4.9 from 167 reviews <span class="ex-tag">Example</span></p></div>
-      <a class="btn" href="#visit">Book a set</a>
+      <a class="btn" href="#visit" data-open-flow>Book a set</a>
     </div>
   </div>
 </section>
@@ -216,6 +219,9 @@ body { background: var(--black); color: var(--off); font: 400 17px/1.6 var(--fon
   const rows = document.querySelectorAll('#hours li'), day = (new Date().getDay() + 6) % 7;
   if (rows[day]) rows[day].classList.add('today');
 </script>
+<script type="application/json" id="flow-data">{"kind": "book", "title": "Book a set", "hours": [null, [600, 1140], [600, 1140], [600, 1140], [600, 1140], [600, 1140], [600, 1140]], "items": [{"name": "Gel manicure", "detail": "45 min · lasts two to three weeks", "price": "$45"}, {"name": "Chrome set", "detail": "60 min · mirror powder finish", "price": "$60"}, {"name": "Hand-painted art", "detail": "+20 min · bring a photo", "price": "from $15"}, {"name": "Dip powder", "detail": "50 min", "price": "$50"}, {"name": "Spa pedicure", "detail": "50 min", "price": "$48"}]}</script>
+<script>window.flowExtra = () => { const b = document.querySelector('.block[aria-pressed="true"] span'); return b ? 'Shade: ' + b.textContent : ''; };</script>
+<script src="../flow.js?v=1" defer></script>
 <!-- Cloudflare Web Analytics: visitor counts, no cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7d8a91e38ed746dba1ee8d5ddc9d0e8c"}'></script>
 </body>
 </html>

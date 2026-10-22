@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../example.css">
+<link rel="stylesheet" href="../example.css?v=2">
 <style>
 :root {
   --oat: #efe9dd; --cream: #faf7f0; --juniper: #1f3d2b; --juniper-2: #2c5139; --berry: #4a5d8c; --butter: #e9c46a; --ink: #1d2620; --soft: #5b665e; --line: #d8d0bf;
@@ -135,6 +135,10 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1; lett
   .logo { font-size: 26px; }
   .mast .pill { min-height: 42px; padding: 0 16px; font-size: 15px; }
 }
+.menu-order { margin-top: 40px; text-align: center; }
+.menu-order + .menu-note { margin-top: 16px; }
+dialog.flow { --fl-bg: var(--cream); --fl-ink: var(--ink); --fl-soft: var(--soft); --fl-line: var(--line); --fl-accent: var(--juniper); --fl-accent-ink: var(--cream); --fl-radius: 14px; --fl-display: var(--display); --fl-body: var(--body); }
+dialog.flow .fl-btn:not(.fl-btn--line) { border-radius: 99px; }
 </style>
 </head>
 <body>
@@ -191,7 +195,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1; lett
         <li><span>À la mode</span><span>$7.50</span></li>
         <li><span>Whole pie, order a day ahead</span><span>$28</span></li>
       </ul>
-      <a class="pill" href="tel:+18055550102">Order a whole pie</a>
+      <a class="pill" href="tel:+18055550102" data-open-flow data-item="Olallieberry pie, whole" data-title="Order a whole pie">Order a whole pie</a>
     </div>
   </div>
 </section>
@@ -216,6 +220,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1; lett
         <div class="dish"><b>Cobb salad</b><em>14</em><span>Chicken, egg, bacon, blue cheese, avocado.</span></div>
       </div>
     </div>
+    <p class="menu-order"><a class="pill" href="#menu" data-open-flow data-group="Breakfast">Order for pickup</a></p>
     <p class="menu-note"><span class="ex-tag">Example</span> Dishes and prices are placeholders.</p>
     <figure class="menu-pic"><img src="images/d.jpg" width="960" height="874" alt="A waffle with berries, cream and coffee" loading="lazy"><figcaption>The Belgian waffle, with a cup of the house blend.</figcaption></figure>
   </div>
@@ -252,6 +257,8 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1; lett
   const rows = document.querySelectorAll('#hours li'), day = (new Date().getDay() + 6) % 7;
   if (rows[day]) rows[day].classList.add('today');
 </script>
+<script type="application/json" id="flow-data">{"kind": "order", "title": "Order for pickup", "hours": [[420, 840], null, [420, 840], [420, 840], [420, 840], [420, 840], [420, 840]], "items": [{"name": "Olallieberry pie, whole", "detail": "Order a day ahead", "price": "$28", "group": "Pie"}, {"name": "Pie by the slice", "detail": "Olallieberry", "price": "$5.50", "group": "Pie"}, {"name": "Slice à la mode", "detail": "With vanilla ice cream", "price": "$7.50", "group": "Pie"}, {"name": "Buttermilk pancakes", "detail": "Three tall ones, whipped butter", "price": "$11", "group": "Breakfast"}, {"name": "Garden omelet", "detail": "With potatoes", "price": "$14", "group": "Breakfast"}, {"name": "Belgian waffle", "detail": "Berries and cream", "price": "$12", "group": "Breakfast"}, {"name": "Biscuits and gravy", "detail": "Two eggs on the side", "price": "$12", "group": "Breakfast"}, {"name": "Club sandwich", "detail": "On toasted sourdough", "price": "$15", "group": "Lunch"}, {"name": "Patty melt", "detail": "With fries", "price": "$15", "group": "Lunch"}, {"name": "Soup of the day", "detail": "Bowl, with a warm roll", "price": "$8", "group": "Lunch"}, {"name": "Cobb salad", "detail": "Chicken, egg, bacon, blue cheese", "price": "$14", "group": "Lunch"}]}</script>
+<script src="../flow.js?v=1" defer></script>
 <!-- Cloudflare Web Analytics: visitor counts, no cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7d8a91e38ed746dba1ee8d5ddc9d0e8c"}'></script>
 </body>
 </html>
