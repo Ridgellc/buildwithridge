@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -126,6 +126,7 @@
     <label class="rq-label" for="rq-message">Anything I should know? <span class="rq-opt">(optional)</span></label>
     <textarea class="field field--small rq-message" id="rq-message" name="message" rows="3" placeholder="Your current website, what you'd like on it, questions…"></textarea>
     <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
+    <input type="hidden" name="design">
     <p class="rq-error" role="alert" hidden>That didn't send. Please try again, or email michaels.web.design1@gmail.com.</p>
     <button class="rq-send" type="submit">Send request</button>
   </form>
@@ -136,6 +137,6 @@
   </div>
 </dialog>
 
-<script src="app.js?v=7" defer></script>
+<script src="app.js?v=8" defer></script>
 </body>
 </html>

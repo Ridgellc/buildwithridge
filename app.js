@@ -96,7 +96,22 @@ const mini = document.getElementById('mini');
   const otherBox = document.getElementById('other-kind');
   if (!form || !mini) return;
   const $ = (id) => document.getElementById(id);
-  let t, lastKey = null, typing = false;
+  let t, lastKey = null, typing = false, engaged = false;
+  // "Make it real": a bar under the sketch once they've built their own
+  const cta = $('mini-cta'), ctaText = $('cta-text'), ctaBtn = $('cta-btn');
+  const offer = () => {
+    const name = input.value.trim().replace(/\s+/g, ' ');
+    ctaText.textContent = '';
+    if (name) {
+      const b = document.createElement('strong'); b.textContent = name;
+      ctaText.append('Want the real ', b, ' site? I\'ll build it before you pay a cent.');
+      ctaBtn.textContent = 'Request this site';
+    } else {
+      ctaText.textContent = 'Type your business name above to make it yours.';
+      ctaBtn.textContent = 'Add my name';
+    }
+    cta.classList.add('is-on');
+  };
   const build = (animate) => {
     const name = (input.value.trim() || 'Your Business').replace(/\s+/g, ' ');
     const trade = form.querySelector('input[name="trade"]:checked').value;
@@ -124,6 +139,8 @@ const mini = document.getElementById('mini');
     // the request form opens with what they typed here
     ask.dataset.business = input.value.trim();
     ask.dataset.kind = typed || (trade === 'other' ? '' : form.querySelector('input[name="trade"]:checked + span').textContent);
+    ask.dataset.design = 'Watched the ' + (typed || form.querySelector('input[name="trade"]:checked + span').textContent) + ' design build';
+    if (cta.classList.contains('is-on')) offer();
     // a new look gets the full build; the same look just takes the new name
     const changed = key !== lastKey; lastKey = key;
     if (animate === 'auto' ? changed : animate) play(); else if (animate === 'auto') flash();
@@ -155,15 +172,21 @@ const mini = document.getElementById('mini');
     mini.dataset.stage = 'photo'; say('Placing your photo', 0.8);
     if (!(await wait(750, id))) return;
     mini.dataset.stage = 'done'; say('Ready: ' + $('mini-url').textContent, 1);
+    if (engaged) offer();
     if (!(await wait(2600, id))) return;
     delete mini.dataset.stage; mini.classList.remove('is-working');
   }
 
-  input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => build('auto'), 260); });
-  kindIn.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => build('auto'), 450); });
-  form.addEventListener('change', (e) => { if (e.target.name === 'trade') { build(true); if (e.target.value === 'other') kindIn.focus(); } });
-  form.addEventListener('submit', (e) => { e.preventDefault(); build(true); input.blur(); });
-  const again = $('build-again'); if (again) again.addEventListener('click', () => build(true));
+  input.addEventListener('input', () => { engaged = true; clearTimeout(t); t = setTimeout(() => build('auto'), 260); });
+  kindIn.addEventListener('input', () => { engaged = true; clearTimeout(t); t = setTimeout(() => build('auto'), 450); });
+  form.addEventListener('change', (e) => { if (e.target.name === 'trade') { engaged = true; build(true); if (e.target.value === 'other') kindIn.focus(); } });
+  form.addEventListener('submit', (e) => { e.preventDefault(); engaged = true; build(true); input.blur(); });
+  const again = $('build-again'); if (again) again.addEventListener('click', () => { engaged = true; build(true); });
+  // the bar's button: with a name, open the request form filled in; without one, take them to the name box
+  ctaBtn.addEventListener('click', () => {
+    if (input.value.trim()) { ask.click(); return; }
+    input.scrollIntoView({ behavior: quiet.matches ? 'auto' : 'smooth', block: 'center' }); input.focus({ preventScroll: true });
+  });
   build(false);
   // the first build plays when the sketch comes into view
   if ('IntersectionObserver' in window && !quiet.matches) {
@@ -205,6 +228,7 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
     f.hidden = false; done.hidden = true; error.hidden = true;
     if (b.dataset.business !== undefined) el('business').value = b.dataset.business;
     if (b.dataset.kind !== undefined) el('kind').value = b.dataset.kind;
+    el('design').value = b.dataset.design || '';
     dlg.showModal();
     setTimeout(() => el('name').focus(), 50);
   }));
@@ -219,7 +243,7 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
     if (!f.reportValidity() || el('botcheck').checked) return;
     const subject = `${mode === 'question' ? 'Question' : 'Website request'}: ${v('business') || v('name')}${v('kind') ? ` (${v('kind')})` : ''}`;
     if (!f.dataset.formKey) {
-      const body = `Name: ${v('name')}\nBusiness: ${v('business')}\nType of business: ${v('kind')}\nPhone: ${v('phone')}\nEmail: ${v('email')}\n\n${v('message')}`;
+      const body = `Name: ${v('name')}\nBusiness: ${v('business')}\nType of business: ${v('kind')}\nPhone: ${v('phone')}\nEmail: ${v('email')}\n${v('design') ? v('design') + '\n' : ''}\n${v('message')}`;
       location.href = 'mailto:michaels.web.design1@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       return;
     }
@@ -228,7 +252,7 @@ let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fit
     try {
       // plain form data (no JSON content type) so the browser skips the CORS preflight
       const body = new FormData();
-      Object.entries({ access_key: f.dataset.formKey, from_name: 'Ridge website', subject, name: v('name'), business: v('business'), kind: v('kind'), phone: v('phone'), email: v('email'), message: v('message') })
+      Object.entries({ access_key: f.dataset.formKey, from_name: 'Ridge website', subject, name: v('name'), business: v('business'), kind: v('kind'), phone: v('phone'), email: v('email'), design: v('design'), message: v('message') })
         .forEach(([k, val]) => body.append(k, val));
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { Accept: 'application/json' }, body });
       if (!(await res.json()).success) throw new Error('not sent');

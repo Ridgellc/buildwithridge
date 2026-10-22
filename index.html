@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Archivo+Black&family=Big+Shoulders+Display:wght@800&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=DM+Serif+Display&family=Figtree:wght@400;600;800&family=Fraunces:ital,wght@0,600;1,600&family=Libre+Baskerville:wght@400;700&family=Playfair+Display:ital,wght@1,400&family=Young+Serif&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -115,6 +115,9 @@
           <figure class="mini-photo mini-piece" style="--k:3"><img id="mini-img" src="img/sketch/bakery.jpg" width="900" height="675" alt="Example photo: a concha on bakery paper" decoding="async"><span class="mini-tag">Example photo</span></figure>
           <span class="mini-badge mini-piece" style="--k:5" id="mini-badge"></span>
         </div>
+      </div>
+      <div class="mini-cta" id="mini-cta">
+        <div class="mini-cta-in"><p class="mini-cta-text" id="cta-text"></p><button type="button" class="mini-cta-btn" id="cta-btn"></button></div>
       </div>
     </div>
     <div class="watch" aria-hidden="true"><span class="watch-text">watch it build</span><svg class="watch-arrow" viewBox="0 0 120 96"><path d="M14 8 C 4 46, 40 78, 108 66"/><path d="M95 55 L109 66 L94 77"/></svg></div>
@@ -322,6 +325,7 @@
     <label class="rq-label" for="rq-message">Anything I should know? <span class="rq-opt">(optional)</span></label>
     <textarea class="field field--small rq-message" id="rq-message" name="message" rows="3" placeholder="Your current website, what you'd like on it, questions…"></textarea>
     <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
+    <input type="hidden" name="design">
     <p class="rq-error" role="alert" hidden>That didn't send. Please try again, or email michaels.web.design1@gmail.com.</p>
     <button class="rq-send" type="submit">Send request</button>
   </form>
@@ -332,7 +336,7 @@
   </div>
 </dialog>
 
-<script src="kinds.js?v=7" defer></script>
-<script src="app.js?v=7" defer></script>
+<script src="kinds.js?v=8" defer></script>
+<script src="app.js?v=8" defer></script>
 </body>
 </html>
