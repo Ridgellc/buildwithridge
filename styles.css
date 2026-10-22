@@ -1,18 +1,20 @@
 /* Ridge, buildwithridge.com
-   Direction: the name as a monument. Teal on paper, Bodoni Moda over Jost. */
+   Brand (2026-10-22): the Ridge R mark in poppy orange, deep ink teal on warm cream, Geist. */
 
 :root {
-  --bg: #f7f9f8;
-  --surface: #ebf0ee;
-  --ink: #06525c;
-  --muted: #2f737d;
-  --accent: #06525c;
-  --accent-ink: #f7f9f8;
-  --field: #06525c;
-  --field-ink: #f7f9f8;
-  --field-ink2: #9ad6d0;   /* the field's own hue, lightened: soft ink on teal */
-  --deep: #043a41;
-  --deep-soft: #a9cfcf;
+  --bg: #f6f1e7;
+  --surface: #ebe3d3;
+  --ink: #0b3b40;
+  --muted: #3e6266;
+  --accent: #0b3b40;
+  --accent-ink: #f6f1e7;
+  --field: #0b3b40;
+  --field-ink: #f6f1e7;
+  --field-ink2: #ffb27f;   /* soft peach: accent text and lines on ink (6.9:1) */
+  --field-soft: #cadbd8;   /* body text on ink, softer than cream */
+  --poppy: #ff6a13;        /* the logo's orange: marks, swash, offset blocks; never small text */
+  --deep: #072a2e;
+  --deep-soft: #a9c4c2;
 
   --font-display: "Geist", "Helvetica Neue", Arial, sans-serif;
   --font-text: "Geist", "Helvetica Neue", Arial, sans-serif;
@@ -145,7 +147,7 @@ p { text-wrap: pretty; }
 .mini[data-trade="realestate"]  { --m-bg: #f6f5f2; --m-ink: #1d2433; --m-accent: #2e4a7d; }
 .mini[data-trade="plumber"]     { --m-bg: #f3f6f9; --m-ink: #14243a; --m-accent: #1f6fd1; }
 .mini[data-trade="landscaping"] { --m-bg: #f4f6f0; --m-ink: #1e2a1c; --m-accent: #3f7a2f; }
-.mini[data-trade="other"]       { --m-bg: #f6f6f4; --m-ink: #1d2326; --m-accent: #06525c; }
+.mini[data-trade="other"]       { --m-bg: #f6f6f4; --m-ink: #1d2326; --m-accent: #0b3b40; }
 @media (prefers-reduced-motion: no-preference) {
   .mini.is-building .mini-piece { animation: piece 640ms var(--ease-out) both; animation-delay: calc(var(--k) * 80ms); }
 }
@@ -239,9 +241,9 @@ p { text-wrap: pretty; }
 /* ---------- what's in it: three panels, short checklists ---------- */
 .kit { padding: var(--section) var(--margin); background: var(--field); color: var(--field-ink); }
 .kit-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem 2rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-.kit-intro { color: var(--field-ink2); max-width: 36ch; }
+.kit-intro { color: var(--field-soft); max-width: 36ch; }
 .kit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.kit-card { background: #0b6470; padding: clamp(1.5rem, 2.6vw, 2.5rem); }
+.kit-card { background: #15525a; padding: clamp(1.5rem, 2.6vw, 2.5rem); }
 .kit-card-title { font-size: 1.3rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.035em; }
 .kit-card-sum { margin-top: 0.6rem; color: #bfe6e2; }
 .kit-checks { margin-top: 1.6rem; display: grid; gap: 0.75rem; line-height: 1.4; }
@@ -291,7 +293,10 @@ p { text-wrap: pretty; }
   transform: translateY(-100%); transition: transform 360ms var(--ease-out);
 }
 .bar.is-on { transform: none; }
-.bar-mark { display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 600; font-size: 18px; letter-spacing: -0.03em; text-decoration: none; white-space: nowrap; }
+.bar-mark { display: inline-flex; align-items: center; gap: 0.45rem; font-weight: 600; font-size: 28px; letter-spacing: -0.03em; text-decoration: none; white-space: nowrap; }
+/* stacked lockup everywhere (Michael, 2026-10-22): BUILD WITH small caps over Ridge, the R mark as its first letter */
+.bar-mark-words { display: grid; line-height: 1; }
+.bar-mark-pre { font-size: 12.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 3px; }
 .bar-nav { display: flex; align-items: center; gap: 1.6rem; font-size: 15px; }
 .bar-btn {
   display: inline-flex; align-items: center; min-height: 40px; padding: 0 1.1rem; background: var(--ink); color: var(--bg);
@@ -365,7 +370,7 @@ p { text-wrap: pretty; }
 .me-name { position: relative; display: inline-block; white-space: nowrap; }
 .me-swash { position: absolute; left: 0; right: 0.3em; bottom: -0.16em; width: calc(100% - 0.3em); height: 0.2em; overflow: visible; }
 .me-swash { clip-path: inset(-50% 100% -50% 0); animation: swash 1100ms var(--ease-out) 900ms forwards; }
-.me-swash path { fill: none; stroke: var(--field-ink2); stroke-width: 7; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.me-swash path { fill: none; stroke: var(--poppy); stroke-width: 7; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 @keyframes swash { to { clip-path: inset(-50% -2% -50% 0); } }
 .me-lede { margin-top: 1.8rem; font-size: var(--step-mid); line-height: 1.25; letter-spacing: -0.01em; max-width: 30ch; color: var(--muted); }
 .me-actions { margin-top: 2.2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; }
@@ -376,9 +381,9 @@ p { text-wrap: pretty; }
 .me-btn:active { transform: scale(0.97); }
 @media (hover: hover) and (pointer: fine) { .me-btn:hover { background: var(--muted); } }
 
-/* the portrait: a solid teal block offset behind, a spinning badge on the corner */
+/* the portrait: a solid poppy block offset behind, a spinning badge on the corner */
 .me-photo-wrap { position: relative; grid-column: 9 / -1; margin: 0 18px 18px 0; }
-.me-photo-wrap::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; background: var(--field); }
+.me-photo-wrap::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; background: var(--poppy); }
 .me-photo { position: relative; margin: 0; aspect-ratio: 4 / 5; overflow: hidden; background: var(--surface); }
 .me-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 .me-badge { position: absolute; left: -54px; bottom: 36px; width: 128px; height: 128px; }
@@ -392,9 +397,9 @@ p { text-wrap: pretty; }
 /* business background: a dark band */
 .me-why { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 3.5rem; padding: var(--section) var(--margin); background: var(--field); color: var(--field-ink); }
 .me-why-title { grid-column: 1 / span 6; font-size: clamp(2rem, 1rem + 2.6vw, 3.6rem); line-height: 1.02; letter-spacing: -0.04em; font-weight: 600; }
-.me-why-text { grid-column: 8 / -1; display: grid; gap: 1.1em; max-width: 52ch; color: var(--field-ink2); align-self: end; }
+.me-why-text { grid-column: 8 / -1; display: grid; gap: 1.1em; max-width: 52ch; color: var(--field-soft); align-self: end; }
 .me-facts { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 0; }
-.me-facts div { background: #0b6470; padding: 1.4rem 1.5rem 1.6rem; }
+.me-facts div { background: #15525a; padding: 1.4rem 1.5rem 1.6rem; }
 .me-facts dt { font-size: var(--step-small); color: var(--field-ink2); }
 .me-facts dd { margin: 0.5rem 0 0; font-size: 1.2rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; }
 
@@ -454,7 +459,7 @@ p { text-wrap: pretty; }
 .yours > :not(.me-topo) { position: relative; }
 .yours-title .me-swash { bottom: -0.12em; }
 .mini-wrap { position: relative; margin: 0 18px 18px 0; }
-.mini-wrap::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; background: var(--field); }
+.mini-wrap::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; background: var(--poppy); }
 .mini-wrap .mini { position: relative; }
 
 @media (hover: hover) and (pointer: fine) {
@@ -478,16 +483,16 @@ p { text-wrap: pretty; }
 }
 
 /* ---------- the bar, livelier: mark, sliding underlines, a button that sweeps ---------- */
-.bar-peak { width: 26px; height: 17px; fill: var(--ink); transition: transform 420ms var(--ease-out); }
-.bar-mark-pre { font-weight: 400; color: var(--muted); }
+.bar-peak { display: inline-block; height: 0.71em; width: calc(0.71em * 50 / 52); margin-right: 0.03em; fill: var(--poppy); vertical-align: baseline; }
+.bar-ridge { font-weight: 800; white-space: nowrap; }
+.bar-mark-pre { color: var(--muted); }
 .bar-nav .link { position: relative; text-decoration: none; padding: 4px 0; }
 .bar-nav .link::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: right; transition: transform 320ms var(--ease-out); }
-.bar-nav .link[aria-current]::after { transform: scaleX(1); background: var(--field-ink2); }
+.bar-nav .link[aria-current]::after { transform: scaleX(1); background: var(--poppy); }
 .bar-btn { position: relative; overflow: hidden; isolation: isolate; gap: 0.5rem; }
 .bar-btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--muted); transform: translateX(-101%); transition: transform 420ms var(--ease-out); }
 .bar-arrow { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-right: -4px; transition: transform 320ms var(--ease-out); }
 @media (hover: hover) and (pointer: fine) {
-  .bar-mark:hover .bar-peak { transform: translateY(-3px); }
   .bar-nav .link:hover::after { transform: scaleX(1); transform-origin: left; }
   .bar-btn:hover { background: var(--ink); }
   .bar-btn:hover::before { transform: none; }
@@ -502,10 +507,8 @@ p { text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) { .watch-arrow { animation: none; clip-path: none; } }
 @media (max-width: 63.99em) { .watch { display: none; } }
 @media (max-width: 47.99em) {
-  .bar-mark { font-size: 17px; gap: 0.4rem; }
-  .bar-mark-words { display: grid; line-height: 1; }
-  .bar-mark-pre { font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2px; }
-  .bar-peak { width: 20px; height: 13px; }
+  .bar-mark { font-size: 21px; gap: 0.4rem; }
+  .bar-mark-pre { font-size: 9.5px; margin-bottom: 2px; }
   .bar-arrow { display: none; }
 }
 
@@ -513,7 +516,7 @@ p { text-wrap: pretty; }
 .faq-side { align-self: start; }
 @media (min-width: 48em) { .faq-side { position: sticky; top: 100px; } }
 .faq-title { font-size: clamp(2.6rem, 1rem + 4.4vw, 5.5rem); line-height: 0.95; letter-spacing: -0.05em; font-weight: 600; }
-.faq-q { display: inline-block; color: var(--field-ink2); margin-left: 0.04em; transform-origin: 50% 85%; animation: think 3.6s var(--ease-in-out) infinite; }
+.faq-q { display: inline-block; color: var(--poppy); margin-left: 0.04em; transform-origin: 50% 85%; animation: think 3.6s var(--ease-in-out) infinite; }
 @keyframes think { 0%, 60%, 100% { transform: rotate(0deg); } 70% { transform: rotate(-12deg); } 80% { transform: rotate(9deg); } 90% { transform: rotate(-4deg); } }
 .faq-ask { margin-top: 2rem; max-width: 22rem; background: var(--field); color: var(--field-ink); padding: 1.6rem 1.6rem 1.8rem; }
 .faq-ask-icon { width: 36px; height: 36px; fill: none; stroke: var(--field-ink2); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
@@ -810,9 +813,9 @@ p { text-wrap: pretty; }
 .mini-bar { position: relative; }
 .mini-status { margin-left: auto; padding-left: 12px; font-size: 12px; color: #4b5e5c; white-space: nowrap; opacity: 0; transition: opacity 300ms ease; }
 .mini.is-working .mini-status, .mini[data-stage="done"] .mini-status { opacity: 1; }
-.mini.is-working .mini-status::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 7px; border-radius: 50%; border: 1.5px solid #06525c; border-right-color: transparent; vertical-align: -1px; animation: spin 700ms linear infinite; }
+.mini.is-working .mini-status::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 7px; border-radius: 50%; border: 1.5px solid #ff6a13; border-right-color: transparent; vertical-align: -1px; animation: spin 700ms linear infinite; }
 .mini[data-stage="done"] .mini-status::before { content: "✓ "; color: #1f8a5b; font-weight: 700; }
-.mini-progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: calc(var(--p, 0) * 100%); background: #06525c; opacity: 0; transition: width 600ms var(--ease-out), opacity 400ms ease; }
+.mini-progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: calc(var(--p, 0) * 100%); background: #ff6a13; opacity: 0; transition: width 600ms var(--ease-out), opacity 400ms ease; }
 .mini.is-working .mini-progress { opacity: 1; }
 @keyframes spin { to { rotate: 360deg; } }
 @media (max-width: 47.99em) { .mini-status { display: none; } }
